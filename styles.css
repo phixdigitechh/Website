@@ -1306,12 +1306,13 @@ h2 {
 
     /* Core Services Recalibration */
     .carousel-container { gap: 1rem; border-radius: 20px; }
-    .carousel-selector-pillar { padding: 1.5rem 1rem; gap: 1rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
-    .selector-track { flex-direction: column; width: 100%; gap: 12px; }
-    .feature-chip { position: relative; width: 100% !important; min-width: 100%; padding: 1.2rem; align-items: center; justify-content: center; height: auto; border-radius: 20px; text-transform: none; overflow: hidden; }
-    .feature-chip .btn-text { font-size: 0.85rem; z-index: 10; font-weight: 700; width: 100%; text-align: left; padding-left: 10px; }
-    .feature-chip .btn-icon-circle { display: none; } /* Hide icon to save horizontal space on tiny screens */
-    .feature-chip:hover, .feature-chip.active { padding-left: 1.2rem; transform: none; }
+    .carousel-selector-pillar { width: 100vw; margin-left: -4vw; margin-right: -4vw; padding: 1.5rem 0 0.5rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); overflow: hidden; }
+    .selector-track { display: flex; flex-direction: row; width: 100%; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 0 4vw 1rem 4vw; scrollbar-width: none; -ms-overflow-style: none; }
+    .selector-track::-webkit-scrollbar { display: none; }
+    .feature-chip { position: relative; width: auto !important; min-width: max-content; padding: 1rem 1.5rem !important; align-items: center; justify-content: center; height: 50px; border-radius: 9999px; text-transform: none; scroll-snap-align: start; flex-shrink: 0; }
+    .feature-chip .btn-text { font-size: 0.9rem; z-index: 10; font-weight: 700; width: auto; text-align: center; padding-left: 0; margin: 0; }
+    .feature-chip .btn-icon-circle { display: none !important; } /* Hide icon to push pure text tabs */
+    .feature-chip:hover, .feature-chip.active { padding-left: 1.5rem !important; transform: translateY(-2px); }
     .carousel-content-horizon { padding: 1.5rem 1rem; min-height: auto; }
     .content-card-stack { width: 100%; height: 500px; display: block; position: relative; }
     .content-card { position: absolute; width: 100%; height: 100%; top: 0; left: 0; padding: 1.5rem; display: flex; flex-direction: column; justify-content: center; }
