@@ -1302,6 +1302,21 @@ h2 {
     section { padding: 60px 4% 40px !important; }
     .ecosystem-section { padding-top: 40px !important; }
     .framework-section { padding-top: 40px !important; }
+
+    /* Core Services Recalibration */
+    .carousel-container { gap: 1rem; border-radius: 20px; }
+    .carousel-selector-pillar { padding: 1.5rem 1rem; gap: 1rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+    .selector-track { flex-direction: column; width: 100%; gap: 12px; }
+    .feature-chip { position: relative; width: 100% !important; min-width: 100%; padding: 1.2rem; align-items: center; justify-content: center; height: auto; border-radius: 20px; text-transform: none; overflow: hidden; }
+    .feature-chip .btn-text { font-size: 0.85rem; z-index: 10; font-weight: 700; width: 100%; text-align: left; padding-left: 10px; }
+    .feature-chip .btn-icon-circle { display: none; } /* Hide icon to save horizontal space on tiny screens */
+    .feature-chip:hover, .feature-chip.active { padding-left: 1.2rem; transform: none; }
+    .carousel-content-horizon { padding: 2rem 1rem; min-height: auto; }
+    .content-card { padding: 1.5rem; }
+    .content-card .card-description { font-size: 14px !important; margin-bottom: 1rem; line-height: 1.5; }
+    .content-card .accent { font-size: 1.8rem !important; margin-bottom: 0.8rem; letter-spacing: -0.5px; }
+    .card-points { gap: 0.8rem; }
+    .card-points li { font-size: 13px !important; padding: 0.8rem; }
 }
 
 
