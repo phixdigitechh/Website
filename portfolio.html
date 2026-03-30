@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHIX | Portfolio - Wall of Mastery</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Global Persistent Theme Engine -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('phix-theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+    <style>
+        .portfolio-header {
+            padding: 4rem 5% 5rem 5%;
+            text-align: center;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+            gap: 4rem;
+            padding: 0 5% 10rem 5%;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            position: relative;
+            height: 550px;
+            overflow: hidden;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            box-shadow: var(--card-shadow);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-15px);
+            border-color: var(--accent-color);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3), inset 0 0 30px rgba(212,175,55,0.05);
+        }
+
+        .project-image-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .project-card:hover .project-image-container {
+            transform: scale(1.1);
+        }
+
+        .project-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 40%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 3rem;
+            opacity: 1;
+            transition: all 0.5s ease;
+        }
+
+        .project-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 0.8rem;
+            color: #fff;
+            letter-spacing: -1px;
+        }
+
+        .project-category {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: var(--accent-color);
+            margin-bottom: 1.2rem;
+        }
+
+        .view-case-study {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: #fff;
+            opacity: 0.6;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover .view-case-study {
+            opacity: 1;
+            gap: 1.2rem;
+            color: var(--accent-color);
+        }
+
+        .view-case-study svg { width: 16px; height: 16px; }
+
+        .client-logo-phantom {
+            font-size: 8rem;
+            font-weight: 800;
+            opacity: 0.15;
+            transition: all 0.8s ease;
+            filter: grayscale(1);
+        }
+
+        .project-card:hover .client-logo-phantom {
+            opacity: 0.4;
+            filter: grayscale(0);
+            transform: scale(1.05);
+            color: var(--accent-color);
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Background Atmos: Fully Purified -->
+    <!-- Premium Theme Toggle (Pill UI) -->
+    <div id="theme-toggle" class="theme-toggle-pill" role="button" tabindex="0" aria-label="Toggle theme">
+        <div class="toggle-track">
+            <div class="toggle-circle">
+                <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+            </div>
+            <div class="toggle-static">
+                <svg class="sun-icon-static" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                <svg class="moon-icon-static" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ripple Effect -->
+    <div class="theme-ripple"></div>
+
+    <!-- Header Mirror -->
+    <nav class="glass-nav squircle">
+        <div class="nav-left">
+            <div class="nav-links micro-links">
+                <a href="about.html">About</a>
+                <a href="index.html#story">Story</a>
+                <a href="index.html#services">Services</a>
+            </div>
+            <!-- Mobile Menu Trigger -->
+            <div class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </div>
+        </div>
+        <div class="nav-center brand-stack" onclick="window.location.href='index.html'" style="cursor:pointer;">
+            <span class="phi-x-logo">Φ<span class="x-serif">X</span></span>
+            <span class="site-name">PHIX DIGI TECHH</span>
+        </div>
+        <div class="nav-right">
+            <div class="nav-links micro-links">
+                <a href="portfolio.html" style="opacity:1; color: var(--accent-color);">Portfolio</a>
+                <a href="blogs.html">Blogs</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Majestic Mobile Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay">
+        <div style="position:absolute; top:2rem; right:2rem; cursor:pointer;" onclick="toggleMobileMenu()">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </div>
+        <a href="index.html" class="mobile-link" onclick="toggleMobileMenu()">Home</a>
+        <a href="about.html" class="mobile-link" onclick="toggleMobileMenu()">About</a>
+        <a href="portfolio.html" class="mobile-link" onclick="toggleMobileMenu()">Portfolio</a>
+        <a href="blogs.html" class="mobile-link" onclick="toggleMobileMenu()">Blogs</a>
+        <a href="index.html#contact" class="mobile-link" onclick="toggleMobileMenu()">Contact</a>
+    </div>
+
+    <header class="portfolio-header">
+        <h1 class="staggered-heading" style="font-size: 4.5rem; letter-spacing: -2px;">The <span class="accent">Wall</span> of Mastery.</h1>
+        <p class="staggered-text" style="max-width: 700px; margin: 2rem auto; font-size: 1.1rem; opacity: 0.7;">
+            Engineering gravitational growth for digital-first pioneers. Every card represents a paradigm shift in e-commerce performance.
+        </p>
+    </header>
+
+    <main id="portfolio-grid" class="portfolio-grid">
+        <!-- Dynamic Nodes from Sovereign Engine -->
+    </main>
+
+    <script>
+        async function loadPortfolio() {
+            const grid = document.getElementById('portfolio-grid');
+            try {
+                const res = await fetch('/api/portfolio');
+                let projects = await res.json();
+                
+                // Filter for Live Status only
+                projects = projects.filter(p => p.status === 'live');
+                
+                if (projects.length === 0) {
+                    grid.innerHTML = '<p style="text-align:center; opacity:0.5; grid-column: 1/-1;">No client nodes manifest currently.</p>';
+                    return;
+                }
+
+                grid.innerHTML = projects.map((p, idx) => `
+                    <a href="client-detail.html?id=${p.id}" class="project-card squircle Reveal-SlideUp" style="transition-delay: ${idx * 0.1}s;">
+                        <div class="project-image-container">
+                            ${p.images?.[0] ? `<img src="${p.images[0]}" style="width:100%; height:100%; object-fit:cover; position:absolute; inset:0; opacity:0.6;">` : ''}
+                            <span class="client-logo-phantom">${p.name.charAt(0)}${p.name.charAt(1) || ''}</span>
+                        </div>
+                        <div class="project-overlay">
+                            <span class="project-category">${p.category || 'Paradigm Expansion'}</span>
+                            <h2 class="project-title">${p.name}</h2>
+                            <div class="view-case-study">
+                                Analyze Archetype <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                            </div>
+                        </div>
+                    </a>
+                `).join('');
+                
+            } catch (e) {
+                grid.innerHTML = '<p style="text-align:center; color: var(--accent-color);">Manifestation Failed: Sovereign Engine Offline.</p>';
+            }
+        }
+        window.addEventListener('DOMContentLoaded', loadPortfolio);
+    </script>
+
+    <!-- VII. Site Footer -->
+    <footer class="full-footer glass-card">
+        <div class="footer-grid">
+            <div class="footer-col brand-info">
+                <div class="brand-stack" style="display: flex; flex-direction: column; align-items: flex-start; text-align: left; gap: 0.8rem;">
+                    <span class="phi-x-logo">Φ<span class="x-serif">X</span></span>
+                    <span class="site-name">PHIX DIGI TECHH</span>
+                </div>
+                <div class="contact-header">
+                    <p class="section-desc">Contact Phix Digi Techh to establish your global dominance through high-performance tech and creative mastery.</p>
+                    
+                    <a href="mailto:hello@phixdigitechh.com" class="btn-premium-cta" style="margin-top: 2rem;">
+                        <span class="btn-text">Let's Collaborate</span>
+                        <div class="btn-icon-circle">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-col links-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html#story">Origin Story</a></li>
+                    <li><a href="index.html#services">Growth Pillars</a></li>
+                    <li><a href="blogs.html">Blogs</a></li>
+                    <li><a href="index.html#contact">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col marketplace-col">
+                <h4>Global Presence</h4>
+                <div class="marketplace-badges">
+                    <span class="badge squircle-small glass-card">Amazon Global</span>
+                    <span class="badge squircle-small glass-card">Nykaa Partner</span>
+                    <span class="badge squircle-small glass-card">Shopify Plus</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="footer-bottom">
+        <p>&copy; 2026 PHIX DIGI TECHH. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Architecture</a></p>
+    </div>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.from(".project-card", {
+            scrollTrigger: { trigger: ".portfolio-grid", start: "top 80%" },
+            y: 80, opacity: 0, duration: 1.2, stagger: 0.15, ease: "power4.out"
+        });
+    </script>
+    <script src="animations.js"></script>
+</body>
+</html>

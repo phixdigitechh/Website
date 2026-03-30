@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHIX | Sovereign CMS - Integrated Authority</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <!-- Sovereign Content Engine (Quill) -->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+    <style>
+        body { background: #000; overflow-x: hidden; }
+        .cms-container { max-width: 1600px; margin: 4rem auto; padding: 0 4%; min-height: 100vh; position: relative; z-index: 10; }
+        
+        #dashboard { display: none; opacity: 0; transform: translateY(20px); transition: all 1s cubic-bezier(0.23, 1, 0.32, 1); }
+        
+        /* Subtle Background Motif */
+        .bg-pattern { position: fixed; inset: 0; opacity: 0.03; pointer-events: none; z-index: 0; display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-around; font-size: 2rem; color: #fff; }
+
+        .tab-switcher { display: flex; gap: 3rem; margin-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 2rem; align-items: center; }
+        .tab-btn { background: transparent; border: none; font-size: 0.85rem; font-weight: 800; letter-spacing: 0.2em; color: #fff; cursor: pointer; opacity: 0.3; transition: 0.4s; text-transform: uppercase; position: relative; }
+        .tab-btn.active { opacity: 1; color: var(--accent-color); }
+        .tab-btn.active::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 100%; height: 2px; background: var(--accent-color); box-shadow: 0 0 20px var(--accent-color); }
+
+        .cms-grid { display: grid; grid-template-columns: 380px 1fr; gap: 3rem; align-items: start; }
+        
+        .list-panel { 
+            background: rgba(255, 255, 255, 0.02); 
+            backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+            border-radius: 2.5rem; 
+            padding: 2.5rem; 
+            height: calc(100vh - 200px); 
+            overflow-y: auto; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        .editor-panel { 
+            background: rgba(255, 255, 255, 0.02); 
+            backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+            border-radius: 2.5rem; 
+            padding: 4rem; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+        
+        .cms-input { 
+            width: 100%; 
+            background: rgba(255,255,255,0.03); 
+            border: 1px solid rgba(255,255,255,0.07); 
+            border-radius: 1.2rem; 
+            padding: 1.4rem; 
+            color: var(--text-color); 
+            margin-bottom: 1.8rem; 
+            font-family: inherit; 
+            outline: none; 
+            transition: all 0.4s ease; 
+            font-size: 0.95rem;
+        }
+        .cms-input:focus { 
+            border-color: var(--accent-color); 
+            background: rgba(255,255,255,0.06); 
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.05);
+        }
+        .cms-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.3em; color: var(--accent-color); margin-bottom: 0.8rem; display: block; font-weight: 800; opacity: 0.9; }
+
+        .img-gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-bottom: 2.5rem; }
+        .gallery-slot { position: relative; aspect-ratio: 16/9; background: rgba(0,0,0,0.5); border-radius: 1.5rem; border: 1px solid rgba(255,255,255,0.05); overflow: hidden; display: flex; align-items: center; justify-content: center; transition: 0.4s; }
+        .gallery-slot:hover { border-color: rgba(212, 175, 55, 0.3); background: rgba(0,0,0,0.7); }
+        .gallery-slot img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+        .slot-trigger { position: relative; z-index: 10; border: none; background: var(--accent-color); color: #000; padding: 0.8rem 1.5rem; border-radius: 100px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; cursor: pointer; transition: 0.3s; }
+        .slot-trigger:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3); }
+        .slot-hero { grid-column: span 2; grid-row: span 2; aspect-ratio: 21/9; }
+
+        .login-horizon { 
+            height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            position: fixed; 
+            inset: 0; 
+            background: #000;
+            overflow: hidden;
+            z-index: 1000; 
+        }
+
+        .login-horizon::before {
+            content: '';
+            position: absolute;
+            width: 150vw;
+            height: 150vh;
+            background: radial-gradient(circle at center, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+            animation: pulse 10s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+
+        .login-card { 
+            width: 450px; 
+            padding: 5rem; 
+            text-align: center; 
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(50px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 4rem;
+            box-shadow: 0 50px 100px rgba(0,0,0,0.8);
+            position: relative;
+            z-index: 10;
+        }
+
+        .login-card .phi-x-logo { font-size: 5rem; margin-bottom: 0.5rem; letter-spacing: -2px; }
+        .login-card h2 { font-size: 1.5rem; margin-bottom: 4rem; opacity: 0.6; font-weight: 300; }
+        
+        .list-item { 
+            padding: 1.5rem; 
+            border-bottom: 1px solid rgba(255,255,255,0.03); 
+            cursor: pointer; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            font-size: 0.85rem; 
+            transition: all 0.3s ease;
+            border-radius: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .list-item:hover { background: rgba(255,255,255,0.04); color: var(--accent-color); transform: translateX(5px); }
+        .status-badge { font-size: 0.6rem; padding: 0.25rem 0.8rem; border-radius: 100px; background: rgba(255,255,255,0.05); text-transform: uppercase; font-weight: 800; letter-spacing: 0.1em; }
+        /* Sovereign Editor Polish */
+        .ql-toolbar.ql-snow { border: 1px solid rgba(255,255,255,0.08) !important; background: rgba(255,255,255,0.02); border-radius: 1.2rem 1.2rem 0 0; }
+        .ql-container.ql-snow { border: 1px solid rgba(255,255,255,0.08) !important; background: rgba(255,255,255,0.03); border-radius: 0 0 1.2rem 1.2rem; min-height: 400px; color: #fff; font-family: inherit; font-size: 1rem; }
+        .ql-snow .ql-stroke { stroke: #fff !important; stroke-width: 2px !important; opacity: 1 !important; }
+        .ql-snow .ql-fill { fill: #fff !important; opacity: 1 !important; }
+        .ql-snow .ql-picker { color: #fff !important; opacity: 1; }
+        .ql-picker-label svg * { stroke: #fff !important; fill: #fff !important; }
+        .ql-picker-label { display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 1rem !important; border-radius: 0.6rem; border: 1px solid rgba(255,255,255,0.1) !important; background: rgba(255,255,255,0.05) !important; color: #fff !important; font-weight: 800; font-size: 0.8rem; height: 32px !important; }
+        .ql-picker-options { background: #111 !important; border: 1px solid rgba(255,255,255,0.1) !important; border-radius: 1rem; padding: 1.5rem !important; z-index: 9999 !important; box-shadow: 0 15px 40px rgba(0,0,0,0.5); }
+        .ql-picker-item, .ql-picker-label { color: #fff !important; cursor: pointer !important; }
+        .ql-picker-item svg * { stroke: #fff !important; fill: #fff !important; }
+        .ql-picker-item:hover { color: var(--accent-color) !important; background: transparent !important; }
+        .ql-picker-item:hover svg * { stroke: var(--accent-color) !important; fill: var(--accent-color) !important; }
+        .ql-active .ql-stroke { stroke: var(--accent-color) !important; opacity: 1; }
+        .ql-active .ql-fill { fill: var(--accent-color) !important; opacity: 1; }
+        .ql-active .ql-picker-label svg * { stroke: var(--accent-color) !important; fill: var(--accent-color) !important; }
+        
+        /* Fix the actual header tag visibility inside the editor */
+        .ql-editor h1 { font-size: 3rem; margin: 1.5rem 0; font-weight: 800; border-bottom: 2px solid var(--accent-color); padding-bottom: 0.5rem; }
+        .ql-editor h2 { font-size: 2.2rem; margin: 1.2rem 0; }
+        .ql-editor h3 { font-size: 1.8rem; margin: 1rem 0; }
+        .ql-editor p { font-size: 1rem; line-height: 1.8; opacity: 0.8; }
+
+        .section-editor { display: none; }
+        .section-editor.active { display: block; }
+    </style>
+</head>
+<body>
+    <div class="bg-pattern">
+        <span>ΦX</span><span>ΦX</span><span>ΦX</span><span>ΦX</span><span>ΦX</span><span>ΦX</span><span>ΦX</span><span>ΦX</span><span>ΦX</span><span>ΦX</span><span>ΦX</span><span>ΦX</span>
+    </div>
+
+    <div id="auth-layer" class="login-horizon">
+        <div class="login-card squircle">
+            <span class="phi-x-logo" style="display:block;">Φ<span class="x-serif">X</span></span>
+            <h2 style="color: #fff; opacity: 0.8;">Sovereign <span class="text-gold" style="font-weight: 800;">Auth</span></h2>
+            
+            <div style="margin-bottom: 2rem;">
+                <label class="cms-label" style="text-align: left; margin-left: 0.5rem;">Access Identity</label>
+                <input type="text" id="username" placeholder="Sovereign ID" class="cms-input" value="admin" style="margin-bottom: 1rem;">
+                
+                <label class="cms-label" style="text-align: left; margin-left: 0.5rem;">Security Protocol</label>
+                <input type="password" id="password" placeholder="Access Protocol" class="cms-input" value="admin">
+            </div>
+
+            <button onclick="handleLogin()" class="btn-premium-cta" style="width: 100%; justify-content: space-between; padding-right: 56px;">
+                <span class="btn-text">Manifest Access</span>
+                <div class="btn-icon-circle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </div>
+            </button>
+        </div>
+    </div>
+
+    <main id="dashboard" class="cms-container">
+        <header class="cms-header mb-10" style="display:grid; grid-template-columns: 1fr auto 1fr; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 2rem;">
+            <div class="header-left">
+                <span class="phi-x-logo">Φ<span class="x-serif">X</span></span>
+            </div>
+            <div class="header-center">
+                <span class="site-name" style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5em; font-weight: 800; color: var(--accent-color); opacity: 0.9;">Sovereign Master Dashboard</span>
+            </div>
+            <div class="header-right" style="display:flex; justify-content: flex-end;">
+                <div class="tab-switcher" style="padding-bottom: 0; border-bottom: none; margin-bottom: 0;">
+                    <button onclick="switchTab('blogs')" id="tab-blogs" class="tab-btn active" style="padding-bottom: 1rem;">BLOGS</button>
+                    <button onclick="switchTab('portfolio')" id="tab-portfolio" class="tab-btn" style="padding-bottom: 1rem;">PORTFOLIO</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="cms-grid">
+            <div class="list-panel">
+                <h4 class="cms-label" id="list-title">BLOG ARCHIVE</h4>
+                <div id="item-list"></div>
+                <button onclick="newItem()" class="btn-premium-cta" style="margin-top:2rem; width:100%; justify-content: center; padding: 1.2rem;">+ Create New</button>
+            </div>
+
+            <div class="editor-panel">
+                <form id="master-editor">
+                    <input type="hidden" id="edit-id">
+                    
+                    <!-- DOMAIN SELECTORS -->
+                    <div id="editor-blog" class="section-editor active">
+                        <label class="cms-label">Post Title</label>
+                        <input type="text" id="blog-title" class="cms-input" placeholder="e.g., The Future of E-commerce">
+                        
+                        <label class="cms-label">Hero Media Archive</label>
+                        <div id="blog-preview-container" style="margin-bottom: 2rem; border-radius: 1.5rem; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); display: none;">
+                            <img id="blog-preview" src="" style="width:100%; height: auto; display: block;">
+                        </div>
+                        <button type="button" class="btn-premium-cta" style="width: 100%; justify-content: space-between; padding-right: 56px; margin-bottom: 3rem;" onclick="document.getElementById('blog-input').click()">
+                            <span class="btn-text">Select Hero Asset</span>
+                            <div class="btn-icon-circle">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            </div>
+                        </button>
+                        <input type="file" id="blog-input" style="display:none;" onchange="uploadImage(event, 'blog')">
+                    </div>
+
+                    <div id="editor-portfolio" class="section-editor">
+                        <label class="cms-label">Client Logo</label>
+                        <div id="logo-preview-container" style="display:none; width: 100px; height: 100px; border-radius: 1rem; overflow: hidden; margin-bottom: 1rem; border: 1px solid rgba(255,255,255,0.1); background: #000;">
+                            <img id="logo-preview" src="" style="width:100%; height: 100%; object-fit: contain; display: block;">
+                        </div>
+                        <button type="button" class="btn-premium-cta" style="width: 100%; justify-content: space-between; padding-right: 56px; margin-bottom: 2rem;" onclick="document.getElementById('logo-input').click()">
+                            <span class="btn-text">Select Client Logo</span>
+                            <div class="btn-icon-circle">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            </div>
+                        </button>
+                        <input type="file" id="logo-input" style="display:none;" onchange="uploadImage(event, 'logo')">
+
+                        <label class="cms-label">Client Name</label>
+                        <input type="text" id="port-name" class="cms-input" placeholder="e.g., Zenith Global">
+
+                        <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-bottom: 2rem;">
+                            <div><label class="cms-label">Industry</label><input type="text" id="port-cat" class="cms-input"></div>
+                            <div><label class="cms-label">Scope</label><input type="text" id="port-scope" class="cms-input"></div>
+                            <div><label class="cms-label">Timeline</label><input type="text" id="port-year" class="cms-input"></div>
+                            <div><label class="cms-label">Impact Stat</label><input type="text" id="port-stat" class="cms-input" placeholder="+300%"></div>
+                        </div>
+
+                        <label class="cms-label">7nd-Gallery Archive</label>
+                        <div id="portfolio-previews" style="display:grid; grid-template-columns: repeat(7, 1fr); gap: 1rem; margin-bottom: 2rem;">
+                            <!-- Tiny Previews -->
+                            <div class="gallery-slot" style="aspect-ratio: 1/1; border-radius: 1rem;"><img id="p-preview-0" src=""></div>
+                            <div class="gallery-slot" style="aspect-ratio: 1/1; border-radius: 1rem;"><img id="p-preview-1" src=""></div>
+                            <div class="gallery-slot" style="aspect-ratio: 1/1; border-radius: 1rem;"><img id="p-preview-2" src=""></div>
+                            <div class="gallery-slot" style="aspect-ratio: 1/1; border-radius: 1rem;"><img id="p-preview-3" src=""></div>
+                            <div class="gallery-slot" style="aspect-ratio: 1/1; border-radius: 1rem;"><img id="p-preview-4" src=""></div>
+                            <div class="gallery-slot" style="aspect-ratio: 1/1; border-radius: 1rem;"><img id="p-preview-5" src=""></div>
+                            <div class="gallery-slot" style="aspect-ratio: 1/1; border-radius: 1rem;"><img id="p-preview-6" src=""></div>
+                        </div>
+                        <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 3rem;">
+                            <button type="button" class="btn-premium-cta" style="padding: 1rem; font-size: 0.6rem; justify-content: center;" onclick="this.nextElementSibling.click()">Select Image 1</button><input type="file" style="display:none;" onchange="uploadImage(event, 0)">
+                            <button type="button" class="btn-premium-cta" style="padding: 1rem; font-size: 0.6rem; justify-content: center;" onclick="this.nextElementSibling.click()">Select Image 2</button><input type="file" style="display:none;" onchange="uploadImage(event, 1)">
+                            <button type="button" class="btn-premium-cta" style="padding: 1rem; font-size: 0.6rem; justify-content: center;" onclick="this.nextElementSibling.click()">Select Image 3</button><input type="file" style="display:none;" onchange="uploadImage(event, 2)">
+                            <button type="button" class="btn-premium-cta" style="padding: 1rem; font-size: 0.6rem; justify-content: center;" onclick="this.nextElementSibling.click()">Select Image 4</button><input type="file" style="display:none;" onchange="uploadImage(event, 3)">
+                            <button type="button" class="btn-premium-cta" style="padding: 1rem; font-size: 0.6rem; justify-content: center;" onclick="this.nextElementSibling.click()">Select Image 5</button><input type="file" style="display:none;" onchange="uploadImage(event, 4)">
+                            <button type="button" class="btn-premium-cta" style="padding: 1rem; font-size: 0.6rem; justify-content: center;" onclick="this.nextElementSibling.click()">Select Image 6</button><input type="file" style="display:none;" onchange="uploadImage(event, 5)">
+                            <button type="button" class="btn-premium-cta" style="padding: 1rem; font-size: 0.6rem; justify-content: center;" onclick="this.nextElementSibling.click()">Select Image 7</button><input type="file" style="display:none;" onchange="uploadImage(event, 6)">
+                        </div>
+                    </div>
+
+                    <!-- SHARED ARCHITECTURE -->
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                        <div>
+                            <label class="cms-label">Status</label>
+                            <select id="edit-status" class="cms-input">
+                                <option value="draft">Draft Protocol</option>
+                                <option value="live">Live Horizon</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="cms-label">Slug</label>
+                            <input type="text" id="edit-slug" class="cms-input" placeholder="e.g., future-of-brand">
+                        </div>
+                    </div>
+
+                    <label class="cms-label">Brand Wisdom (Architectural Content)</label>
+                    <div id="editor-container" style="margin-bottom: 2rem;"></div>
+                    <input type="hidden" id="edit-content">
+
+                    <h4 class="cms-label" style="margin-top:2rem;">SEO CALIBRATION</h4>
+                    <input type="text" id="edit-seo-title" class="cms-input" placeholder="SEO Title">
+                    <textarea id="edit-seo-desc" class="cms-input" placeholder="Meta Description"></textarea>
+
+                    <div style="display:flex; gap: 2rem; margin-top:2rem;">
+                        <button type="button" onclick="previewItem()" class="btn-premium-cta" style="flex:1; background: transparent; border: 1px solid var(--card-border); color: #fff; padding-right: 56px;">
+                            <span class="btn-text">Preview</span>
+                            <div class="btn-icon-circle">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                            </div>
+                        </button>
+                        <button type="button" onclick="saveItem()" class="btn-premium-cta" style="flex:2; justify-content: space-between; padding-right: 56px;">
+                            <span class="btn-text">Confirm Sovereignty</span>
+                            <div class="btn-icon-circle">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                            </div>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Sovereign Editor Initialization
+        const quill = new Quill('#editor-container', {
+            theme: 'snow',
+            placeholder: 'Manifest your high-performance brand-wisdom here...',
+            modules: {
+                toolbar: [
+                    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+                    [{ 'align': [] }],
+                    ['bold', 'italic', 'underline', 'strike'],
+                    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                    ['clean']
+                ]
+            }
+        });
+
+        let currentTab = 'blogs';
+        let items = [];
+        let galleryURLs = ["","","","","","",""];
+        let blogImageURL = "";
+        let logoURL = "";
+
+        function handleLogin() {
+            if (document.getElementById('username').value === 'admin' && document.getElementById('password').value === 'admin') {
+                gsap.to('#auth-layer', { opacity: 0, pointerEvents: 'none', duration: 0.8 });
+                document.getElementById('dashboard').style.display = 'block';
+                gsap.to('#dashboard', { opacity: 1, y: 0, duration: 1, delay: 0.4 });
+                fetchItems();
+            }
+        }
+
+        async function fetchItems() {
+            const res = await fetch(`/api/${currentTab}`);
+            items = await res.json();
+            renderList();
+        }
+
+        function switchTab(tab) {
+            currentTab = tab;
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(`tab-${tab}`).classList.add('active');
+            document.getElementById('list-title').textContent = tab === 'blogs' ? 'BLOG ARCHIVE' : 'CLIENT CASE STUDIES';
+            
+            document.querySelectorAll('.section-editor').forEach(s => s.classList.remove('active'));
+            document.getElementById(`editor-${tab}`).classList.add('active');
+
+            fetchItems();
+            newItem();
+        }
+
+        function renderList() {
+            const listTitle = currentTab === 'blogs' ? 'BLOG ARCHIVE' : 'CLIENT CASE STUDIES';
+            document.getElementById('list-title').textContent = listTitle;
+            
+            document.getElementById('item-list').innerHTML = items.map(i => `
+                <div class="list-item" onclick="editItem('${i.id}')">
+                    <span>${i.title || i.name}</span>
+                    <span class="status-badge s-${i.status || 'draft'}">${i.status || 'draft'}</span>
+                </div>
+            `).join('');
+        }
+
+        async function uploadImage(e, index) {
+            const formData = new FormData();
+            formData.append('image', e.target.files[0]);
+            
+            const res = await fetch('/api/upload', { method: 'POST', body: formData });
+            const data = await res.json();
+            
+            if (index === 'blog') {
+                blogImageURL = data.url;
+                document.getElementById('blog-preview').src = blogImageURL;
+                document.getElementById('blog-preview-container').style.display = 'block';
+            } else if (index === 'logo') {
+                logoURL = data.url;
+                document.getElementById('logo-preview').src = logoURL;
+                document.getElementById('logo-preview-container').style.display = 'block';
+            } else {
+                galleryURLs[index] = data.url;
+                document.getElementById(`p-preview-${index}`).src = galleryURLs[index];
+            }
+        }
+
+        function editItem(id) {
+            const i = items.find(x => x.id === id);
+            document.getElementById('edit-id').value = i.id;
+            document.getElementById('edit-slug').value = i.slug;
+            document.getElementById('edit-status').value = i.status || 'draft';
+            quill.root.innerHTML = i.content || '';
+            document.getElementById('edit-seo-title').value = i.seoTitle || '';
+            document.getElementById('edit-seo-desc').value = i.seoDesc || '';
+            
+            if (currentTab === 'portfolio') {
+                document.getElementById('port-name').value = i.name;
+                document.getElementById('port-year').value = i.year || '';
+                document.getElementById('port-cat').value = i.category || '';
+                document.getElementById('port-scope').value = i.scope || '';
+                document.getElementById('port-stat').value = i.stat || '';
+                logoURL = i.logo || "";
+                if (logoURL) {
+                    document.getElementById('logo-preview').src = logoURL;
+                    document.getElementById('logo-preview-container').style.display = 'block';
+                } else {
+                    document.getElementById('logo-preview-container').style.display = 'none';
+                    document.getElementById('logo-preview').src = "";
+                }
+                galleryURLs = i.images || ["","","","","","",""];
+                galleryURLs.forEach((url, idx) => document.getElementById(`p-preview-${idx}`).src = url || "");
+            } else {
+                document.getElementById('blog-title').value = i.title;
+                blogImageURL = i.image || "";
+                if (blogImageURL) {
+                    document.getElementById('blog-preview').src = blogImageURL;
+                    document.getElementById('blog-preview-container').style.display = 'block';
+                }
+            }
+        }
+
+        function newItem() {
+            document.getElementById('master-editor').reset();
+            document.getElementById('edit-id').value = Date.now().toString();
+            quill.root.innerHTML = '';
+            galleryURLs = ["","","","","","",""];
+            blogImageURL = "";
+            logoURL = "";
+            document.getElementById('logo-preview-container').style.display = 'none';
+            document.getElementById('logo-preview').src = "";
+            document.getElementById('blog-preview').src = "";
+            document.getElementById('blog-preview-container').style.display = 'none';
+            for(let i=0; i<7; i++) document.getElementById(`p-preview-${i}`).src = "";
+        }
+
+        async function saveItem() {
+            const i = {
+                id: document.getElementById('edit-id').value,
+                slug: document.getElementById('edit-slug').value,
+                status: document.getElementById('edit-status').value,
+                content: quill.root.innerHTML,
+                seoTitle: document.getElementById('edit-seo-title').value,
+                seoDesc: document.getElementById('edit-seo-desc').value,
+                date: new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
+            };
+
+            if (currentTab === 'portfolio') {
+                i.name = document.getElementById('port-name').value;
+                i.year = document.getElementById('port-year').value;
+                i.category = document.getElementById('port-cat').value;
+                i.scope = document.getElementById('port-scope').value;
+                i.stat = document.getElementById('port-stat').value;
+                i.logo = logoURL;
+                i.images = galleryURLs;
+            } else {
+                i.title = document.getElementById('blog-title').value;
+                i.image = blogImageURL;
+            }
+
+            await fetch(`/api/${currentTab}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(i)
+            });
+            fetchItems();
+            alert("Sovereign Node Saved.");
+        }
+
+        async function previewItem() {
+            await saveItem(); // Ensure data exists in the bedrock first
+            const id = document.getElementById('edit-id').value;
+            const target = currentTab === 'blogs' ? 'blog-post.html' : 'client-detail.html';
+            window.open(`${target}?id=${id}&preview=true`, '_blank');
+        }
+    </script>
+</body>
+</html>

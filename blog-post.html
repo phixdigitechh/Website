@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHIX | The Science of the PHIX Algorithm - Case Study</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Global Persistent Theme Engine -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('phix-theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+    <style>
+        .blog-post-hero {
+            width: 100%;
+            aspect-ratio: 21 / 9;
+            min-height: 400px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .post-hero-img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.4;
+            filter: grayscale(0.5);
+            transition: all 2s ease;
+        }
+
+        .blog-post-hero:hover .post-hero-img {
+            opacity: 0.6;
+            filter: grayscale(0);
+            transform: scale(1.05);
+        }
+
+        .post-hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 0 5%;
+            max-width: 1000px;
+        }
+
+        .post-meta-top {
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        .post-hero-content h1 {
+            font-size: clamp(3rem, 6vw, 5rem);
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+
+        .blog-post-body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 8rem 5% 10rem 5%;
+        }
+
+        .post-intro {
+            font-size: 1.5rem;
+            line-height: 1.6;
+            margin-bottom: 4rem;
+            font-weight: 400;
+            opacity: 1;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 3rem;
+        }
+
+        .post-main-content p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            opacity: 0.8;
+        }
+
+        .post-quote {
+            padding: 4rem;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 3rem;
+            margin: 5rem 0;
+            text-align: center;
+            font-size: 1.8rem;
+            font-family: serif;
+            font-style: italic;
+            position: relative;
+        }
+
+        .post-quote::before {
+            content: '“';
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            font-size: 6rem;
+            color: var(--accent-color);
+            opacity: 0.3;
+        }
+
+        .post-section-title {
+            font-size: 2.5rem;
+            margin: 5rem 0 2rem 0;
+            color: var(--accent-color);
+        }
+
+        .related-posts-section {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 10rem 5%;
+            border-top: 1px solid var(--card-border);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .blog-post-hero { aspect-ratio: 16 / 9; min-height: 300px; }
+            .post-intro { font-size: 1.2rem; padding-left: 1.5rem; }
+            .post-quote { padding: 2rem; font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Premium Theme Toggle (Pill UI) -->
+    <div id="theme-toggle" class="theme-toggle-pill" role="button" tabindex="0" aria-label="Toggle theme">
+        <div class="toggle-track">
+            <div class="toggle-circle">
+                <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+            </div>
+            <div class="toggle-static">
+                <svg class="sun-icon-static" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                <svg class="moon-icon-static" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ripple Effect -->
+    <div class="theme-ripple"></div>
+
+    <!-- Header Mirror -->
+    <nav class="glass-nav squircle">
+        <div class="nav-left">
+            <div class="nav-links micro-links">
+                <a href="about.html">About</a>
+                <a href="index.html#story">Story</a>
+                <a href="index.html#services">Services</a>
+            </div>
+            <!-- Mobile Menu Trigger -->
+            <div class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </div>
+        </div>
+        <div class="nav-center brand-stack" onclick="window.location.href='index.html'" style="cursor:pointer;">
+            <span class="phi-x-logo">Φ<span class="x-serif">X</span></span>
+            <span class="site-name">PHIX DIGI TECHH</span>
+        </div>
+        <div class="nav-right">
+            <div class="nav-links micro-links">
+                <a href="portfolio.html">Portfolio</a>
+                <a href="blogs.html" style="opacity:1; color: var(--accent-color);">Blogs</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Majestic Mobile Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay">
+        <div style="position:absolute; top:2rem; right:2rem; cursor:pointer;" onclick="toggleMobileMenu()">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </div>
+        <a href="index.html" class="mobile-link" onclick="toggleMobileMenu()">Home</a>
+        <a href="about.html" class="mobile-link" onclick="toggleMobileMenu()">About</a>
+        <a href="portfolio.html" class="mobile-link" onclick="toggleMobileMenu()">Portfolio</a>
+        <a href="blogs.html" class="mobile-link" onclick="toggleMobileMenu()">Blogs</a>
+        <a href="index.html#contact" class="mobile-link" onclick="toggleMobileMenu()">Contact</a>
+    </div>
+
+    <header id="post-hero" class="blog-post-hero">
+        <img id="post-image" src="https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&q=80&w=1600" class="post-hero-img" alt="Strategy Horizon">
+        <div class="post-hero-content">
+            <span class="post-meta-top Reveal-SlideUp">Masterbrand Editorial</span>
+            <h1 id="post-title" class="staggered-heading Reveal-SlideUp">The Science of the <span class="text-gold">PHIX</span> Algorithm.</h1>
+            <div id="post-date" class="post-date text-gold Reveal-SlideUp-Delayed" style="font-weight: 800; letter-spacing: 2px;">MARCH 25, 2026</div>
+        </div>
+    </header>
+
+    <article class="blog-post-body">
+        <div id="post-content" class="post-main-content">
+            <!-- Dynamic Content -->
+        </div>
+    </article>
+
+    <script>
+        async function loadPost() {
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('id');
+            const previewMode = params.get('preview') === 'true';
+            
+            if (!id && !previewMode) {
+                window.location.href = 'blogs.html';
+                return;
+            }
+
+            try {
+                const res = await fetch('/api/blogs');
+                const posts = await res.json();
+                const post = posts.find(p => p.id === id);
+
+                if (post) {
+                    // Check if post is live OR we are in preview mode
+                    if (post.status !== 'live' && !previewMode) {
+                        window.location.href = 'blogs.html';
+                        return;
+                    }
+                    document.title = `PHIX | ${post.seoTitle || post.title}`;
+                    document.getElementById('post-title').innerHTML = post.title || 'Masterclass Node';
+                    document.getElementById('post-date').textContent = post.date || 'The Infinite';
+                    document.getElementById('post-image').src = post.image || 'https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&q=80&w=1600';
+                    document.getElementById('post-content').innerHTML = post.content || '<p>Content pending architectural review.</p>';
+                    
+                    // Meta tags would ideally be handled server-side for real SEO, 
+                    // but we can update them here for the user's browser context.
+                    document.querySelector('meta[name="description"]')?.setAttribute('content', post.seoDesc);
+                }
+            } catch (e) {
+                console.error("Sovereign Engine Link Broken.");
+            }
+        }
+        window.addEventListener('DOMContentLoaded', loadPost);
+    </script>
+
+    <div class="related-posts-section">
+        <div class="container text-center mb-10">
+            <h2 class="staggered-heading">Continue the <span class="text-gold">Insight.</span></h2>
+        </div>
+        <div class="blogs-grid" style="padding-top: 5rem;">
+            <!-- Simple Placeholder for related -->
+            <a href="blogs.html" class="blog-card glass-card Reveal-SlideUp" style="max-width: 500px; margin: 0 auto;">
+                <div class="blog-content">
+                    <div class="blog-date">March 18, 2026</div>
+                    <h3>Return to <span class="text-gold">Editorial</span> Zenith.</h3>
+                    <p class="blog-excerpt">Explore the full collection of strategic insights and brand engineering protocols.</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- VII. Site Footer -->
+    <footer class="full-footer glass-card">
+        <div class="footer-grid">
+            <div class="footer-col brand-info">
+                <div class="brand-stack" style="display: flex; flex-direction: column; align-items: flex-start; text-align: left; gap: 0.8rem;">
+                    <span class="phi-x-logo">Φ<span class="x-serif">X</span></span>
+                    <span class="site-name">PHIX DIGI TECHH</span>
+                </div>
+                <div class="contact-header">
+                    <p class="section-desc">Contact Phix Digi Techh to establish your global dominance through high-performance tech and creative mastery.</p>
+                    
+                    <a href="mailto:hello@phixdigitechh.com" class="btn-premium-cta" style="margin-top: 2rem;">
+                        <span class="btn-text">Let's Collaborate</span>
+                        <div class="btn-icon-circle">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-col links-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html#story">Origin Story</a></li>
+                    <li><a href="index.html#services">Growth Pillars</a></li>
+                    <li><a href="blogs.html">Blogs</a></li>
+                    <li><a href="index.html#contact">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col marketplace-col">
+                <h4>Global Presence</h4>
+                <div class="marketplace-badges">
+                    <span class="badge squircle-small glass-card">Amazon Global</span>
+                    <span class="badge squircle-small glass-card">Nykaa Partner</span>
+                    <span class="badge squircle-small glass-card">Shopify Plus</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="footer-bottom">
+        <p>&copy; 2026 PHIX DIGI TECHH. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Architecture</a></p>
+    </div>
+
+    <script src="animations.js"></script>
+    <script>
+        // Custom Theme Engine for Post
+        const toggle = document.getElementById('theme-toggle');
+        const ripple = document.querySelector('.theme-ripple');
+
+        toggle.addEventListener('click', (e) => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            const rect = toggle.getBoundingClientRect();
+            const x = rect.left + rect.width / 2;
+            const y = rect.top + rect.height / 2;
+            
+            ripple.style.left = `${x}px`;
+            ripple.style.top = `${y}px`;
+            ripple.style.transform = 'translate(-50%, -50%) scale(0)';
+            
+            requestAnimationFrame(() => {
+                ripple.classList.add('active');
+                setTimeout(() => {
+                    document.documentElement.setAttribute('data-theme', newTheme);
+                    localStorage.setItem('phix-theme', newTheme);
+                    ripple.classList.remove('active');
+                }, 600);
+            });
+        });
+    </script>
+</body>
+</html>

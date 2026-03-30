@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHIX | Blogs - The Editorial Zenith</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Global Persistent Theme Engine -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('phix-theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+    <style>
+        .blogs-header {
+            padding: 4rem 5% 5rem 5%;
+            text-align: center;
+        }
+
+        .blogs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 3rem;
+            padding: 0 5% 10rem 5%;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .blog-card {
+            position: relative;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 2rem;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-color);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        .blog-image-wrap {
+            width: 100%;
+            height: 250px;
+            background: #111;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .blog-image-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.6;
+            transition: all 0.8s ease;
+        }
+
+        .blog-card:hover .blog-image-wrap img {
+            opacity: 0.9;
+            transform: scale(1.05);
+        }
+
+        .blog-content {
+            padding: 2.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-date {
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .blog-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            transition: color 0.3s ease;
+        }
+
+        .blog-card:hover h3 {
+            color: var(--accent-color);
+        }
+
+        .blog-excerpt {
+            font-size: 1rem;
+            opacity: 0.7;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .read-more-btn {
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .blog-card:hover .read-more-btn {
+            gap: 1.2rem;
+            color: var(--accent-color);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .blogs-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Premium Theme Toggle (Pill UI) -->
+    <div id="theme-toggle" class="theme-toggle-pill" role="button" tabindex="0" aria-label="Toggle theme">
+        <div class="toggle-track">
+            <div class="toggle-circle">
+                <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+            </div>
+            <div class="toggle-static">
+                <svg class="sun-icon-static" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                <svg class="moon-icon-static" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ripple Effect -->
+    <div class="theme-ripple"></div>
+
+    <!-- Header Mirror -->
+    <nav class="glass-nav squircle">
+        <div class="nav-left">
+            <div class="nav-links micro-links">
+                <a href="about.html">About</a>
+                <a href="index.html#story">Story</a>
+                <a href="index.html#services">Services</a>
+            </div>
+            <!-- Mobile Menu Trigger -->
+            <div class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </div>
+        </div>
+        <div class="nav-center brand-stack" onclick="window.location.href='index.html'" style="cursor:pointer;">
+            <span class="phi-x-logo">Φ<span class="x-serif">X</span></span>
+            <span class="site-name">PHIX DIGI TECHH</span>
+        </div>
+        <div class="nav-right">
+            <div class="nav-links micro-links">
+                <a href="portfolio.html">Portfolio</a>
+                <a href="blogs.html" style="opacity:1; color: var(--accent-color);">Blogs</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Majestic Mobile Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay">
+        <div style="position:absolute; top:2rem; right:2rem; cursor:pointer;" onclick="toggleMobileMenu()">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </div>
+        <a href="index.html" class="mobile-link" onclick="toggleMobileMenu()">Home</a>
+        <a href="about.html" class="mobile-link" onclick="toggleMobileMenu()">About</a>
+        <a href="portfolio.html" class="mobile-link" onclick="toggleMobileMenu()">Portfolio</a>
+        <a href="blogs.html" class="mobile-link" onclick="toggleMobileMenu()">Blogs</a>
+        <a href="index.html#contact" class="mobile-link" onclick="toggleMobileMenu()">Contact</a>
+    </div>
+
+    <header class="blogs-header">
+        <h1 class="staggered-heading" style="font-size: 4.5rem; letter-spacing: -2px;">The <span class="text-gold">Editorial</span> Zenith.</h1>
+        <p class="staggered-text" style="max-width: 700px; margin: 2rem auto; font-size: 1.1rem; opacity: 0.7;">
+            Strategic insights, technological breakthroughs, and the mathematical balance of digital growth.
+        </p>
+    </header>
+
+    <div id="blogs-grid" class="blogs-grid">
+        <!-- Dynamic Nodes from Sovereign Engine -->
+    </div>
+
+    <script>
+        async function loadBlogs() {
+            const grid = document.getElementById('blogs-grid');
+            try {
+                const res = await fetch('/api/blogs');
+                let posts = await res.json();
+                
+                // Filter for Live Status only
+                posts = posts.filter(p => p.status === 'live');
+                
+                if (posts.length === 0) {
+                    grid.innerHTML = '<p style="text-align:center; opacity:0.5; grid-column: 1/-1;">No editorial nodes manifest currently.</p>';
+                    return;
+                }
+
+                grid.innerHTML = posts.map(p => `
+                    <a href="blog-post.html?id=${p.id}" class="blog-card glass-card Reveal-SlideUp">
+                        <div class="blog-image-wrap">
+                            <img src="${p.image || 'https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&q=80&w=800'}" alt="${p.title}">
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-date">${p.date || 'The Infinite'}</div>
+                            <h3>${p.title}</h3>
+                            <p class="blog-excerpt">${p.seoDesc || 'A clinical deep-dive into the PHIX Masterbrand...'}</p>
+                            <div class="read-more-btn">
+                                <span>Enter the Insight</span>
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                            </div>
+                        </div>
+                    </a>
+                `).join('');
+                
+                // Trigger animations
+                if (window.gsap) {
+                    gsap.from(".blog-card", {
+                        y: 50, opacity: 0, duration: 1, stagger: 0.2, ease: "power4.out"
+                    });
+                }
+            } catch (e) {
+                grid.innerHTML = '<p style="text-align:center; color: var(--accent-color);">Manifestation Failed: Sovereign Engine Offline.</p>';
+            }
+        }
+        window.addEventListener('DOMContentLoaded', loadBlogs);
+    </script>
+
+    <!-- VII. Site Footer -->
+    <footer class="full-footer glass-card">
+        <div class="footer-grid">
+            <div class="footer-col brand-info">
+                <div class="brand-stack" style="display: flex; flex-direction: column; align-items: flex-start; text-align: left; gap: 0.8rem;">
+                    <span class="phi-x-logo">Φ<span class="x-serif">X</span></span>
+                    <span class="site-name">PHIX DIGI TECHH</span>
+                </div>
+                <div class="contact-header">
+                    <p class="section-desc">Contact Phix Digi Techh to establish your global dominance through high-performance tech and creative mastery.</p>
+                    
+                    <a href="mailto:hello@phixdigitechh.com" class="btn-premium-cta" style="margin-top: 2rem;">
+                        <span class="btn-text">Let's Collaborate</span>
+                        <div class="btn-icon-circle">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-col links-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html#story">Origin Story</a></li>
+                    <li><a href="index.html#services">Growth Pillars</a></li>
+                    <li><a href="blogs.html">Blogs</a></li>
+                    <li><a href="index.html#contact">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col marketplace-col">
+                <h4>Global Presence</h4>
+                <div class="marketplace-badges">
+                    <span class="badge squircle-small glass-card">Amazon Global</span>
+                    <span class="badge squircle-small glass-card">Nykaa Partner</span>
+                    <span class="badge squircle-small glass-card">Shopify Plus</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="footer-bottom">
+        <p>&copy; 2026 PHIX DIGI TECHH. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Architecture</a></p>
+    </div>
+
+    <script src="animations.js"></script>
+    <script>
+        // Custom Theme Engine for Blogs
+        const toggle = document.getElementById('theme-toggle');
+        const ripple = document.querySelector('.theme-ripple');
+
+        toggle.addEventListener('click', (e) => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            const rect = toggle.getBoundingClientRect();
+            const x = rect.left + rect.width / 2;
+            const y = rect.top + rect.height / 2;
+            
+            ripple.style.left = `${x}px`;
+            ripple.style.top = `${y}px`;
+            ripple.style.transform = 'translate(-50%, -50%) scale(0)';
+            
+            requestAnimationFrame(() => {
+                ripple.classList.add('active');
+                setTimeout(() => {
+                    document.documentElement.setAttribute('data-theme', newTheme);
+                    localStorage.setItem('phix-theme', newTheme);
+                    ripple.classList.remove('active');
+                }, 600);
+            });
+        });
+    </script>
+</body>
+</html>

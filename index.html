@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHIX DIGI TECHH</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="styles.css">
+    <!-- GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- 3D Cloud Library -->
+    <script src="https://www.goat1000.com/tagcanvas.min.js"></script>
+    <!-- Global Persistent Theme Engine -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('phix-theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+</head>
+<body>
+    <!-- Background Atmos: Fully Purified Void -->
+
+    <!-- Premium Theme Toggle (Pill UI) -->
+    <div id="theme-toggle" class="theme-toggle-pill" role="button" tabindex="0" aria-label="Toggle theme">
+        <div class="toggle-track">
+            <!-- Sliding Circle -->
+            <div class="toggle-circle">
+                <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+            </div>
+            <!-- Static Icon (Fade-in-mirror) -->
+            <div class="toggle-static">
+                <svg class="sun-icon-static" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                <svg class="moon-icon-static" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ripple Effect Overlay for Transition -->
+    <div class="theme-ripple"></div>
+
+    <!-- Navigation -->
+    <!-- Navigation (Symmetric Vertical Header - 6 Options) -->
+    <nav class="glass-nav squircle">
+        <div class="nav-left">
+            <div class="nav-links micro-links">
+                <a href="about.html">About</a>
+                <a href="#story">Story</a>
+                <a href="#services">Services</a>
+            </div>
+            <!-- Mobile Menu Trigger -->
+            <div class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </div>
+        </div>
+        <div class="nav-center brand-stack" onclick="window.location.href='index.html'" style="cursor:pointer;">
+            <span class="phi-x-logo">Φ<span class="x-serif">X</span></span>
+            <span class="site-name">PHIX DIGI TECHH</span>
+        </div>
+        <div class="nav-right">
+            <div class="nav-links micro-links">
+                <a href="portfolio.html">Portfolio</a>
+                <a href="blogs.html">Blogs</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Majestic Mobile Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay">
+        <div style="position:absolute; top:2rem; right:2rem; cursor:pointer;" onclick="toggleMobileMenu()">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </div>
+        <a href="index.html" class="mobile-link" onclick="toggleMobileMenu()">Home</a>
+        <a href="about.html" class="mobile-link" onclick="toggleMobileMenu()">About</a>
+        <a href="portfolio.html" class="mobile-link" onclick="toggleMobileMenu()">Portfolio</a>
+        <a href="blogs.html" class="mobile-link" onclick="toggleMobileMenu()">Blogs</a>
+        <a href="#contact" class="mobile-link" onclick="toggleMobileMenu()">Contact</a>
+    </div>
+
+    <!-- I. Hero Section (The Atmosphere) -->
+    <section class="hero gap-bottom">
+        <div class="hero-content">
+            <h1 class="staggered-heading">
+                <span>Where</span> <span>Creativity</span><br/>
+                <span>Meets</span> <span class="accent">Intelligence.</span>
+            </h1>
+            <p class="staggered-text">
+                We don’t just build digital presence; we engineer brand gravity. Fusing the balance of Phi (Φ) with the X-Factor of innovation to scale your e-commerce ecosystem.
+            </p>
+            <div class="hero-ctas staggered-text">
+                <a href="#contact" class="btn-premium-cta">
+                    <span class="btn-text">Let's Collaborate</span>
+                    <div class="btn-icon-circle">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
+                </a>
+                <a href="#story" class="btn-premium-cta">
+                    <span class="btn-text">Explore Our Story</span>
+                    <div class="btn-icon-circle">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="hero-visual squircle glass-card">
+            <span class="phi-x-logo hero-logo-vignette">Φ<span class="x-serif">X</span></span>
+        </div>
+    </section>
+
+    <!-- II. The Origin (Phix Story) -->
+    <section id="story" class="story-section gap-bottom">
+        <h2 class="staggered-heading section-title" style="width: 100%;"><span>The</span> <span>Science</span> <span>of</span> <span>the</span> <span class="text-gold">PHIX</span></h2>
+        
+        <div class="story-split">
+            <div class="story-content-col">
+                <div class="glass-card squircle story-card staggered-text">
+                    <h3 class="accent">The Phi (Φ)</h3>
+                    <p>The Golden Ratio. It represents the perfect mathematical balance found in nature and timeless design. We bring this harmony to your brand’s UI, UX, and strategy.</p>
+                </div>
+                <div class="glass-card squircle story-card staggered-text">
+                    <h3 class="accent">The X</h3>
+                    <p>The Variable. The Creative Spark. The X-Factor that disrupts markets and defies the status quo.</p>
+                </div>
+                <div class="glass-card squircle story-card staggered-text">
+                    <p class="section-desc">We don't just use tools; we orchestrate an entire digital universe. From Meta and Google Ads to Shopify, Adobe, and beyond, your brand lives at the center of a high-performance integration engine designed for global scale.</p>
+                    
+                    <a href="#contact" class="btn-premium-cta" style="margin-top: 1rem;">
+                        <span class="btn-text">Build Your Ecosystem</span>
+                        <div class="btn-icon-circle">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="story-visual-col">
+                <div class="spiral-container squircle glass-card" style="width: 100%; height: 100%;">
+                    <svg class="golden-spiral tech-spiral" viewBox="0 -100 1000 600" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: 100%;">
+                        <!-- Background Grid -->
+                        <defs>
+                            <pattern id="tech-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.1"/>
+                                <circle cx="40" cy="40" r="1.5" fill="var(--accent-color)" opacity="0.4"/>
+                            </pattern>
+                        </defs>
+                        <rect x="-200" y="-200" width="1400" height="1000" fill="url(#tech-grid)"/>
+
+
+                        <!-- The Core Phi Spiral -->
+                        <path d="M 400 250 A 5 5 0 0 1 405 245 A 10 10 0 0 1 415 255 A 15 15 0 0 1 400 270 A 25 25 0 0 1 375 245 A 40 40 0 0 1 415 205 A 65 65 0 0 1 480 270 A 105 105 0 0 1 375 375 A 170 170 0 0 1 205 205 A 275 275 0 0 1 480 -70 A 445 445 0 0 1 925 375" fill="none" class="spiral-path" stroke-width="4" stroke-linecap="round"/>
+                        
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- III. The Ecosystem (Technological Horizon) -->
+    <section id="ecosystem" class="ecosystem-section gap-bottom">
+        <h2 class="staggered-heading section-title"><span>Our</span> <span>Digital</span> <span class="accent">Ecosystem</span></h2>
+        
+        <div class="ecosystem-split">
+            <!-- 3D Cloud (Left) -->
+            <div class="ecosystem-visual-col">
+                <div class="ecosystem-cloud-square glass-card squircle">
+                    <canvas id="ecosystem-canvas" width="550" height="550">
+                        <ul id="ecosystem-list">
+                            <!-- Design & Creative (The Core) -->
+                            <li><a href="#photoshop"><img src="ps.svg" width="30" height="30"></a></li>
+                            <li><a href="#illustrator"><img src="ai.svg" width="30" height="30"></a></li>
+                            <li><a href="#premiere"><img src="pr.svg" width="30" height="30"></a></li>
+                            <li><a href="#aftereffects"><img src="https://cdn.simpleicons.org/adobeaftereffects" width="30" height="30"></a></li>
+                            <li><a href="#lightroom"><img src="https://cdn.simpleicons.org/adobelightroom" width="30" height="30"></a></li>
+                            <li><a href="#figma"><img src="https://cdn.simpleicons.org/figma" width="30" height="30"></a></li>
+                            <li><a href="#canva"><img src="https://cdn.simpleicons.org/canva" width="30" height="30"></a></li>
+                            <li><a href="#framer"><img src="https://cdn.simpleicons.org/framer" width="30" height="30"></a></li>
+                            <li><a href="#sketch"><img src="https://cdn.simpleicons.org/sketch" width="30" height="30"></a></li>
+                            <li><a href="#invision"><img src="https://cdn.simpleicons.org/invision" width="30" height="30"></a></li>
+                            <li><a href="#behance"><img src="https://cdn.simpleicons.org/behance" width="30" height="30"></a></li>
+                            <li><a href="#dribbble"><img src="https://cdn.simpleicons.org/dribbble" width="30" height="30"></a></li>
+
+                            <!-- E-commerce Mastery -->
+                            <li><a href="#shopify"><img src="https://cdn.simpleicons.org/shopify" width="30" height="30"></a></li>
+                            <li><a href="#amazon"><img src="https://cdn.simpleicons.org/amazon" width="30" height="30"></a></li>
+                            <li><a href="#wordpress"><img src="https://cdn.simpleicons.org/wordpress" width="30" height="30"></a></li>
+                            <li><a href="#magento"><img src="https://cdn.simpleicons.org/magento" width="30" height="30"></a></li>
+                            <li><a href="#stripe"><img src="https://cdn.simpleicons.org/stripe" width="30" height="30"></a></li>
+                            <li><a href="#paypal"><img src="https://cdn.simpleicons.org/paypal" width="30" height="30"></a></li>
+                            <!-- Growth & Social Authority -->
+                            <li><a href="#meta"><img src="https://cdn.simpleicons.org/meta" width="30" height="30"></a></li>
+                            <li><a href="#linkedin"><img src="https://cdn.simpleicons.org/linkedin" width="30" height="30"></a></li>
+                            <li><a href="#whatsapp"><img src="https://cdn.simpleicons.org/whatsapp" width="30" height="30"></a></li>
+                            <li><a href="#reddit"><img src="https://cdn.simpleicons.org/reddit" width="30" height="30"></a></li>
+                            <li><a href="#snapchat"><img src="https://cdn.simpleicons.org/snapchat" width="30" height="30"></a></li>
+
+                            <!-- Tech Titans & Hardware Architecture -->
+                            <li><a href="#apple"><img src="https://cdn.simpleicons.org/apple" width="30" height="30"></a></li>
+                            <li><a href="#microsoft"><img src="https://cdn.simpleicons.org/microsoft" width="30" height="30"></a></li>
+                            <li><a href="#google"><img src="https://cdn.simpleicons.org/google" width="30" height="30"></a></li>
+                            <li><a href="#nvidia"><img src="https://cdn.simpleicons.org/nvidia" width="30" height="30"></a></li>
+                            <li><a href="#intel"><img src="https://cdn.simpleicons.org/intel" width="30" height="30"></a></li>
+                            <li><a href="#amd"><img src="https://cdn.simpleicons.org/amd" width="30" height="30"></a></li>
+                            <li><a href="#tesla"><img src="https://cdn.simpleicons.org/tesla" width="30" height="30"></a></li>
+
+                            <!-- AI & Automation Sovereignty -->
+                            <li><a href="#openai"><img src="https://cdn.simpleicons.org/openai" width="30" height="30"></a></li>
+                            <li><a href="#anthropic"><img src="https://cdn.simpleicons.org/anthropic" width="30" height="30"></a></li>
+                            <li><a href="#perplexity"><img src="https://cdn.simpleicons.org/perplexity" width="30" height="30"></a></li>
+                            <li><a href="#zapier"><img src="https://cdn.simpleicons.org/zapier" width="30" height="30"></a></li>
+                            <li><a href="#make"><img src="https://cdn.simpleicons.org/make" width="30" height="30"></a></li>
+
+                            <!-- Analytical Precision -->
+                            <li><a href="#googleanalytics"><img src="https://cdn.simpleicons.org/googleanalytics" width="30" height="30"></a></li>
+                            <li><a href="#google-gsc"><img src="https://cdn.simpleicons.org/googlesearchconsole" width="30" height="30"></a></li>
+                            <li><a href="#google-trends"><img src="https://logo.clearbit.com/trends.google.com" width="30" height="30"></a></li>
+                            <li><a href="#clarity"><img src="https://logo.clearbit.com/clarity.microsoft.com" width="30" height="30"></a></li>
+                            <li><a href="#firebase"><img src="https://cdn.simpleicons.org/firebase" width="30" height="30"></a></li>
+
+                            <!-- Payments & Indian FinTech -->
+                            <li><a href="#stripe"><img src="https://cdn.simpleicons.org/stripe" width="30" height="30"></a></li>
+                            <li><a href="#razorpay"><img src="https://cdn.simpleicons.org/razorpay" width="30" height="30"></a></li>
+                            <li><a href="#cashfree"><img src="https://logo.clearbit.com/cashfree.com" width="30" height="30"></a></li>
+                            <li><a href="#paypal"><img src="https://cdn.simpleicons.org/paypal" width="30" height="30"></a></li>
+
+                            <!-- Infrastructure & Edge Computing -->
+                            <li><a href="#aws"><img src="https://cdn.simpleicons.org/amazonaws" width="30" height="30"></a></li>
+                            <li><a href="#azure"><img src="https://cdn.simpleicons.org/microsoftazure" width="30" height="30"></a></li>
+                            <li><a href="#gcp"><img src="https://cdn.simpleicons.org/googlecloud" width="30" height="30"></a></li>
+                            <li><a href="#vercel-pro"><img src="https://cdn.simpleicons.org/vercel" width="30" height="30"></a></li>
+                            <li><a href="#netlify"><img src="https://cdn.simpleicons.org/netlify" width="30" height="30"></a></li>
+                            <li><a href="#cloudflare"><img src="https://cdn.simpleicons.org/cloudflare" width="30" height="30"></a></li>
+                            <li><a href="#docker"><img src="https://cdn.simpleicons.org/docker" width="30" height="30"></a></li>
+                            <li><a href="#kubernetes"><img src="https://cdn.simpleicons.org/kubernetes" width="30" height="30"></a></li>
+
+                            <!-- Engineering & Stack -->
+                            <li><a href="#python"><img src="https://cdn.simpleicons.org/python" width="30" height="30"></a></li>
+                            <li><a href="#react"><img src="https://cdn.simpleicons.org/react" width="30" height="30"></a></li>
+                            <li><a href="#typescript"><img src="https://cdn.simpleicons.org/typescript" width="30" height="30"></a></li>
+                            <li><a href="#sass"><img src="https://cdn.simpleicons.org/sass" width="30" height="30"></a></li>
+                            <li><a href="#javascript"><img src="https://cdn.simpleicons.org/javascript" width="30" height="30"></a></li>
+                            <li><a href="#github-pro"><img src="https://cdn.simpleicons.org/github" width="30" height="30"></a></li>
+
+                            <!-- Enterprise Presence & CRM -->
+                            <li><a href="#salesforce"><img src="https://cdn.simpleicons.org/salesforce" width="30" height="30"></a></li>
+                            <li><a href="#hubspot"><img src="https://cdn.simpleicons.org/hubspot" width="30" height="30"></a></li>
+                            <li><a href="#notion"><img src="https://cdn.simpleicons.org/notion" width="30" height="30"></a></li>
+                            <li><a href="#slack"><img src="https://cdn.simpleicons.org/slack" width="30" height="30"></a></li>
+                            <li><a href="#jira"><img src="https://cdn.simpleicons.org/jira" width="30" height="30"></a></li>
+                            <li><a href="#confluence"><img src="https://cdn.simpleicons.org/confluence" width="30" height="30"></a></li>
+                        </ul>
+                    </canvas>
+                </div>
+            </div>
+
+            <!-- Text Content (Right) -->
+            <div class="ecosystem-content-col">
+                <div class="ecosystem-text-box glass-card squircle staggered-text">
+                    <h3 class="accent sub-heading">Global Integration Mastery.</h3>
+                    <p>We unite the world’s most powerful marketing, design, and analytical tools to create a seamless growth engine for your brand. From high-end design suites to massive marketplace distribution, we engineer the gravity that pulls customers in.</p>
+                    
+                    <a href="#contact" class="btn-premium-cta" style="margin-top: 2rem;">
+                        <span class="btn-text">Experience the Vault</span>
+                        <div class="btn-icon-circle">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </div>
+                    </a>
+                </div>
+                <div class="glass-card squircle staggered-text compact" style="margin-top:2rem;">
+                    <ul class="styled-list">
+                        <li><strong>Ad-Tech Dominance:</strong> Google, Meta, and X platform scaling.</li>
+                        <li><strong>Analytical Precision:</strong> Deep insights via Clarity and Analytics.</li>
+                        <li><strong>Engineering Excellence:</strong> Clean code via Python, React, and native Shopify development.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- IV. Core Services (Sovereign Service Horizon) -->
+    <!-- IV. Core Services (Sovereign Service Horizon) -->
+    <section id="services" class="feature-carousel-section gap-bottom">
+        <h2 class="staggered-heading section-title"><span>Core</span> <span class="text-gold">Services</span></h2>
+        
+        <div class="carousel-container glass-card">
+            <!-- Left Pillar: Selector Zenith -->
+            <div class="carousel-selector-pillar">
+                <div class="selector-track" id="selector-track">
+                    <button class="feature-chip btn-premium-cta active" data-index="0">
+                        <span class="btn-text">Digital Marketing & Growth</span>
+                        <div class="btn-icon-circle">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </div>
+                    </button>
+                    <button class="feature-chip btn-premium-cta" data-index="1">
+                        <span class="btn-text">SEO & SEM (Search Mastery)</span>
+                        <div class="btn-icon-circle">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </div>
+                    </button>
+                    <button class="feature-chip btn-premium-cta" data-index="2">
+                        <span class="btn-text">Branding & Packaging</span>
+                        <div class="btn-icon-circle">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </div>
+                    </button>
+                    <button class="feature-chip btn-premium-cta" data-index="3">
+                        <span class="btn-text">Website Design & Dev</span>
+                        <div class="btn-icon-circle">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Horizon: Content Card Stack -->
+            <div class="carousel-content-horizon">
+                <div class="content-card-stack" id="card-stack">
+                    <div class="content-card active" data-index="0">
+                        <h4 class="accent">Growth <span class="text-gold">Engineering</span></h4>
+                        <p class="card-description">Performance that Moves the Needle. We go beyond "likes" to focus on high-authority ROI.</p>
+                        <ul class="card-points">
+                            <li><strong>Omnichannel Strategy</strong></li>
+                            <li><strong>PR & Reputation</strong></li>
+                            <li><strong>Actionable ROI Reporting</strong></li>
+                        </ul>
+                    </div>
+                    <div class="content-card next" data-index="1">
+                        <h4 class="accent">Visibility <span class="text-gold">Zenith</span></h4>
+                        <p class="card-description">Be Seen. Be Chosen. Precision-targeted visibility using our proprietary search algorithms.</p>
+                        <ul class="card-points">
+                            <li><strong>Technical SEO Infrastructure</strong></li>
+                            <li><strong>Precision Content Mastery</strong></li>
+                            <li><strong>Global Search Authority</strong></li>
+                        </ul>
+                    </div>
+                    <div class="content-card hidden" data-index="2">
+                        <h4 class="accent">Visual <span class="text-gold">Gravitas</span></h4>
+                        <p class="card-description">Design that lingers in the mind long after the click. Fusing Phi (Φ) with innovation.</p>
+                        <ul class="card-points">
+                            <li><strong>Identity & Logo Design</strong></li>
+                            <li><strong>Unboxing Packaging Experiences</strong></li>
+                            <li><strong>Full Brand Guidelines</strong></li>
+                        </ul>
+                    </div>
+                    <div class="content-card hidden" data-index="3">
+                        <h4 class="accent">High-Converting <span class="text-gold">UX</span></h4>
+                        <p class="card-description">Anti-gravity digital stores built for high-performance global scale.</p>
+                        <ul class="card-points">
+                            <li><strong>Custom Shopify Ecosystems</strong></li>
+                            <li><strong>React & Native High Speed</strong></li>
+                            <li><strong>Advanced Growth Integrations</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- IV. Marketplace Growth -->
+    <section class="marketplace-section gap-bottom">
+        <h2 class="staggered-heading section-title"><span>Dominate</span> <span>the</span> <span>Global</span> <span class="accent">Marketplace</span></h2>
+        <p class="staggered-text section-subtitle">We help you scale on the world’s biggest platforms using our proprietary growth framework.</p>
+        
+        <div class="cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+            <div class="glass-card squircle service-card compact">
+                <h3 class="accent">Full Account Management</h3>
+                <p>Hands-free scaling for Amazon, Flipkart, Nykaa, and Meesho.</p>
+            </div>
+            <div class="glass-card squircle service-card compact">
+                <h3 class="accent">Performance Advertising</h3>
+                <p>High-ROI ad campaigns tailored to marketplace algorithms.</p>
+            </div>
+            <div class="glass-card squircle service-card compact">
+                <h3 class="accent">A+ Content & Storefronts</h3>
+                <p>High-end visual storytelling to boost conversion rates.</p>
+            </div>
+            <div class="glass-card squircle service-card compact">
+                <h3 class="accent">Inventory & SEO Ranking</h3>
+                <p>Strategic catalog optimization to keep you at the top.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- V. The E-commerce Growth Framework -->
+    <section id="framework" class="framework-section gap-bottom">
+        <h2 class="staggered-heading section-title"><span>The</span> <span>Growth</span> <span class="accent">Framework</span></h2>
+        
+        <div class="framework-steps">
+            <div class="glass-card squircle step-card staggered-text">
+                <div class="step-num accent">01</div>
+                <h3>Audit & Align</h3>
+                <p>We analyze your current data to find the "friction points."</p>
+            </div>
+            <div class="glass-card squircle step-card staggered-text">
+                <div class="step-num accent">02</div>
+                <h3>Optimize & Automate</h3>
+                <p>Setting up Shopify flows, abandoned cart recovery, and retention loops.</p>
+            </div>
+            <div class="glass-card squircle step-card staggered-text">
+                <div class="step-num accent">03</div>
+                <h3>Scale & Disrupt</h3>
+                <p>Launching aggressive performance marketing and influencer collaborations.</p>
+            </div>
+            <div class="glass-card squircle step-card staggered-text">
+                <div class="step-num accent">04</div>
+                <h3>Analyze & Evolve</h3>
+                <p>Constant A/B testing to squeeze every drop of value from your traffic.</p>
+            </div>
+        </div>
+    </section>
+
+    </section>
+
+    <!-- VI. Footer / Contact (The Launchpad) -->
+    <section id="contact" class="contact-section gap-bottom">
+        <div class="glass-card squircle contact-container">
+            <div class="contact-info">
+                <h2 class="staggered-heading" style="margin-bottom: 0.5rem;"><span>Ready</span> <span>to</span> <span>Defy</span> <span class="accent">Gravity?</span></h2>
+                <p class="staggered-text" style="font-size: 1.2rem; opacity: 0.8; margin-bottom: 2rem;">Let’s discuss your project and find your brand’s X-Factor.</p>
+                
+                <div class="direct-contact flex-col">
+                    <p class="staggered-text"><strong>Email:</strong> <span class="accent">phixdigi@gmail.com</span></p>
+                    <p class="staggered-text"><strong>Phone:</strong> <span class="accent">+91 946 874 9499</span></p>
+                    <p class="staggered-text"><strong>Location:</strong> <span class="accent">Global</span></p>
+                </div>
+            </div>
+            
+            <div class="contact-form-container staggered-text">
+                <form id="contact-form" class="contact-form" style="background: transparent; box-shadow: none; border: none; padding: 0;">
+                    <div class="form-component glass-card squircle-small">
+                        <input type="text" placeholder="Full Name *" class="form-input" required>
+                    </div>
+                    <div class="form-component glass-card squircle-small">
+                        <input type="email" placeholder="Business Email *" class="form-input" required>
+                    </div>
+                    <div class="form-component glass-card squircle-small">
+                        <input type="url" placeholder="Your Current Website/Store" class="form-input">
+                    </div>
+                    <div class="form-component glass-card squircle-small">
+                        <textarea placeholder="Your Growth Goal *" class="form-input" rows="5" required></textarea>
+                    </div>
+                </form>
+                <div class="form-actions" style="margin-top: 2rem;">
+                    <button type="submit" form="contact-form" class="btn-premium-cta" style="width: 100%; justify-content: space-between; padding-right: 56px;">
+                        <span class="btn-text">Launch Proposal</span>
+                        <div class="btn-icon-circle">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VII. Site Footer -->
+    <footer class="full-footer glass-card">
+        <div class="footer-grid">
+            <div class="footer-col brand-info">
+                <div class="brand-stack" style="display: flex; flex-direction: column; align-items: flex-start; text-align: left; gap: 0.8rem;">
+                    <span class="phi-x-logo">Φ<span class="x-serif">X</span></span>
+                    <span class="site-name">PHIX DIGI TECHH</span>
+                </div>
+                <div class="contact-header">
+                    <p class="section-desc">Contact Phix Digi Techh to establish your global dominance through high-performance tech and creative mastery.</p>
+                    
+                    <a href="mailto:hello@phixdigitechh.com" class="btn-premium-cta" style="margin-top: 2rem;">
+                        <span class="btn-text">Let's Collaborate</span>
+                        <div class="btn-icon-circle">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-col links-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#story">Origin Story</a></li>
+                    <li><a href="#services">Growth Pillars</a></li>
+                    <li><a href="#framework">Framework</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col marketplace-col">
+                <h4>Global Presence</h4>
+                <div class="marketplace-badges">
+                    <span class="badge squircle-small glass-card">Amazon Global</span>
+                    <span class="badge squircle-small glass-card">Nykaa Partner</span>
+                    <span class="badge squircle-small glass-card">Shopify Plus</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="footer-bottom">
+        <p>&copy; 2026 PHIX DIGI TECHH. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Architecture</a></p>
+    </div>
+
+    <!-- Main Logic -->
+    <script src="animations.js"></script>
+</body>
+</html>

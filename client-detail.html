@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHIX | Case Study - Sovereign Mastery</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('phix-theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+</head>
+
+<body>
+    <div id="theme-toggle" class="theme-toggle-pill" role="button" tabindex="0" aria-label="Toggle theme">
+        <div class="toggle-track">
+            <div class="toggle-circle"></div>
+        </div>
+    </div>
+    <div class="theme-ripple"></div>
+
+    <nav class="glass-nav squircle">
+        <div class="nav-left">
+            <div class="nav-links micro-links">
+                <a href="about.html">About</a>
+                <a href="index.html#story">Story</a>
+                <a href="index.html#services">Services</a>
+            </div>
+            <!-- Mobile Menu Trigger -->
+            <div class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </div>
+        </div>
+        <div class="nav-center brand-stack" onclick="window.location.href='index.html'" style="cursor:pointer;">
+            <span class="phi-x-logo">Φ<span class="x-serif">X</span></span>
+            <span class="site-name">PHIX DIGI TECHH</span>
+        </div>
+        <div class="nav-right">
+            <div class="nav-links micro-links">
+                <a href="portfolio.html">Portfolio</a>
+                <a href="blogs.html">Blogs</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Majestic Mobile Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay">
+        <div style="position:absolute; top:2rem; right:2rem; cursor:pointer;" onclick="toggleMobileMenu()">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </div>
+        <a href="index.html" class="mobile-link" onclick="toggleMobileMenu()">Home</a>
+        <a href="about.html" class="mobile-link" onclick="toggleMobileMenu()">About</a>
+        <a href="portfolio.html" class="mobile-link" onclick="toggleMobileMenu()">Portfolio</a>
+        <a href="blogs.html" class="mobile-link" onclick="toggleMobileMenu()">Blogs</a>
+        <a href="index.html#contact" class="mobile-link" onclick="toggleMobileMenu()">Contact</a>
+    </div>
+
+    <header class="detail-hero" style="padding: 4rem 5% 5rem 5%; text-align: center;">
+        <span id="brand-mark" class="detail-brand-mark Reveal-SlideUp"
+            style="font-size: 12rem; font-weight: 800; opacity: 0.1; display: block; margin-bottom: -4rem;">Z</span>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 2rem; margin-bottom: 2rem;">
+            <img id="client-hero-logo" src=""
+                style="width: 200px; height: auto; border-radius: 1rem; object-fit: contain; display: none;"
+                class="Reveal-SlideUp">
+            <h1 id="client-name" class="staggered-heading"
+                style="font-size: clamp(3rem, 6vw, 72px); margin: 0; line-height: 1.1;">Client Node</h1>
+        </div>
+        <p id="client-one-liner" class="Reveal-SlideUp-Delayed"
+            style="opacity: 0.6; font-size: 1.2rem; max-width: 600px; margin: 0 auto; line-height: 1.4;">Project
+            Definition Alpha</p>
+    </header>
+
+    <!-- Sovereign 7-Node Parallax Mosaic -->
+    <section class="zoom-parallax-section">
+        <div class="mosaic-container">
+            <div class="parallax-item p0">
+                <div class="parallax-img-box"><img id="p0-img" src="" class="parallax-img"></div>
+            </div>
+            <div class="parallax-item p1">
+                <div class="parallax-img-box"><img id="p1-img" src="" class="parallax-img"></div>
+            </div>
+            <div class="parallax-item p2">
+                <div class="parallax-img-box"><img id="p2-img" src="" class="parallax-img"></div>
+            </div>
+            <div class="parallax-item p3">
+                <div class="parallax-img-box"><img id="p3-img" src="" class="parallax-img"></div>
+            </div>
+            <div class="parallax-item p4">
+                <div class="parallax-img-box"><img id="p4-img" src="" class="parallax-img"></div>
+            </div>
+            <div class="parallax-item p5">
+                <div class="parallax-img-box"><img id="p5-img" src="" class="parallax-img"></div>
+            </div>
+            <div class="parallax-item p6">
+                <div class="parallax-img-box"><img id="p6-img" src="" class="parallax-img"></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="identity-divider-section"
+        style="margin: 6rem auto -4rem auto; padding: 0 5%; display: flex; align-items: center; justify-content: center; gap: 2rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 2rem;">
+        <img id="client-divider-logo" src="" style="width: 200px; height: auto; object-fit: contain; display: none;">
+        <span id="phi-x-fallback" class="phi-x-logo" style="font-size: clamp(2.5rem, 5vw, 72px); opacity: 1;">Φ<span
+                class="x-serif">X</span></span>
+        <div style="width: 1px; height: clamp(3rem, 5vw, 80px); background: rgba(255,255,255,0.1);"></div>
+        <h2 id="client-name-secondary"
+            style="font-size: clamp(1.8rem, 5vw, 72px); letter-spacing: 0.05em; text-transform: uppercase; font-weight: 800; margin: 0; opacity: 0.9; color: var(--accent-color); line-height: 1.1;">
+            -</h2>
+    </div>
+
+    <section class="detail-meta"
+        style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 4rem; max-width: 1000px; margin: 8rem auto; padding: 4rem 0; border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border); text-align: center;">
+        <div class="meta-item"><span>Brand Core</span>
+            <h3 id="meta-cat">-</h3>
+        </div>
+        <div class="meta-item"><span>Scope</span>
+            <h3 id="meta-scope">-</h3>
+        </div>
+        <div class="meta-item"><span>Timeline</span>
+            <h3 id="meta-year">-</h3>
+        </div>
+    </section>
+
+    <main class="detail-content" style="max-width: 1000px; margin: 0 auto 10rem auto; padding: 0 5%;">
+        <div class="detail-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;">
+            <div class="detail-block">
+                <h2>The Architectural <span class="accent">Challenge.</span></h2>
+                <p id="client-content">Building the foundations of a digital legacy...</p>
+            </div>
+            <div class="detail-block">
+                <div class="stat-bubble squircle glass-card" style="padding: 4rem; text-align: center;">
+                    <span>Sovereign Impact</span>
+                    <h4 id="stat-main">+00%</h4>
+                    <p>Efficiency Calibration</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="full-footer glass-card">
+        <div class="footer-grid">
+            <div class="footer-col brand-info">
+                <div class="brand-stack"
+                    style="display: flex; flex-direction: column; align-items: flex-start; text-align: left; gap: 0.8rem;">
+                    <span class="phi-x-logo">Φ<span class="x-serif">X</span></span>
+                    <span class="site-name">PHIX DIGI TECHH</span>
+                </div>
+                <div class="contact-header">
+                    <p class="section-desc">Contact Phix Digi Techh to establish your global dominance through
+                        high-performance tech and creative mastery.</p>
+                    <a href="mailto:hello@phixdigitechh.com" class="btn-premium-cta" style="margin-top: 2rem;">
+                        <span class="btn-text">Let's Collaborate</span>
+                        <div class="btn-icon-circle">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-col links-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html#story">Origin Story</a></li>
+                    <li><a href="index.html#services">Growth Pillars</a></li>
+                    <li><a href="blogs.html">Blogs</a></li>
+                    <li><a href="index.html#contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col marketplace-col">
+                <h4>Global Presence</h4>
+                <div class="marketplace-badges">
+                    <span class="badge squircle-small glass-card">Amazon Global</span>
+                    <span class="badge squircle-small glass-card">Nykaa Partner</span>
+                    <span class="badge squircle-small glass-card">Shopify Plus</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="footer-bottom">
+        <p>&copy; 2026 PHIX DIGI TECHH. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of
+                Architecture</a></p>
+    </div>
+
+    <script>
+        async function loadProject() {
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('id');
+            const previewMode = params.get('preview') === 'true';
+
+            try {
+                const res = await fetch('/api/portfolio');
+                const projects = await res.json();
+                const p = projects.find(x => x.id === id);
+
+                if (p) {
+                    if (p.status !== 'live' && !previewMode) { window.location.href = 'portfolio.html'; return; }
+
+                    document.title = `PHIX | ${p.seoTitle || p.name}`;
+                    document.getElementById('client-name').textContent = p.name;
+                    document.getElementById('client-name-secondary').textContent = p.name;
+                    document.getElementById('brand-mark').textContent = p.name.charAt(0);
+
+                    const heroLogo = document.getElementById('client-hero-logo');
+                    if (p.logo) {
+                        heroLogo.src = p.logo;
+                        heroLogo.style.display = 'block';
+                        document.getElementById('brand-mark').style.display = 'none'; // Hide text phantom if logo exists
+
+                        // Secondary Divider Logic
+                        const dividerLogo = document.getElementById('client-divider-logo');
+                        dividerLogo.src = p.logo;
+                        dividerLogo.style.display = 'block';
+                        document.getElementById('phi-x-fallback').style.display = 'none'; // Hide PHIX logo if custom exists
+                    } else {
+                        heroLogo.style.display = 'none';
+                        document.getElementById('brand-mark').style.display = 'block'; // Fallback text phantom
+
+                        // Secondary Divider Logic
+                        document.getElementById('client-divider-logo').style.display = 'none';
+                        document.getElementById('phi-x-fallback').style.display = 'block';
+                    }
+                    document.getElementById('client-one-liner').textContent = p.category;
+                    document.getElementById('meta-cat').textContent = p.category;
+                    document.getElementById('meta-scope').textContent = p.scope || '-';
+                    document.getElementById('meta-year').textContent = p.year || '-';
+                    document.getElementById('client-content').innerHTML = p.content || 'Content pending architectural review.';
+                    document.getElementById('stat-main').textContent = p.stat || 'N/A';
+
+                    // Map 7 images to p0-p6 with placeholder robustness
+                    const images = p.images || [];
+                    for (let i = 0; i < 7; i++) {
+                        const el = document.getElementById(`p${i}-img`);
+                        if (el) {
+                            el.src = images[i] || 'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&q=80&w=1200';
+                            el.style.opacity = images[i] ? "1" : "0.3";
+                        }
+                    }
+
+                    document.querySelector('meta[name="description"]')?.setAttribute('content', p.seoDesc);
+                }
+            } catch (e) { console.error("Sovereign Link Broken."); }
+        }
+        window.addEventListener('DOMContentLoaded', loadProject);
+
+        // Parallax Initialization
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.from(".parallax-item", { scale: 0.8, opacity: 0, duration: 1.5, ease: "power4.out", stagger: 0.1 });
+    </script>
+    <script src="animations.js"></script>
+</body>
+
+</html>

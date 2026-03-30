@@ -1,0 +1,72 @@
+[
+  {
+    "id": "1",
+    "name": "Zenith",
+    "year": "2026",
+    "category": "E-commerce Zenith",
+    "scope": "Scale Architecture",
+    "slug": "zenith",
+    "description": "Porting the absolute mathematical balance of PHIX into the global e-commerce void. Scaling revenue through algorithmic creative disruption.",
+    "images": [
+      "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&q=80&w=1200",
+      "https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&q=80&w=800"
+    ],
+    "content": "The Zenith project represents the pinnacle of PHIX's e-commerce engineering. By fusing the golden ratio with high-performance tech stacks, we achieved a 300% growth in global revenue within 6 months.",
+    "seoTitle": "Zenith | E-commerce Case Study | PHIX",
+    "seoDesc": "Discover how PHIX engineered e-commerce dominance for Zenith through mathematical balance and creative disruption.",
+    "status": "live"
+  },
+  {
+    "id": "test-1",
+    "slug": "undefined",
+    "status": "draft",
+    "content": "<p><br></p>",
+    "seoTitle": "",
+    "seoDesc": "",
+    "date": "March 29, 2026",
+    "name": "Test Client",
+    "year": "",
+    "category": "",
+    "scope": "",
+    "stat": "",
+    "logo": "",
+    "images": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "id": "1774723578186",
+    "slug": "Ascend-collect",
+    "status": "live",
+    "content": "<h1>Ascend Collect</h1><h3>Ascend Collect</h3><p>Ascend Collect Ascend Collect Ascend Collect Ascend Collect Ascend Collect Ascend Collect Ascend Collect</p>",
+    "seoTitle": "Ascend Collect",
+    "seoDesc": "Ascend Collect",
+    "date": "March 29, 2026",
+    "name": "Ascend Collect",
+    "year": "Ascend Collect",
+    "category": "Ascend Collect",
+    "scope": "Ascend Collect",
+    "stat": "Ascend Collect",
+    "logo": "/uploads/1774724121529-Ascend Collect App Icon .jpg",
+    "images": [
+      "/uploads/1774725055395-609963128907_1.avif",
+      "/uploads/1774725070485-4573102661302_5_1.avif",
+      "/uploads/1774725076906-Gemini_Generated_Image_gkxj0ogkxj0ogkxj.png",
+      "/uploads/1774723596054-Bandai_Spirits_logo.svg.png",
+      "/uploads/1774723602978-Bandai_Spirits_logo.svg.png",
+      "/uploads/1774723600252-Bandai_Spirits_logo.svg.png",
+      "/uploads/1774723598507-Bandai_Spirits_logo.svg.png"
+    ]
+  }
+]
