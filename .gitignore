@@ -9,3 +9,9 @@ node_modules/
 
 # OS files
 .DS_Store
+
+# Local dev server (not needed on Vercel)
+server.js
+security-logger.js
+package.json
+package-lock.json
