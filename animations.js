@@ -184,21 +184,51 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- 7. Sovereign Service Carousel Logic ---
-    (function initFeatureCarousel() {
+    (async function initFeatureCarousel() {
+        const track = document.getElementById('selector-track');
+        const stack = document.getElementById('card-stack');
+        if (!track || !stack) return;
+
+        try {
+            const res = await fetch('services.json');
+            if(res.ok) {
+                const services = await res.json();
+                if(services.length > 0) {
+                    track.innerHTML = '';
+                    stack.innerHTML = '';
+                    services.forEach((s, idx) => {
+                        track.innerHTML += `
+                            <button class="feature-chip btn-premium-cta ${idx===0 ? 'active':''}" data-index="${idx}">
+                                <span class="btn-text">${s.btnText || s.title}</span>
+                                <div class="btn-icon-circle">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </div>
+                            </button>
+                        `;
+                        const ptsHTML = s.points ? s.points.map(p => `<li><strong>${p}</strong></li>`).join('') : '';
+                        stack.innerHTML += `
+                            <div class="content-card ${idx===0 ? 'active':'hidden'}" data-index="${idx}">
+                                <h4 class="accent">${s.title}</h4>
+                                <p class="card-description">${s.description || ''}</p>
+                                <ul class="card-points">${ptsHTML}</ul>
+                            </div>
+                        `;
+                    });
+                }
+            }
+        } catch(e) { console.warn("Could not fetch dynamic services:", e); }
+
         const chips = document.querySelectorAll('.feature-chip');
         const cards = document.querySelectorAll('.content-card');
         if (!chips.length || !cards.length) return;
 
         let currentIndex = 0;
         let isPaused = false;
-        const autoPlayInterval = 3000;
-        const itemHeight = 80; // Recalibrated for Compact Presence
-
+        
         function updateCarousel(index) {
             currentIndex = (index + chips.length) % chips.length;
 
             chips.forEach((chip, i) => {
-                // Kinetic y-movement purged for Static Mode
                 if (i === currentIndex) {
                     chip.classList.add('active');
                     gsap.to(chip, { scale: 1, opacity: 1, duration: 0.5 });
@@ -249,14 +279,12 @@ document.addEventListener('DOMContentLoaded', () => {
         chips.forEach((chip, i) => {
             chip.addEventListener('click', () => {
                 updateCarousel(i);
-                isPaused = true; // Pause on manual interaction
+                isPaused = true;
                 setTimeout(() => { isPaused = false; }, 5000);
             });
             chip.addEventListener('mouseenter', () => isPaused = true);
             chip.addEventListener('mouseleave', () => isPaused = false);
         });
-
-        // Auto-play Engine Purged per request: swap only on click
 
         // Initial Layout
         updateCarousel(0);

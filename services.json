@@ -1,0 +1,46 @@
+[
+  {
+    "id": "1",
+    "btnText": "Digital Marketing & Growth",
+    "title": "Growth <span class=\"text-gold\">Engineering</span>",
+    "description": "Performance that Moves the Needle. We go beyond \"likes\" to focus on high-authority ROI.",
+    "points": [
+      "Omnichannel Strategy",
+      "PR & Reputation",
+      "Actionable ROI Reporting"
+    ]
+  },
+  {
+    "id": "2",
+    "btnText": "SEO & SEM (Search Mastery)",
+    "title": "Visibility <span class=\"text-gold\">Zenith</span>",
+    "description": "Be Seen. Be Chosen. Precision-targeted visibility using our proprietary search algorithms.",
+    "points": [
+      "Technical SEO Infrastructure",
+      "Precision Content Mastery",
+      "Global Search Authority"
+    ]
+  },
+  {
+    "id": "3",
+    "btnText": "Branding & Packaging",
+    "title": "Visual <span class=\"text-gold\">Gravitas</span>",
+    "description": "Design that lingers in the mind long after the click. Fusing Phi (Φ) with innovation.",
+    "points": [
+      "Identity & Logo Design",
+      "Unboxing Packaging Experiences",
+      "Full Brand Guidelines"
+    ]
+  },
+  {
+    "id": "4",
+    "btnText": "Website Design & Dev",
+    "title": "High-Converting <span class=\"text-gold\">UX</span>",
+    "description": "Anti-gravity digital stores built for high-performance global scale.",
+    "points": [
+      "Custom Shopify Ecosystems",
+      "React & Native High Speed",
+      "Advanced Growth Integrations"
+    ]
+  }
+]

@@ -207,6 +207,7 @@ if(sessionStorage.getItem("auth") !== "true") {
                 <div class="tab-switcher" style="padding-bottom: 0; border-bottom: none; margin-bottom: 0;">
                     <button onclick="switchTab('blogs')" id="tab-blogs" class="tab-btn active" style="padding-bottom: 1rem;">BLOGS</button>
                     <button onclick="switchTab('portfolio')" id="tab-portfolio" class="tab-btn" style="padding-bottom: 1rem;">PORTFOLIO</button>
+                    <button onclick="switchTab('services')" id="tab-services" class="tab-btn" style="padding-bottom: 1rem;">SERVICES</button>
                 </div>
             </div>
         </header>
@@ -283,6 +284,21 @@ if(sessionStorage.getItem("auth") !== "true") {
                             <button type="button" class="btn-premium-cta" style="padding: 1rem; font-size: 0.6rem; justify-content: center;" onclick="this.nextElementSibling.click()">Select Image 6</button><input type="file" style="display:none;" onchange="uploadImage(event, 5)">
                             <button type="button" class="btn-premium-cta" style="padding: 1rem; font-size: 0.6rem; justify-content: center;" onclick="this.nextElementSibling.click()">Select Image 7</button><input type="file" style="display:none;" onchange="uploadImage(event, 6)">
                         </div>
+                        </div>
+                    </div>
+
+                    <div id="editor-services" class="section-editor">
+                        <label class="cms-label">CTA Navigation Chip</label>
+                        <input type="text" id="svc-btnText" class="cms-input" placeholder="e.g., Digital Marketing & Growth">
+                        
+                        <label class="cms-label">Sovereign Title (Use span.text-gold for highlight)</label>
+                        <input type="text" id="svc-title" class="cms-input" placeholder="e.g., Growth <span class='text-gold'>Engineering</span>">
+                        
+                        <label class="cms-label">Section Overview Description</label>
+                        <textarea id="svc-description" class="cms-input" placeholder="Performance that Moves the Needle..." style="height: 100px;"></textarea>
+
+                        <label class="cms-label">Key Pillars (Comma Separated)</label>
+                        <textarea id="svc-points" class="cms-input" placeholder="Omnichannel Strategy, PR & Reputation, Actionable ROI Reporting" style="height: 100px;"></textarea>
                     </div>
 
                     <!-- SHARED ARCHITECTURE -->
@@ -368,7 +384,10 @@ if(sessionStorage.getItem("auth") !== "true") {
             currentTab = tab;
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             document.getElementById(`tab-${tab}`).classList.add('active');
-            document.getElementById('list-title').textContent = tab === 'blogs' ? 'BLOG ARCHIVE' : 'CLIENT CASE STUDIES';
+            let t = 'BLOG ARCHIVE';
+            if (tab === 'portfolio') t = 'CLIENT CASE STUDIES';
+            if (tab === 'services') t = 'CORE SERVICES';
+            document.getElementById('list-title').textContent = t;
             
             document.querySelectorAll('.section-editor').forEach(s => s.classList.remove('active'));
             document.getElementById(`editor-${tab}`).classList.add('active');
@@ -378,12 +397,14 @@ if(sessionStorage.getItem("auth") !== "true") {
         }
 
         function renderList() {
-            const listTitle = currentTab === 'blogs' ? 'BLOG ARCHIVE' : 'CLIENT CASE STUDIES';
+            let listTitle = 'BLOG ARCHIVE';
+            if (currentTab === 'portfolio') listTitle = 'CLIENT CASE STUDIES';
+            if (currentTab === 'services') listTitle = 'CORE SERVICES API';
             document.getElementById('list-title').textContent = listTitle;
             
             document.getElementById('item-list').innerHTML = items.map(i => `
                 <div class="list-item" onclick="editItem('${i.id}')">
-                    <span>${i.title || i.name}</span>
+                    <span>${i.title || i.name || i.btnText}</span>
                     <span class="status-badge s-${i.status || 'draft'}">${i.status || 'draft'}</span>
                 </div>
             `).join('');
@@ -435,6 +456,11 @@ if(sessionStorage.getItem("auth") !== "true") {
                 }
                 galleryURLs = i.images || ["","","","","","",""];
                 galleryURLs.forEach((url, idx) => document.getElementById(`p-preview-${idx}`).src = url || "");
+            } else if (currentTab === 'services') {
+                document.getElementById('svc-btnText').value = i.btnText || '';
+                document.getElementById('svc-title').value = i.title || '';
+                document.getElementById('svc-description').value = i.description || '';
+                document.getElementById('svc-points').value = (i.points || []).join(', ');
             } else {
                 document.getElementById('blog-title').value = i.title;
                 blogImageURL = i.image || "";
@@ -457,6 +483,10 @@ if(sessionStorage.getItem("auth") !== "true") {
             document.getElementById('blog-preview').src = "";
             document.getElementById('blog-preview-container').style.display = 'none';
             for(let i=0; i<7; i++) document.getElementById(`p-preview-${i}`).src = "";
+            document.getElementById('svc-btnText').value = '';
+            document.getElementById('svc-title').value = '';
+            document.getElementById('svc-description').value = '';
+            document.getElementById('svc-points').value = '';
         }
 
         async function saveItem() {
@@ -478,6 +508,11 @@ if(sessionStorage.getItem("auth") !== "true") {
                 i.stat = document.getElementById('port-stat').value;
                 i.logo = logoURL;
                 i.images = galleryURLs;
+            } else if (currentTab === 'services') {
+                i.btnText = document.getElementById('svc-btnText').value;
+                i.title = document.getElementById('svc-title').value;
+                i.description = document.getElementById('svc-description').value;
+                i.points = document.getElementById('svc-points').value.split(',').map(p => p.trim()).filter(Boolean);
             } else {
                 i.title = document.getElementById('blog-title').value;
                 i.image = blogImageURL;
