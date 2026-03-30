@@ -1,12 +1,4 @@
 {
-  "version": 2,
-  "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/index.js" },
-    { "source": "/", "destination": "/index.html" },
-    { "source": "/portfolio", "destination": "/portfolio.html" },
-    { "source": "/blogs", "destination": "/blogs.html" },
-    { "source": "/about", "destination": "/about.html" },
-    { "source": "/blog-post", "destination": "/blog-post.html" },
-    { "source": "/client-detail", "destination": "/client-detail.html" }
-  ]
+  "cleanUrls": true,
+  "trailingSlash": false
 }
