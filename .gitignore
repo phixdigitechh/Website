@@ -1,2 +1,11 @@
+# Dependencies
+node_modules/
+
+# Vercel
 .vercel
+
+# Environment
 .env*.local
+
+# OS files
+.DS_Store
