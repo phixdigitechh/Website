@@ -213,19 +213,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 const len = cards.length;
                 let normDiff = diff;
                 if (diff > len / 2) normDiff -= len;
-                if (diff < -len / 2) normDiff += len;
-
-                // 10px Gap Protocol
-                // Main width: 800. Side width: 640. Gap: 10.
-                // 0 -> 0
-                // 1 -> 400 + 10 + 320 = 730
-                // 2 -> 730 + 320 + 10 + 320 = 1380
+                const isMobile = window.innerWidth <= 1024;
+                
                 let tx = 0;
-                if (normDiff === 0) tx = 0;
-                else if (normDiff === 1) tx = 730;
-                else if (normDiff === -1) tx = -730;
-                else if (normDiff === 2) tx = 1380;
-                else if (normDiff === -2) tx = -1380;
+                if (!isMobile) {
+                    if (normDiff === 0) tx = 0;
+                    else if (normDiff === 1) tx = 730;
+                    else if (normDiff === -1) tx = -730;
+                    else if (normDiff === 2) tx = 1380;
+                    else if (normDiff === -2) tx = -1380;
+                }
 
                 const isCenter = normDiff === 0;
                 const isAdjacent = Math.abs(normDiff) === 1;
@@ -238,11 +235,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 gsap.to(card, {
                     x: tx,
-                    scale: isCenter ? 1 : 0.8,
-                    opacity: isCenter ? 1 : (isAdjacent ? 0.5 : 0.1),
+                    scale: isMobile ? 1 : (isCenter ? 1 : 0.8),
+                    opacity: isCenter ? 1 : (isMobile ? 0 : (isAdjacent ? 0.5 : 0.1)),
                     duration: 0.8,
                     ease: "power3.out",
-                    zIndex: isCenter ? 20 : (isAdjacent ? 10 : 5)
+                    zIndex: isCenter ? 20 : (isAdjacent ? 10 : 5),
+                    display: isMobile ? (isCenter ? "flex" : "none") : "flex"
                 });
             });
         }

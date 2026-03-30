@@ -1186,8 +1186,9 @@ h2 {
 @media (max-width: 1024px) {
     .carousel-container { flex-direction: column; min-height: auto; gap: 2rem; }
     .carousel-selector-pillar { width: 100%; height: auto; padding: 2rem; flex-direction: row; flex-wrap: wrap; justify-content: center; border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
-    .carousel-content-horizon { width: 100%; padding: 2rem; min-height: 500px; }
-    .content-card { padding: 3rem; position: relative; width: 100%; top: 0; left: 0; transform: none; box-shadow: none; border: none; background: transparent; }
+    .carousel-content-horizon { width: 100%; padding: 2rem; min-height: auto; }
+    .content-card-stack { height: auto; min-height: 400px; }
+    .content-card { padding: 3rem; position: relative; width: 100%; top: 0; left: 0; height: auto; min-height: 400px; transform: none; box-shadow: none; border: none; background: transparent; }
     .content-card.hidden { display: none; }
     .card-title { font-size: 2.5rem; }
     .feature-chip { width: auto; padding-right: 2rem; }
