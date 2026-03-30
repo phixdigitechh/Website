@@ -213,6 +213,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const len = cards.length;
                 let normDiff = diff;
                 if (diff > len / 2) normDiff -= len;
+                if (diff < -len / 2) normDiff += len;
+
                 const isMobile = window.innerWidth <= 1024;
                 
                 let tx = 0;
@@ -235,12 +237,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 gsap.to(card, {
                     x: tx,
-                    scale: isMobile ? 1 : (isCenter ? 1 : 0.8),
+                    scale: isMobile ? (isCenter ? 1 : 0.95) : (isCenter ? 1 : 0.8),
                     opacity: isCenter ? 1 : (isMobile ? 0 : (isAdjacent ? 0.5 : 0.1)),
                     duration: 0.8,
                     ease: "power3.out",
-                    zIndex: isCenter ? 20 : (isAdjacent ? 10 : 5),
-                    display: isMobile ? (isCenter ? "flex" : "none") : "flex"
+                    zIndex: isCenter ? 20 : (isAdjacent ? 10 : 5)
                 });
             });
         }

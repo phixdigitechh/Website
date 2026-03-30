@@ -1187,9 +1187,9 @@ h2 {
     .carousel-container { flex-direction: column; min-height: auto; gap: 2rem; }
     .carousel-selector-pillar { width: 100%; height: auto; padding: 2rem; flex-direction: row; flex-wrap: wrap; justify-content: center; border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
     .carousel-content-horizon { width: 100%; padding: 2rem; min-height: auto; }
-    .content-card-stack { height: auto; min-height: 400px; }
-    .content-card { padding: 3rem; position: relative; width: 100%; top: 0; left: 0; height: auto; min-height: 400px; transform: none; box-shadow: none; border: none; background: transparent; }
-    .content-card.hidden { display: none; }
+    .content-card-stack { position: relative; width: 100%; height: 450px; min-height: 450px; }
+    .content-card { position: absolute; top: 0; left: 0; width: 100%; height: 100%; padding: 3rem; transform: none; box-shadow: none; border: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.3); border-radius: 20px; }
+    .content-card.hidden { pointer-events: none; opacity: 0; }
     .card-title { font-size: 2.5rem; }
     .feature-chip { width: auto; padding-right: 2rem; }
     
@@ -1312,12 +1312,13 @@ h2 {
     .feature-chip .btn-text { font-size: 0.85rem; z-index: 10; font-weight: 700; width: 100%; text-align: left; padding-left: 10px; }
     .feature-chip .btn-icon-circle { display: none; } /* Hide icon to save horizontal space on tiny screens */
     .feature-chip:hover, .feature-chip.active { padding-left: 1.2rem; transform: none; }
-    .carousel-content-horizon { padding: 2rem 1rem; min-height: auto; }
-    .content-card { padding: 1.5rem; }
-    .content-card .card-description { font-size: 14px !important; margin-bottom: 1rem; line-height: 1.5; }
+    .carousel-content-horizon { padding: 1.5rem 1rem; min-height: auto; }
+    .content-card-stack { width: 100%; height: 500px; display: block; position: relative; }
+    .content-card { position: absolute; width: 100%; height: 100%; top: 0; left: 0; padding: 1.5rem; display: flex; flex-direction: column; justify-content: center; }
+    .content-card .card-description { font-size: 14px !important; margin-bottom: 1.5rem; line-height: 1.5; }
     .content-card .accent { font-size: 1.8rem !important; margin-bottom: 0.8rem; letter-spacing: -0.5px; }
     .card-points { gap: 0.8rem; }
-    .card-points li { font-size: 13px !important; padding: 0.8rem; }
+    .card-points li { font-size: 13px !important; padding: 0.6rem; margin-bottom: 0.6rem; }
 }
 
 
