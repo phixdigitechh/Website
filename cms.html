@@ -284,9 +284,7 @@ if(sessionStorage.getItem("auth") !== "true") {
                             <button type="button" class="btn-premium-cta" style="padding: 1rem; font-size: 0.6rem; justify-content: center;" onclick="this.nextElementSibling.click()">Select Image 6</button><input type="file" style="display:none;" onchange="uploadImage(event, 5)">
                             <button type="button" class="btn-premium-cta" style="padding: 1rem; font-size: 0.6rem; justify-content: center;" onclick="this.nextElementSibling.click()">Select Image 7</button><input type="file" style="display:none;" onchange="uploadImage(event, 6)">
                         </div>
-                        </div>
                     </div>
-
                     <div id="editor-services" class="section-editor">
                         <label class="cms-label">CTA Navigation Chip</label>
                         <input type="text" id="svc-btnText" class="cms-input" placeholder="e.g., Digital Marketing & Growth">
@@ -375,8 +373,22 @@ if(sessionStorage.getItem("auth") !== "true") {
         }
 
         async function fetchItems() {
-            const res = await fetch(`/api/${currentTab}`);
-            items = await res.json();
+            try {
+                const res = await fetch(`/api/${currentTab}`);
+                if (res.ok) {
+                    items = await res.json();
+                } else {
+                    const fallback = await fetch(`/${currentTab}.json`);
+                    items = await fallback.json();
+                }
+            } catch (e) {
+                try {
+                    const fallback = await fetch(`/${currentTab}.json`);
+                    items = await fallback.json();
+                } catch(err) {
+                    items = [];
+                }
+            }
             renderList();
         }
 
