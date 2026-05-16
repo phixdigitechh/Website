@@ -9,5 +9,10 @@
     "date": "March 29, 2026",
     "title": "The Science of the <span class=\"text-gold\">PHIX</span> Algorithm.",
     "image": "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&q=80&w=1600"
+  },
+  {
+    "id": "test-id",
+    "title": "Test Title",
+    "status": "live"
   }
 ]

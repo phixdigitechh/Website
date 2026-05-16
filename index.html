@@ -1,25 +1,27 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
 <script>
 if(sessionStorage.getItem("auth") !== "true") {
-  let p = prompt("Development Phase. Password:");
-  if(p !== "onepiece") {
-    document.documentElement.innerHTML = "<body style=\"background:#000;color:#fff;text-align:center;font-family:sans-serif;padding-top:20vh;margin:0;\"><h1>Access Denied</h1></body>";
-    throw new Error("Access Denied");
-  } else {
-    sessionStorage.setItem("auth", "true");
-  }
+    window.location.href = "password-gate.html";
 }
 </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHIX DIGI TECHH</title>
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="output.css">
     <!-- GSAP for animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <style>
+        /* Permanent Dark Mode Protocol */
+        html[data-theme="dark"] {
+            background: #030303 !important;
+            color: #FFFFFF !important;
+        }
+    </style>
     <!-- 3D Cloud Library -->
     <script src="https://www.goat1000.com/tagcanvas.min.js"></script>
     <!-- Global Persistent Theme Engine -->
@@ -33,30 +35,13 @@ if(sessionStorage.getItem("auth") !== "true") {
 <body>
     <!-- Background Atmos: Fully Purified Void -->
 
-    <!-- Premium Theme Toggle (Pill UI) -->
-    <div id="theme-toggle" class="theme-toggle-pill" role="button" tabindex="0" aria-label="Toggle theme">
-        <div class="toggle-track">
-            <!-- Sliding Circle -->
-            <div class="toggle-circle">
-                <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
-                <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
-            </div>
-            <!-- Static Icon (Fade-in-mirror) -->
-            <div class="toggle-static">
-                <svg class="sun-icon-static" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
-                <svg class="moon-icon-static" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
-            </div>
-        </div>
-    </div>
-
     <!-- Ripple Effect Overlay for Transition -->
     <div class="theme-ripple"></div>
 
-    <!-- Navigation -->
-    <!-- Navigation (Symmetric Vertical Header - 6 Options) -->
-    <nav class="glass-nav squircle">
-        <div class="nav-left">
-            <div class="nav-links micro-links">
+    <!-- Sovereign Navigation (Fully Rewritten & Isolated) -->
+    <nav class="phix-header-nav">
+        <div class="phix-nav-left">
+            <div class="phix-nav-links">
                 <a href="about.html">About</a>
                 <a href="#story">Story</a>
                 <a href="#services">Services</a>
@@ -66,12 +51,12 @@ if(sessionStorage.getItem("auth") !== "true") {
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
             </div>
         </div>
-        <div class="nav-center brand-stack" onclick="window.location.href='index.html'" style="cursor:pointer;">
-            <span class="phi-x-logo">Φ<span class="x-serif">X</span></span>
-            <span class="site-name">PHIX DIGI TECHH</span>
+        <div class="phix-nav-center" onclick="window.location.href='index.html'">
+            <span class="phix-brand-logo">Φ<span class="x-serif">X</span></span>
+            <span class="phix-brand-text">PHIX DIGI TECHH</span>
         </div>
-        <div class="nav-right">
-            <div class="nav-links micro-links">
+        <div class="phix-nav-right">
+            <div class="phix-nav-links">
                 <a href="portfolio.html">Portfolio</a>
                 <a href="blogs.html">Blogs</a>
                 <a href="#contact">Contact</a>
@@ -91,27 +76,150 @@ if(sessionStorage.getItem("auth") !== "true") {
         <a href="#contact" class="mobile-link" onclick="toggleMobileMenu()">Contact</a>
     </div>
 
-    <!-- I. Hero Section (The Atmosphere) -->
-    <section class="hero gap-bottom">
-        <div class="hero-content">
-            <h1 class="staggered-heading">
-                <span>Where</span> <span>Creativity</span><br/>
-                <span>Meets</span> <span class="accent">Intelligence.</span>
-            </h1>
-            <p class="staggered-text">
+    <!-- I. Hero Section (Sovereign Glassmorphism Zenith) -->
+    <style>
+        @keyframes marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            animation: marquee 40s linear infinite;
+        }
+        .animate-ping-slow {
+            animation: ping 3s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+        @keyframes fadeSlideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hero-animate {
+            animation: fadeSlideIn 0.8s ease-out forwards;
+            opacity: 0;
+        }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+
+        .hero-gradient-mask {
+            mask-image: linear-gradient(180deg, transparent, black 0%, black 70%, transparent);
+            -webkit-mask-image: linear-gradient(180deg, transparent, black 0%, black 70%, transparent);
+        }
+        
+        .heading-mask {
+            mask-image: linear-gradient(180deg, black 0%, black 80%, transparent 100%);
+            -webkit-mask-image: linear-gradient(180deg, black 0%, black 80%, transparent 100%);
+        }
+
+        .marquee-mask {
+            mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+        }
+    </style>
+
+    <section class="hero-zenith relative w-full bg-transparent text-white overflow-hidden" style="padding-top: 130px !important; display: flex; align-items: center;">
+        <div class="relative z-10 mx-auto max-w-7xl">
+          <div class="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8 items-start">
+            
+            <!-- --- LEFT COLUMN --- -->
+            <div class="lg:col-span-7 flex flex-col justify-center space-y-8 pt-8">
+              
+              <!-- Brand Signature -->
+              <div class="hero-animate delay-100 flex items-center gap-3" style="margin-bottom: 20px;">
+                  <span class="phix-brand-logo" style="font-size: 3.5rem; line-height: 1;">Φ<span class="x-serif">X</span></span>
+              </div>
+
+              <!-- Heading -->
+              <h1 
+                class="hero-animate delay-200 text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-medium tracking-tighter leading-[0.9] heading-mask"
+                style="margin: 0 0 40px 0; text-align: left; display: block; color: var(--text-color);"
+              >
+                Where Creativity<br />
+                <span class="bg-gradient-to-br from-white via-white to-[#ffcd75] bg-clip-text text-transparent text-gold">
+                  Meets Intelligence
+                </span>
+              </h1>
+
+              <!-- Description -->
+              <p class="hero-animate delay-300 max-w-xl text-lg leading-relaxed" style="text-align: left; margin: 0; color: var(--text-color); opacity: 0.8;">
                 We don’t just build digital presence; we engineer brand gravity. Fusing the balance of Phi (Φ) with the X-Factor of innovation to scale your e-commerce ecosystem.
-            </p>
-            <div class="hero-ctas staggered-text">
-                <a href="#contact" class="btn-premium-cta">
+              </p>
+
+              <!-- CTA Buttons (PHIX PROTOCOL UI) -->
+              <div class="hero-animate delay-400 flex flex-col sm:flex-row gap-6">
+                <a href="#contact" class="btn-premium-cta no-underline">
                     <span class="btn-text">Let's Collaborate</span>
                     <div class="btn-icon-circle">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                     </div>
                 </a>
+              </div>
             </div>
-        </div>
-        <div class="hero-visual squircle glass-card">
-            <span class="phi-x-logo hero-logo-vignette">Φ<span class="x-serif">X</span></span>
+
+            <!-- --- RIGHT COLUMN --- -->
+            <div class="lg:col-span-5 space-y-6 lg:mt-12">
+              
+              <!-- Stats Card -->
+              <div class="hero-animate delay-500 relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl shadow-2xl">
+                <!-- Card Glow Effect -->
+                <div class="absolute top-0 right-0 -mr-16 -mt-16 h-64 w-64 rounded-full bg-white/5 blur-3xl pointer-events-none"></div>
+
+                <div class="relative z-10">
+                  <div class="flex items-center gap-4 mb-8">
+                    <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 ring-1 ring-white/20">
+                      <svg class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                    </div>
+                    <div>
+                      <div class="text-3xl font-bold tracking-tight text-white">50+</div>
+                      <div class="text-sm text-zinc-400">Projects Delivered</div>
+                    </div>
+                  </div>
+
+                  <div class="h-px w-full bg-white/10 mb-6 mt-8"></div>
+
+                  <!-- Mini Stats Grid -->
+                  <div class="grid grid-cols-3 gap-4 text-center">
+                    <div class="flex flex-col items-center justify-center transition-transform hover:-translate-y-1 cursor-default">
+                      <span class="text-xl font-bold text-white sm:text-2xl">10+</span>
+                      <span class="text-[10px] uppercase tracking-wider text-zinc-500 font-medium sm:text-xs">Years</span>
+                    </div>
+                    <div class="w-px h-full bg-white/10 mx-auto"></div>
+                    <div class="flex flex-col items-center justify-center transition-transform hover:-translate-y-1 cursor-default">
+                      <span class="text-xl font-bold text-white sm:text-2xl">24/7</span>
+                      <span class="text-[10px] uppercase tracking-wider text-zinc-500 font-medium sm:text-xs">Support</span>
+                    </div>
+                    <div class="w-px h-full bg-white/10 mx-auto"></div>
+                    <div class="flex flex-col items-center justify-center transition-transform hover:-translate-y-1 cursor-default">
+                      <span class="text-xl font-bold text-white sm:text-2xl">100%</span>
+                      <span class="text-[10px] uppercase tracking-wider text-zinc-500 font-medium sm:text-xs">Quality</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Marquee Card -->
+              <div class="hero-animate delay-500 relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 py-8 backdrop-blur-xl">
+                <h3 class="mb-6 px-8 text-sm font-medium text-zinc-400" style="text-align: left;">Trusted by Industry Leaders</h3>
+                
+                <div class="relative flex overflow-hidden marquee-mask">
+                  <div class="animate-marquee flex gap-12 whitespace-nowrap px-4">
+                    <!-- Brand Loop -->
+                    <div class="flex items-center gap-2 opacity-50 transition-all hover:opacity-100 hover:scale-105 cursor-default grayscale hover:grayscale-0"><svg class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l10 18H2L12 2z"/></svg><span class="text-lg font-bold text-white tracking-tight">Quantum</span></div>
+                    <div class="flex items-center gap-2 opacity-50 transition-all hover:opacity-100 hover:scale-105 cursor-default grayscale hover:grayscale-0"><svg class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg><span class="text-lg font-bold text-white tracking-tight">Ruby</span></div>
+                    <div class="flex items-center gap-2 opacity-50 transition-all hover:opacity-100 hover:scale-105 cursor-default grayscale hover:grayscale-0"><svg class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M21 16.5c0 .38-.21.71-.53.88l-7.97 4.44c-.31.17-.69.17-1 0l-7.97-4.44c-.32-.17-.53-.5-.53-.88v-9c0-.38.21-.71.53-.88l7.97-4.44c.31-.17.69-.17 1 0l7.97 4.44c.32.17.53.5.53.88v9z"/></svg><span class="text-lg font-bold text-white tracking-tight">Acme Corp</span></div>
+                    <div class="flex items-center gap-2 opacity-50 transition-all hover:opacity-100 hover:scale-105 cursor-default grayscale hover:grayscale-0"><svg class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg><span class="text-lg font-bold text-white tracking-tight">Phantom</span></div>
+                    <!-- Duplicate for loop -->
+                    <div class="flex items-center gap-2 opacity-50 transition-all hover:opacity-100 hover:scale-105 cursor-default grayscale hover:grayscale-0"><svg class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l10 18H2L12 2z"/></svg><span class="text-lg font-bold text-white tracking-tight">Quantum</span></div>
+                    <div class="flex items-center gap-2 opacity-50 transition-all hover:opacity-100 hover:scale-105 cursor-default grayscale hover:grayscale-0"><svg class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg><span class="text-lg font-bold text-white tracking-tight">Ruby</span></div>
+                    <div class="flex items-center gap-2 opacity-50 transition-all hover:opacity-100 hover:scale-105 cursor-default grayscale hover:grayscale-0"><svg class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M21 16.5c0 .38-.21.71-.53.88l-7.97 4.44c-.31.17-.69.17-1 0l-7.97-4.44c-.32-.17-.53-.5-.53-.88v-9c0-.38.21-.71.53-.88l7.97-4.44c.31-.17.69-.17 1 0l7.97 4.44c.32.17.53.5.53.88v9z"/></svg><span class="text-lg font-bold text-white tracking-tight">Acme Corp</span></div>
+                    <div class="flex items-center gap-2 opacity-50 transition-all hover:opacity-100 hover:scale-105 cursor-default grayscale hover:grayscale-0"><svg class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg><span class="text-lg font-bold text-white tracking-tight">Phantom</span></div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
         </div>
     </section>
 
@@ -181,7 +289,7 @@ if(sessionStorage.getItem("auth") !== "true") {
                             <li><a href="#lightroom"><img src="https://cdn.simpleicons.org/adobelightroom" width="30" height="30"></a></li>
                             <li><a href="#figma"><img src="https://cdn.simpleicons.org/figma" width="30" height="30"></a></li>
                             <li><a href="#canva"><img src="https://cdn.simpleicons.org/canva" width="30" height="30"></a></li>
-                            <li><a href="#framer"><img src="https://cdn.simpleicons.org/framer" width="30" height="30"></a></li>
+                            <li><a href="#framer"><img src="https://cdn.simpleicons.org/framer/white" width="30" height="30"></a></li>
                             <li><a href="#sketch"><img src="https://cdn.simpleicons.org/sketch" width="30" height="30"></a></li>
                             <li><a href="#invision"><img src="https://cdn.simpleicons.org/invision" width="30" height="30"></a></li>
                             <li><a href="#behance"><img src="https://cdn.simpleicons.org/behance" width="30" height="30"></a></li>
@@ -202,7 +310,7 @@ if(sessionStorage.getItem("auth") !== "true") {
                             <li><a href="#snapchat"><img src="https://cdn.simpleicons.org/snapchat" width="30" height="30"></a></li>
 
                             <!-- Tech Titans & Hardware Architecture -->
-                            <li><a href="#apple"><img src="https://cdn.simpleicons.org/apple" width="30" height="30"></a></li>
+                            <li><a href="#apple"><img src="https://cdn.simpleicons.org/apple/white" width="30" height="30"></a></li>
                             <li><a href="#microsoft"><img src="https://cdn.simpleicons.org/microsoft" width="30" height="30"></a></li>
                             <li><a href="#google"><img src="https://cdn.simpleicons.org/google" width="30" height="30"></a></li>
                             <li><a href="#nvidia"><img src="https://cdn.simpleicons.org/nvidia" width="30" height="30"></a></li>
@@ -211,30 +319,46 @@ if(sessionStorage.getItem("auth") !== "true") {
                             <li><a href="#tesla"><img src="https://cdn.simpleicons.org/tesla" width="30" height="30"></a></li>
 
                             <!-- AI & Automation Sovereignty -->
-                            <li><a href="#openai"><img src="https://cdn.simpleicons.org/openai" width="30" height="30"></a></li>
-                            <li><a href="#anthropic"><img src="https://cdn.simpleicons.org/anthropic" width="30" height="30"></a></li>
-                            <li><a href="#perplexity"><img src="https://cdn.simpleicons.org/perplexity" width="30" height="30"></a></li>
+                            <li><a href="#chatgpt"><img src="https://www.google.com/s2/favicons?domain=chatgpt.com&sz=128" width="30" height="30"></a></li>
+                            <li><a href="#gemini"><img src="https://www.google.com/s2/favicons?domain=gemini.google.com&sz=128" width="30" height="30"></a></li>
+                            <li><a href="#claude"><img src="https://www.google.com/s2/favicons?domain=claude.ai&sz=128" width="30" height="30"></a></li>
+                            <li><a href="#grok"><img src="https://www.google.com/s2/favicons?domain=x.ai&sz=128" width="30" height="30"></a></li>
+                            <li><a href="#perplexity"><img src="https://www.google.com/s2/favicons?domain=perplexity.ai&sz=128" width="30" height="30"></a></li>
                             <li><a href="#zapier"><img src="https://cdn.simpleicons.org/zapier" width="30" height="30"></a></li>
                             <li><a href="#make"><img src="https://cdn.simpleicons.org/make" width="30" height="30"></a></li>
+                            <li><a href="#huggingface"><img src="https://www.google.com/s2/favicons?domain=huggingface.co&sz=128" width="30" height="30"></a></li>
+                            <li><a href="#midjourney"><img src="https://www.google.com/s2/favicons?domain=midjourney.com&sz=128" width="30" height="30"></a></li>
+                            <li><a href="#jasper"><img src="https://www.google.com/s2/favicons?domain=jasper.ai&sz=128" width="30" height="30"></a></li>
+                            <li><a href="#copyai"><img src="https://www.google.com/s2/favicons?domain=copy.ai&sz=128" width="30" height="30"></a></li>
+                            <li><a href="#runway"><img src="https://www.google.com/s2/favicons?domain=runwayml.com&sz=128" width="30" height="30"></a></li>
 
-                            <!-- Analytical Precision -->
-                            <li><a href="#googleanalytics"><img src="https://cdn.simpleicons.org/googleanalytics" width="30" height="30"></a></li>
-                            <li><a href="#google-gsc"><img src="https://cdn.simpleicons.org/googlesearchconsole" width="30" height="30"></a></li>
-                            <li><a href="#google-trends"><img src="https://logo.clearbit.com/trends.google.com" width="30" height="30"></a></li>
-                            <li><a href="#clarity"><img src="https://logo.clearbit.com/clarity.microsoft.com" width="30" height="30"></a></li>
-                            <li><a href="#firebase"><img src="https://cdn.simpleicons.org/firebase" width="30" height="30"></a></li>
+                            <!-- App Stores & Mobile Distribution -->
+                            <li><a href="#playstore"><img src="https://www.google.com/s2/favicons?domain=play.google.com&sz=128" width="30" height="30"></a></li>
+                            <li><a href="#appstore"><img src="https://www.google.com/s2/favicons?domain=apps.apple.com&sz=128" width="30" height="30"></a></li>
+
+                            <!-- Analytical Precision & Google Suite -->
+                            <li><a href="#googleanalytics"><img src="https://www.google.com/s2/favicons?domain=analytics.google.com&sz=128" width="30" height="30"></a></li>
+                            <li><a href="#google-gsc"><img src="https://www.google.com/s2/favicons?domain=search.google.com&sz=128" width="30" height="30"></a></li>
+                            <li><a href="#google-ads"><img src="https://www.google.com/s2/favicons?domain=ads.google.com&sz=128" width="30" height="30"></a></li>
+                            <li><a href="#google-tag-manager"><img src="https://www.google.com/s2/favicons?domain=tagmanager.google.com&sz=128" width="30" height="30"></a></li>
+                            <li><a href="#google-workspace"><img src="https://www.google.com/s2/favicons?domain=workspace.google.com&sz=128" width="30" height="30"></a></li>
+                            <li><a href="#google-drive"><img src="https://www.google.com/s2/favicons?domain=drive.google.com&sz=128" width="30" height="30"></a></li>
+                            <li><a href="#youtube"><img src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" width="30" height="30"></a></li>
+                            <li><a href="#google-trends"><img src="https://www.google.com/s2/favicons?domain=trends.google.com&sz=128" width="30" height="30"></a></li>
+                            <li><a href="#clarity"><img src="https://www.google.com/s2/favicons?domain=clarity.microsoft.com&sz=128" width="30" height="30"></a></li>
+                            <li><a href="#firebase"><img src="https://www.google.com/s2/favicons?domain=firebase.google.com&sz=128" width="30" height="30"></a></li>
 
                             <!-- Payments & Indian FinTech -->
                             <li><a href="#stripe"><img src="https://cdn.simpleicons.org/stripe" width="30" height="30"></a></li>
                             <li><a href="#razorpay"><img src="https://cdn.simpleicons.org/razorpay" width="30" height="30"></a></li>
-                            <li><a href="#cashfree"><img src="https://logo.clearbit.com/cashfree.com" width="30" height="30"></a></li>
+                            <li><a href="#cashfree"><img src="https://www.google.com/s2/favicons?domain=cashfree.com&sz=128" width="30" height="30"></a></li>
                             <li><a href="#paypal"><img src="https://cdn.simpleicons.org/paypal" width="30" height="30"></a></li>
 
                             <!-- Infrastructure & Edge Computing -->
                             <li><a href="#aws"><img src="https://cdn.simpleicons.org/amazonaws" width="30" height="30"></a></li>
                             <li><a href="#azure"><img src="https://cdn.simpleicons.org/microsoftazure" width="30" height="30"></a></li>
                             <li><a href="#gcp"><img src="https://cdn.simpleicons.org/googlecloud" width="30" height="30"></a></li>
-                            <li><a href="#vercel-pro"><img src="https://cdn.simpleicons.org/vercel" width="30" height="30"></a></li>
+                            <li><a href="#vercel-pro"><img src="https://cdn.simpleicons.org/vercel/white" width="30" height="30"></a></li>
                             <li><a href="#netlify"><img src="https://cdn.simpleicons.org/netlify" width="30" height="30"></a></li>
                             <li><a href="#cloudflare"><img src="https://cdn.simpleicons.org/cloudflare" width="30" height="30"></a></li>
                             <li><a href="#docker"><img src="https://cdn.simpleicons.org/docker" width="30" height="30"></a></li>
@@ -246,15 +370,38 @@ if(sessionStorage.getItem("auth") !== "true") {
                             <li><a href="#typescript"><img src="https://cdn.simpleicons.org/typescript" width="30" height="30"></a></li>
                             <li><a href="#sass"><img src="https://cdn.simpleicons.org/sass" width="30" height="30"></a></li>
                             <li><a href="#javascript"><img src="https://cdn.simpleicons.org/javascript" width="30" height="30"></a></li>
-                            <li><a href="#github-pro"><img src="https://cdn.simpleicons.org/github" width="30" height="30"></a></li>
+                            <li><a href="#github-pro"><img src="https://cdn.simpleicons.org/github/white" width="30" height="30"></a></li>
 
                             <!-- Enterprise Presence & CRM -->
                             <li><a href="#salesforce"><img src="https://cdn.simpleicons.org/salesforce" width="30" height="30"></a></li>
                             <li><a href="#hubspot"><img src="https://cdn.simpleicons.org/hubspot" width="30" height="30"></a></li>
-                            <li><a href="#notion"><img src="https://cdn.simpleicons.org/notion" width="30" height="30"></a></li>
+                            <li><a href="#notion"><img src="https://cdn.simpleicons.org/notion/white" width="30" height="30"></a></li>
                             <li><a href="#slack"><img src="https://cdn.simpleicons.org/slack" width="30" height="30"></a></li>
                             <li><a href="#jira"><img src="https://cdn.simpleicons.org/jira" width="30" height="30"></a></li>
                             <li><a href="#confluence"><img src="https://cdn.simpleicons.org/confluence" width="30" height="30"></a></li>
+                            <li><a href="#zoho"><img src="https://www.google.com/s2/favicons?domain=zoho.com&sz=128" width="30" height="30"></a></li>
+                            <li><a href="#pipedrive"><img src="https://www.google.com/s2/favicons?domain=pipedrive.com&sz=128" width="30" height="30"></a></li>
+                            <li><a href="#zendesk"><img src="https://www.google.com/s2/favicons?domain=zendesk.com&sz=128" width="30" height="30"></a></li>
+                            <li><a href="#monday"><img src="https://www.google.com/s2/favicons?domain=monday.com&sz=128" width="30" height="30"></a></li>
+                            <li><a href="#asana"><img src="https://www.google.com/s2/favicons?domain=asana.com&sz=128" width="30" height="30"></a></li>
+                            <li><a href="#intercom"><img src="https://www.google.com/s2/favicons?domain=intercom.com&sz=128" width="30" height="30"></a></li>
+
+                            <!-- Lead Generation & Magnets -->
+                            <li><a href="#mailchimp"><img src="https://www.google.com/s2/favicons?domain=mailchimp.com&sz=128" width="30" height="30"></a></li>
+                            <li><a href="#convertkit"><img src="https://www.google.com/s2/favicons?domain=convertkit.com&sz=128" width="30" height="30"></a></li>
+                            <li><a href="#activecampaign"><img src="https://www.google.com/s2/favicons?domain=activecampaign.com&sz=128" width="30" height="30"></a></li>
+                            <li><a href="#typeform"><img src="https://www.google.com/s2/favicons?domain=typeform.com&sz=128" width="30" height="30"></a></li>
+                            <li><a href="#optinmonster"><img src="https://www.google.com/s2/favicons?domain=optinmonster.com&sz=128" width="30" height="30"></a></li>
+
+                            <!-- Quick Commerce & Delivery -->
+                            <li><a href="#swiggy"><img src="https://www.google.com/s2/favicons?domain=swiggy.com&sz=128" width="30" height="30"></a></li>
+                            <li><a href="#zomato"><img src="https://www.google.com/s2/favicons?domain=zomato.com&sz=128" width="30" height="30"></a></li>
+                            <li><a href="#blinkit"><img src="https://www.google.com/s2/favicons?domain=blinkit.com&sz=128" width="30" height="30"></a></li>
+                            <li><a href="#zepto"><img src="https://www.google.com/s2/favicons?domain=zeptonow.com&sz=128" width="30" height="30"></a></li>
+                            <li><a href="#ubereats"><img src="https://www.google.com/s2/favicons?domain=ubereats.com&sz=128" width="30" height="30"></a></li>
+                            <li><a href="#doordash"><img src="https://www.google.com/s2/favicons?domain=doordash.com&sz=128" width="30" height="30"></a></li>
+                            <li><a href="#instacart"><img src="https://www.google.com/s2/favicons?domain=instacart.com&sz=128" width="30" height="30"></a></li>
+                            <li><a href="#deliveroo"><img src="https://www.google.com/s2/favicons?domain=deliveroo.co.uk&sz=128" width="30" height="30"></a></li>
                         </ul>
                     </canvas>
                 </div>
@@ -359,7 +506,7 @@ if(sessionStorage.getItem("auth") !== "true") {
         </div>
     </section>
 
-    </section>
+
 
     <!-- VI. Footer / Contact (The Launchpad) -->
     <section id="contact" class="contact-section gap-bottom">
@@ -403,50 +550,81 @@ if(sessionStorage.getItem("auth") !== "true") {
     </section>
 
     <!-- VII. Site Footer -->
-    <footer class="full-footer glass-card">
-        <div class="footer-grid">
-            <div class="footer-col brand-info">
+    <footer class="premium-footer glass-card">
+        <div class="footer-glow-line"></div>
+        <div class="premium-footer-inner">
+            <!-- Left Section: Brand -->
+            <div class="footer-brand">
                 <div class="brand-stack" style="display: flex; flex-direction: column; align-items: flex-start; text-align: left; gap: 0.8rem;">
                     <span class="phi-x-logo">Φ<span class="x-serif">X</span></span>
                     <span class="site-name">PHIX DIGI TECHH</span>
                 </div>
-                <div class="contact-header">
-                    <p class="section-desc">Contact Phix Digi Techh to establish your global dominance through high-performance tech and creative mastery.</p>
-                    
-                    <a href="mailto:hello@phixdigitechh.com" class="btn-premium-cta" style="margin-top: 2rem;">
-                        <span class="btn-text">Let's Collaborate</span>
-                        <div class="btn-icon-circle">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                        </div>
-                    </a>
+                <p class="footer-copyright">
+                    © 2026 Phix Digi Techh. All rights reserved.
+                </p>
+            </div>
+
+            <!-- Right Section: Links -->
+            <div class="footer-links-grid">
+                <div class="footer-link-group">
+                    <h3>Product</h3>
+                    <ul>
+                        <li><a href="index.html#services">Features</a></li>
+                        <li><a href="index.html#pricing">Pricing</a></li>
+                        <li><a href="index.html#testimonials">Testimonials</a></li>
+                        <li><a href="index.html">Integration</a></li>
+                    </ul>
                 </div>
-            </div>
-
-            <div class="footer-col links-col">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="portfolio.html">Case Studies</a></li>
-                    <li><a href="blogs.html">Market Insights</a></li>
-                    <li><a href="#services">Core Services</a></li>
-                    <li><a href="#contact">Consultation</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col marketplace-col">
-                <h4>Global Presence</h4>
-                <div class="marketplace-badges">
-                    <span class="badge squircle-small glass-card">Amazon Global</span>
-                    <span class="badge squircle-small glass-card">Nykaa Partner</span>
-                    <span class="badge squircle-small glass-card">Shopify Plus</span>
+                <div class="footer-link-group">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="/faqs">FAQs</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="/privacy">Privacy Policy</a></li>
+                        <li><a href="/terms">Terms of Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-link-group">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="blogs.html">Blog</a></li>
+                        <li><a href="/changelog">Changelog</a></li>
+                        <li><a href="/brand">Brand</a></li>
+                        <li><a href="/help">Help</a></li>
+                    </ul>
+                </div>
+                <div class="footer-link-group">
+                    <h3>Social Links</h3>
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <svg class="footer-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                                Facebook
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <svg class="footer-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                                Instagram
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <svg class="footer-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>
+                                Youtube
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <svg class="footer-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                                LinkedIn
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </footer>
-
-    <div class="footer-bottom">
-        <p>&copy; 2026 PHIX DIGI TECHH. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Architecture</a></p>
-    </div>
 
     <!-- Main Logic -->
     <script src="animations.js"></script>

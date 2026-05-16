@@ -6,53 +6,11 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
 // --- DEFENSIVE INITIALIZATION ENGINE ---
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- 1. Global Persistent Theme Engine (Pill UI) ---
-    (function initTheme() {
-        const themeToggle = document.getElementById('theme-toggle');
-        const root = document.documentElement;
-        const ripple = document.querySelector('.theme-ripple');
-        
-        if (!themeToggle || !ripple) return;
-
-        let isDark = root.getAttribute('data-theme') === 'dark';
-        let isAnimatingTheme = false;
-
-        themeToggle.addEventListener('click', (e) => {
-            if (isAnimatingTheme) return;
-            isAnimatingTheme = true;
-
-            const rect = themeToggle.getBoundingClientRect();
-            const x = rect.left + rect.width / 2;
-            const y = rect.top + rect.height / 2;
-
-            ripple.style.left = `${x}px`;
-            ripple.style.top = `${y}px`;
-            ripple.style.width = '2px';
-            ripple.style.height = '2px';
-            
-            const targetTheme = isDark ? 'light' : 'dark';
-            ripple.style.background = targetTheme === 'light' ? '#F9F9F9' : '#0B0B0B';
-
-            const maxDimension = Math.max(window.innerWidth, window.innerHeight);
-            const scale = maxDimension * 2.5;
-
-            gsap.to(ripple, {
-                scale: scale,
-                duration: 0.8,
-                ease: "power2.inOut",
-                onComplete: () => {
-                    isDark = !isDark;
-                    localStorage.setItem('phix-theme', isDark ? 'dark' : 'light');
-                    root.setAttribute('data-theme', isDark ? 'dark' : 'light');
-                    gsap.set(ripple, { scale: 0 });
-                    isAnimatingTheme = false;
-                }
-            });
-        });
-    })();
+    // --- 1. Global Persistent Theme Engine (Deactivated) ---
+    /* Theme engine purged for Permanent Dark Mode protocol */
 
     // --- 2. Magnetic Buttons ---
-    const magneticBtns = document.querySelectorAll('.magnetic-btn, .theme-toggle-pill');
+    const magneticBtns = document.querySelectorAll('.magnetic-btn');
     magneticBtns.forEach(btn => {
         btn.addEventListener('mousemove', (e) => {
             const rect = btn.getBoundingClientRect();
@@ -173,10 +131,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const initEcosystemCloud = () => {
             try {
                 TagCanvas.Start('ecosystem-canvas', 'ecosystem-list', {
-                    textColour: "#D4AF37", reverse: true, depth: 0.85, maxSpeed: 0.04, minSpeed: 0.012, wheelZoom: false,
-                    initial: [0.1, -0.1], imageMode: 'image', imageScale: 1.0, fadeIn: 2500, padding: 25, maxBlur: 1.2,
+                    textColour: "#D4AF37", reverse: true, depth: 1.0, maxSpeed: 0.04, minSpeed: 0.012, wheelZoom: false,
+                    initial: [0.1, -0.1], imageMode: 'image', imageScale: 0.8, fadeIn: 2500, padding: 40, maxBlur: 0,
                     minBrightness: 0.2, outlineColour: 'transparent', clickToFront: 600, imageAlign: 'middle', imageVAlign: 'middle',
-                    noSelect: true, activeCursor: 'pointer'
+                    noSelect: true, activeCursor: 'pointer', frontSelect: true
                 });
             } catch(e) { console.warn("TagCanvas module fails on this page."); }
         };
@@ -190,7 +148,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!track || !stack) return;
 
         try {
-            const res = await fetch('services.json');
+            let res = await fetch('/api/services');
+            if(!res.ok) res = await fetch('services.json');
+            
             if(res.ok) {
                 const services = await res.json();
                 if(services.length > 0) {
@@ -205,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 </div>
                             </button>
                         `;
-                        const ptsHTML = s.points ? s.points.map(p => `<li><strong>${p}</strong></li>`).join('') : '';
+                        const ptsHTML = s.points ? s.points.map(p => `<li>${p}</li>`).join('') : '';
                         stack.innerHTML += `
                             <div class="content-card ${idx===0 ? 'active':'hidden'}" data-index="${idx}">
                                 <h4 class="accent">${s.title}</h4>
@@ -265,10 +225,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 else if (normDiff === 1) card.classList.add('next');
                 else card.classList.add('hidden');
 
-                gsap.to(card, {
+                 gsap.to(card, {
                     x: tx,
+                    y: 0,
                     scale: isMobile ? (isCenter ? 1 : 0.95) : (isCenter ? 1 : 0.8),
                     opacity: isCenter ? 1 : (isMobile ? 0 : (isAdjacent ? 0.5 : 0.1)),
+                    transformOrigin: "center center",
                     duration: 0.8,
                     ease: "power3.out",
                     zIndex: isCenter ? 20 : (isAdjacent ? 10 : 5)

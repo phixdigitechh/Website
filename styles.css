@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Color Palette & CSS Variables */
 :root {
   /* Day Mode (Light) */
@@ -105,86 +109,118 @@ h1, h2, h3 { font-weight: 700; letter-spacing: -0.02em; }
 }
 
 
-.glass-nav {
-    position: sticky;
-    top: 20px;
-    margin: 20px auto 40px auto;
-    width: 95%;
-    max-width: 1400px;
-    height: 75px; /* Shrunk for tighter logo-proximity */
-    display: flex;
-    justify-content: stretch;
-    align-items: center;
-    padding: 0;
-    z-index: 1500;
+/* --- SOVEREIGN NAVIGATION ARCHITECTURE --- */
+.phix-header-nav {
+    position: fixed !important;
+    top: 20px !important;
+    left: 5% !important; /* CENTERED 90% WIDTH */
+    width: 90% !important;
+    height: 75px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 0 40px !important;
+    z-index: 1500 !important;
+    background: rgba(15, 15, 15, 0.4) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 999px !important;
+    box-sizing: border-box !important;
 }
 
-.nav-left, .nav-center, .nav-right {
-    flex: 1 1 0; /* Forced absolute equal thirds */
+.phix-nav-left, .phix-nav-right {
     display: flex;
     align-items: center;
+    z-index: 2;
+    flex: 1; /* Distribute container space equally */
 }
 
-.nav-left { justify-content: flex-start; padding-left: 2rem; }
-.nav-center {
+.phix-nav-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 0.1rem;
+    gap: 2px;
     text-align: center;
+    cursor: pointer;
+    z-index: 1;
 }
-.nav-right { justify-content: flex-end; padding-right: 2rem; }
 
-.phi-x-logo {
-    font-size: 2.2rem; /* Magnified Brand Symbol */
+/* PHIX BRAND IDENTITY */
+.phix-brand-logo {
+    font-size: 2.2rem;
     font-weight: 800;
     font-family: serif; 
     letter-spacing: -2px;
-    line-height: 1; /* Purged vertical gutter */
-    transition: color 0.5s ease;
+    color: var(--accent-color) !important;
+    line-height: 1;
 }
 
-h1, h2, h3, h4 {
-    font-family: serif; 
-    font-weight: 800;
-}
-
-[data-theme="light"] .phi-x-logo { color: #000; }
-[data-theme="dark"] .phi-x-logo { color: var(--accent-color); }
-
-.site-name {
-    font-size: 0.85rem; /* Magnified Brand Text */
+.phix-brand-text {
+    font-size: 0.75rem;
     font-weight: 800;
     letter-spacing: 0.4em;
     text-transform: uppercase;
+    color: var(--accent-color) !important;
     white-space: nowrap;
-    line-height: 1; /* Purged vertical gutter */
-    transition: color 0.5s ease;
+    line-height: 1;
 }
 
-[data-theme="light"] .site-name { color: #000; }
-[data-theme="dark"] .site-name { color: var(--accent-color); }
+/* NAV SPECIFIC LOGO SCALING (50% REDUCTION) */
+.phix-nav-center .phix-brand-logo {
+    font-size: 1.1rem;
+    letter-spacing: -1px;
+}
 
-.micro-links {
+.phix-nav-center .phix-brand-text {
+    font-size: 0.375rem; /* ~6px */
+    letter-spacing: 0.2em;
+}
+
+/* NAVIGATION LINKS */
+.phix-nav-links {
     display: flex;
-    gap: 1rem; /* Tightened gap for 3-link wing density */
+    flex: 1;
+    justify-content: center;
+    gap: 6rem;
+    width: 100%;
 }
 
-.micro-links a {
-    color: var(--accent-color); /* Sovereign Gold Zenith */
+.phix-nav-links a {
+    color: var(--accent-color) !important;
     text-decoration: none;
     font-weight: 700;
-    font-size: 0.65rem;
+    font-size: 16px;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.1em; /* Scaled down slightly to balance the larger 16px size */
     transition: all 0.3s ease;
+    opacity: 0.8;
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+}
+
+.phix-nav-links a:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+}
+
+/* MOBILE SYNC */
+@media (max-width: 768px) {
+    .phix-header-nav {
+        height: 65px !important;
+        padding: 0 20px !important;
+        width: 94% !important;
+        left: 3% !important;
+    }
+    .phix-brand-text { display: none; }
+    .phix-brand-logo { font-size: 1.8rem; }
+    .phix-nav-links { display: none !important; }
 }
 
 /* Kinetic Underline Protocol - Repositioned for Symmetry */
-.micro-links a::after {
+.phix-nav-links a::after {
     content: '';
     position: absolute;
     bottom: -6px; /* Absolute Centering Anchor */
@@ -353,7 +389,7 @@ nav {
 /* Premium Theme Toggle Pill */
 .theme-toggle-pill {
     position: fixed;
-    top: 2rem;
+    bottom: 2rem;
     right: 2rem;
     z-index: 2000;
     width: 64px;
@@ -446,9 +482,12 @@ nav {
     transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
-/* Sections */
+/* Sections — Unified Spacing System */
 section {
-    padding: 100px 5% 60px;
+    --section-pad-x: 120px;
+    --section-gap: 100px; /* Uniform vertical gap — equal top and bottom */
+    padding: var(--section-gap) var(--section-pad-x);
+    margin: 0; /* No extra margin on any section */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -540,7 +579,7 @@ section {
 .ecosystem-section { 
     text-align: left; 
     overflow: visible; 
-    min-height: 100vh;
+    min-height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -551,7 +590,7 @@ section {
     gap: 4rem; 
     width: 100%; 
     align-items: center; 
-    margin-top: 2rem; 
+    margin-top: 0; 
 }
 .ecosystem-content-col { flex: 1; display: flex; flex-direction: column; gap: 2rem; }
 .ecosystem-visual-col { flex: 1; display: flex; justify-content: flex-end; }
@@ -598,7 +637,7 @@ section {
     gap: 3rem;
     width: 100%;
     max-width: 100%;
-    margin-top: 1rem;
+    margin-top: 0;
 }
 .service-card {
     padding: 2.5rem;
@@ -654,7 +693,7 @@ section {
 }
 
 /* --- NEW COMPONENT STYLES --- */
-.gap-bottom { margin-bottom: 2rem; }
+.gap-bottom { margin-bottom: 0; } /* Section padding handles vertical rhythm */
 .x-serif { font-family: serif; font-weight: bold; }
 
 /* Parallax Logo Fragments */
@@ -676,7 +715,7 @@ section {
 .section-title { 
     text-align: center; 
     font-size: 3.5rem; 
-    margin: 0 auto 3rem auto; 
+    margin: 0 auto 2rem auto; 
     width: 100%;
     display: block;
 }
@@ -696,7 +735,7 @@ h2 {
 .secondary-btn:hover { background: var(--card-bg); }
 
 /* Custom Grids & Splits */
-.story-split { display: flex; flex-direction: row; gap: 3rem; width: 100%; align-items: stretch; margin-top: 2rem; }
+.story-split { display: flex; flex-direction: row; gap: 3rem; width: 100%; align-items: stretch; margin-top: 0; }
 .story-content-col { flex: 1.1; display: flex; flex-direction: column; gap: 2rem; justify-content: space-between; }
 .story-visual-col { flex: 1; display: flex; }
 .story-card { padding: 2.5rem 3rem; display: flex; flex-direction: column; justify-content: center; text-align: left; }
@@ -740,118 +779,150 @@ h2 {
     .contact-container { padding: 2rem; }
 }
 
+/* Responsive Zenith Overrides — Unified Cascade */
+@media (max-width: 1200px) {
+    section {
+        --section-pad-x: 5%;
+    }
+    .premium-footer {
+        padding-left: 5% !important;
+        padding-right: 5% !important;
+    }
+}
+
+@media (max-width: 768px) {
+    section {
+        --section-pad-x: 20px;
+        --section-gap: 60px;
+    }
+    .premium-footer {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+}
+
 /* --- SITE FOOTER STYLES --- */
-.full-footer {
-    padding: 2.5rem 5%;
-    margin: 6rem 5% 2rem;
-    border: 1px solid var(--card-border);
-    border-radius: 3rem;
+.premium-footer {
     position: relative;
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--card-border);
+    border-radius: 40px;
+    padding: var(--section-gap, 100px) var(--section-pad-x, 120px);
     overflow: hidden;
 }
 
-.footer-grid {
+[data-theme="dark"] .premium-footer {
+    background: radial-gradient(35% 128px at 50% 0%, rgba(255, 255, 255, 0.08), transparent);
+}
+[data-theme="light"] .premium-footer {
+    background: radial-gradient(35% 128px at 50% 0%, rgba(0, 0, 0, 0.05), transparent);
+}
+
+.footer-glow-line {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 33.33%;
+    height: 1px;
+    background: var(--text-color);
+    opacity: 0.2;
+    border-radius: 9999px;
+    filter: blur(2px);
+}
+
+.premium-footer-inner {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 4rem;
-    padding-bottom: 0;
+    width: 100%;
+    gap: 2rem;
+    grid-template-columns: 1fr;
 }
 
-.footer-col h4 {
-    font-size: 1.25rem;
-    margin-bottom: 1.5rem;
-    color: var(--accent-color);
+@media (min-width: 1280px) {
+    .premium-footer-inner {
+        grid-template-columns: 1fr 2fr;
+    }
 }
 
-.brand-info p {
-    margin: 1.5rem 0;
-    max-width: 400px;
-    opacity: 0.8;
-    line-height: 1.6;
-}
-
-.social-icons {
+.footer-brand {
     display: flex;
+    flex-direction: column;
     gap: 1rem;
 }
 
-.m-icon-small {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    color: var(--text-color);
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 0.9rem;
-    transition: 0.3s;
+.footer-brand .brand-stack {
+    margin-bottom: 2rem;
 }
 
-.links-col ul {
+.footer-copyright {
+    color: var(--text-color);
+    opacity: 0.6;
+    margin-top: 1rem;
+    font-size: 0.875rem;
+}
+
+.footer-links-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 2.5rem;
+}
+
+@media (min-width: 768px) {
+    .footer-links-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (min-width: 1280px) {
+    .footer-links-grid {
+        margin-top: 0;
+    }
+}
+
+.footer-link-group h3 {
+    font-size: 0.75rem;
+    font-family: inherit;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+}
+
+.footer-link-group ul {
     list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
-.links-col ul li {
-    margin-bottom: 0.8rem;
-}
-
-.links-col ul li a {
+.footer-link-group ul li a {
     color: var(--text-color);
+    opacity: 0.6;
     text-decoration: none;
-    opacity: 0.7;
-    transition: 0.3s;
+    font-size: 0.875rem;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.3s ease;
 }
 
-.links-col ul li a:hover {
+.footer-link-group ul li a:hover {
     opacity: 1;
     color: var(--accent-color);
 }
 
-.marketplace-badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.8rem;
-}
-
-.badge {
-    padding: 0.5rem 1rem;
-    font-size: 0.85rem;
-    font-weight: 500;
-}
-
-.footer-bottom {
-    padding: 2rem 5%;
-    text-align: center;
-    font-size: 0.9rem;
-    opacity: 0.6;
-    margin-bottom: 2rem;
-}
-
-.footer-bottom a {
-    color: var(--text-color);
-    text-decoration: none;
-    margin: 0 0.5rem;
-}
-
-@media (max-width: 992px) {
-    .footer-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-    .brand-info {
-        grid-column: span 2;
-    }
-}
-
-@media (max-width: 600px) {
-    .footer-grid {
-        grid-template-columns: 1fr;
-    }
-    .brand-info {
-        grid-column: span 1;
-    }
+.footer-link-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 0.5rem;
 }
 
 /* --- Zoom Parallax Engine (GSAP Pinning Architecture) --- */
@@ -859,9 +930,9 @@ h2 {
     position: relative;
     height: 100vh;
     width: 100%;
-    margin-top: 40px; /* Reduced for Sticky Header Flow */
+    margin-top: 0;
     overflow: hidden;
-    padding: 5%; /* Optimized '50% reduction' Inset */
+    padding: var(--section-gap, 100px) var(--section-pad-x, 120px);
     z-index: 10;
 }
 
@@ -939,9 +1010,7 @@ h2 {
 /* --- FEATURE CAROUSEL: SOVEREIGN SERVICE HORIZON --- */
 .feature-carousel-section {
     width: 100%;
-    max-width: 1600px;
-    margin: 8rem auto;
-    padding: 0 5%;
+    max-width: 100%;
     position: relative;
     overflow: hidden;
 }
@@ -1044,8 +1113,8 @@ h2 {
 .content-card-stack {
     position: relative;
     width: 100%;
-    max-width: 1200px; /* Expanded for high-visibility side nodes */
-    height: 450px;
+    max-width: 1200px;
+    height: 450px; /* FIXED HEIGHT */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1053,23 +1122,23 @@ h2 {
 
 .content-card {
     position: absolute;
-    width: 800px; /* Fixed Aperture for Kinetic Tangency */
-    height: 450px; /* Synchronized with stack height */
-    left: calc(50% - 400px); /* Geometric Horizontal Center Anchor */
-    top: calc(50% - 225px); /* Geometric Vertical Center Anchor */
+    width: 800px;
+    height: 450px; /* FIXED SAME HEIGHT FOR ALL */
+    left: calc(50% - 400px); /* Geometric Horizontal Center */
+    top: 0; /* Align directly to the top of the 450px container */
     border-radius: 2.5rem;
     overflow: hidden;
-    background: rgba(0, 0, 0, 0.5); /* 50% Black Opacity */
+    background: rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(40px); /* Increased blur for higher density harmony */
+    backdrop-filter: blur(40px);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: center; /* Center align text vertically */
     align-items: flex-start;
     padding: 5rem;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.8s ease; /* Only opacity is managed by CSS now */
+    transition: opacity 0.8s ease;
 }
 
 .content-card h4 {
@@ -1187,8 +1256,8 @@ h2 {
     .carousel-container { flex-direction: column; min-height: auto; gap: 2rem; }
     .carousel-selector-pillar { width: 100%; height: auto; padding: 2rem; flex-direction: row; flex-wrap: wrap; justify-content: center; border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
     .carousel-content-horizon { width: 100%; padding: 2rem; min-height: auto; }
-    .content-card-stack { position: relative; width: 100%; height: 450px; min-height: 450px; }
-    .content-card { position: absolute; top: 0; left: 0; width: 100%; height: 100%; padding: 3rem; transform: none; box-shadow: none; border: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.3); border-radius: 20px; }
+    .content-card-stack { position: relative; width: 100%; height: 450px; display: flex; align-items: center; justify-content: center; }
+    .content-card { position: absolute; left: 0; top: 0; width: 100%; height: 450px; padding: 3rem; transform: none; box-shadow: none; border: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.3); border-radius: 20px; display: flex; flex-direction: column; justify-content: center; }
     .content-card.hidden { pointer-events: none; opacity: 0; }
     .card-title { font-size: 2.5rem; }
     .feature-chip { width: auto; padding-right: 2rem; }
@@ -1244,12 +1313,8 @@ h2 {
     letter-spacing: -1px;
 }
 
-/* Mobile Architecture (768px) */
+/* Mobile Architecture (768px) Overrides */
 @media (max-width: 768px) {
-    .glass-nav { 
-        height: 65px; 
-        padding: 0 1rem; 
-    }
     p, .staggered-text, .section-desc, .blog-excerpt, .hero-description { font-size: 16px !important; line-height: 1.6; }
     h1 { font-size: 48px !important; line-height: 1.1; letter-spacing: -2px; }
     
@@ -1267,7 +1332,7 @@ h2 {
 
     .hero { 
         display: flex;
-        flex-direction: column; /* Standard Vertical Stack */
+        flex-direction: column;
         text-align: center; 
         gap: 3rem; 
         padding-top: 40px;
@@ -1277,32 +1342,27 @@ h2 {
         width: 100%; 
         height: 350px; 
         min-height: 350px; 
-        order: -1; /* ZENITH NODE: TOP DISPLAY 🥇 */
+        order: -1;
         margin-bottom: 2rem;
     }
     .hero-content { order: 0; align-items: center; width: 100%; }
     .hero-ctas { order: 1; justify-content: center; width: 100%; }
     
-    .portfolio-grid { grid-template-columns: 1fr; padding: 0 5%; }
+    .portfolio-grid { grid-template-columns: 1fr; padding: 0; }
     .project-card { height: 400px; }
     
     /* Parallax Mosaic Mobile Stack */
-    .zoom-parallax-section { height: auto; min-height: 100vh; padding: 8rem 5%; }
+    .zoom-parallax-section { height: auto; min-height: 100vh; padding: var(--section-gap, 60px) var(--section-pad-x, 20px); }
     .mosaic-container { position: relative; width: 100%; height: auto; transform: none !important; display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
     .parallax-item { position: relative !important; width: 100% !important; height: 250px !important; top: 0 !important; left: 0 !important; transform: none !important; }
     .parallax-img-box { border-radius: 20px; }
     
-    .detail-hero { padding: 8rem 5% 4rem 5% !important; }
+    .detail-hero { padding: 8rem 20px 4rem 20px !important; }
     .detail-brand-mark { font-size: 6rem !important; margin-bottom: -2rem !important; }
     
     .footer-grid { grid-template-columns: 1fr; gap: 4rem; text-align: center; }
     .brand-info .brand-stack { align-items: center; text-align: center; }
     .contact-header { margin: 0 auto; }
-
-    /* Sovereign Section Padding Recalibration */
-    section { padding: 60px 4% 40px !important; }
-    .ecosystem-section { padding-top: 40px !important; }
-    .framework-section { padding-top: 40px !important; }
 
     /* Core Services Recalibration */
     .carousel-container { gap: 1rem; border-radius: 20px; }
@@ -1315,7 +1375,7 @@ h2 {
     .feature-chip:hover, .feature-chip.active { padding-left: 1.5rem !important; transform: translateY(-2px); }
     .carousel-content-horizon { padding: 1.5rem 1rem; min-height: auto; }
     .content-card-stack { width: 100%; height: 500px; display: block; position: relative; }
-    .content-card { position: absolute; width: 100%; height: 100%; top: 0; left: 0; padding: 1.5rem; display: flex; flex-direction: column; justify-content: center; }
+    .content-card { position: absolute; width: 100%; height: 500px; top: 0; left: 0; padding: 1.5rem; display: flex; flex-direction: column; justify-content: center; }
     .content-card .card-description { font-size: 14px !important; margin-bottom: 1.5rem; line-height: 1.5; }
     .content-card .accent { font-size: 1.8rem !important; margin-bottom: 0.8rem; letter-spacing: -0.5px; }
     .card-points { gap: 0.8rem; }

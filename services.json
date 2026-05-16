@@ -1,46 +1,65 @@
 [
   {
     "id": "1",
-    "btnText": "Digital Marketing & Growth",
-    "title": "Growth <span class=\"text-gold\">Engineering</span>",
-    "description": "Performance that Moves the Needle. We go beyond \"likes\" to focus on high-authority ROI.",
+    "btnText": "Web Design & Full-Stack",
+    "title": "Tech that defies <span class=\"text-gold\">constraints.</span>",
+    "description": "<strong>The Blueprint:</strong> Engineering high-performance custom websites with next-level UI/UX and seamless responsiveness.",
     "points": [
-      "Omnichannel Strategy",
-      "PR & Reputation",
-      "Actionable ROI Reporting"
+      "<strong>The Tech:</strong> Bespoke frontends, full-stack web applications, clean source code, and bulletproof API/CRM integrations."
     ]
   },
   {
     "id": "2",
-    "btnText": "SEO & SEM (Search Mastery)",
-    "title": "Visibility <span class=\"text-gold\">Zenith</span>",
-    "description": "Be Seen. Be Chosen. Precision-targeted visibility using our proprietary search algorithms.",
+    "btnText": "Premium E-commerce",
+    "title": "Your digital <span class=\"text-gold\">flagship store.</span>",
+    "description": "<strong>The Blueprint:</strong> Architecting conversion-focused storefronts that combine beautiful visual storytelling with frictionless checkouts.",
     "points": [
-      "Technical SEO Infrastructure",
-      "Precision Content Mastery",
-      "Global Search Authority"
+      "<strong>The Tech:</strong> End-to-end setup on Shopify, WooCommerce, or Magento, custom JSON schemas, SKU management, and secure payment integrations."
     ]
   },
   {
     "id": "3",
-    "btnText": "Branding & Packaging",
-    "title": "Visual <span class=\"text-gold\">Gravitas</span>",
-    "description": "Design that lingers in the mind long after the click. Fusing Phi (Φ) with innovation.",
+    "btnText": "Technical SEO",
+    "title": "Discoverability engineering. <span class=\"text-gold\">Infinite visibility.</span>",
+    "description": "<strong>The Blueprint:</strong> Positioning your brand at the absolute source of search intent for compounding organic revenue.",
     "points": [
-      "Identity & Logo Design",
-      "Unboxing Packaging Experiences",
-      "Full Brand Guidelines"
+      "<strong>The Tech:</strong> High-intent keyword mapping, on-page optimization, metadata refinement, and Core Web Vitals speed tuning."
     ]
   },
   {
     "id": "4",
-    "btnText": "Website Design & Dev",
-    "title": "High-Converting <span class=\"text-gold\">UX</span>",
-    "description": "Anti-gravity digital stores built for high-performance global scale.",
+    "btnText": "Social Media Marketing",
+    "title": "Native content. <span class=\"text-gold\">Highly engaged communities.</span>",
+    "description": "<strong>The Blueprint:</strong> Turning standard social feeds into vibrant digital ecosystems using trend-driven visual narratives.",
     "points": [
-      "Custom Shopify Ecosystems",
-      "React & Native High Speed",
-      "Advanced Growth Integrations"
+      "<strong>The Tech:</strong> High-velocity short-form video (Reels/TikToks) editing, aesthetic carousels, caption copywriting, and community management."
+    ]
+  },
+  {
+    "id": "5",
+    "btnText": "Performance Marketing",
+    "title": "Precision scaling. <span class=\"text-gold\">Transparent attribution.</span>",
+    "description": "<strong>The Blueprint:</strong> Building aggressive, ROI-focused digital ad funnels designed to acquire high-lifetime-value customers.",
+    "points": [
+      "<strong>The Tech:</strong> Advanced Meta and Google Ads management, pixel setup, server-side conversion tracking, and continuous A/B testing."
+    ]
+  },
+  {
+    "id": "6",
+    "btnText": "Marketplace Growth",
+    "title": "Dominate the global <span class=\"text-gold\">marketplaces.</span>",
+    "description": "<strong>The Blueprint:</strong> Scaling your brand where millions are already shopping by optimizing every layer of the multi-channel funnel.",
+    "points": [
+      "<strong>The Tech:</strong> Full account management for Amazon, Flipkart, Nykaa, and Meesho, marketplace search ads, and premium A+ content storefronts."
+    ]
+  },
+  {
+    "id": "7",
+    "btnText": "Quick Commerce",
+    "title": "Hyper-local volume. <span class=\"text-gold\">10-minute visibility.</span>",
+    "description": "<strong>The Blueprint:</strong> Positioning your products at the top of the virtual shelf to capture rapid instant-delivery buying power.",
+    "points": [
+      "<strong>The Tech:</strong> Seamless onboarding on Zepto, Blinkit, Swiggy Instamart, and BB Now, mobile-optimized SKU visuals, and hyper-local in-app search ads."
     ]
   }
 ]

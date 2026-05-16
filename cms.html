@@ -216,7 +216,10 @@ if(sessionStorage.getItem("auth") !== "true") {
             <div class="list-panel">
                 <h4 class="cms-label" id="list-title">BLOG ARCHIVE</h4>
                 <div id="item-list"></div>
-                <button onclick="newItem()" class="btn-premium-cta" style="margin-top:2rem; width:100%; justify-content: center; padding: 1.2rem;">+ Create New</button>
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem;">
+                    <button onclick="newItem()" class="btn-premium-cta" style="justify-content: center; padding: 1.2rem;">+ New</button>
+                    <button onclick="deleteItem()" class="btn-premium-cta" style="background: rgba(255,0,0,0.1); border-color: rgba(255,0,0,0.2); color: #ff4444; justify-content: center; padding: 1.2rem;">Delete</button>
+                </div>
             </div>
 
             <div class="editor-panel">
@@ -423,23 +426,28 @@ if(sessionStorage.getItem("auth") !== "true") {
         }
 
         async function uploadImage(e, index) {
+            if (!e.target.files[0]) return;
             const formData = new FormData();
             formData.append('image', e.target.files[0]);
             
-            const res = await fetch('/api/upload', { method: 'POST', body: formData });
-            const data = await res.json();
-            
-            if (index === 'blog') {
-                blogImageURL = data.url;
-                document.getElementById('blog-preview').src = blogImageURL;
-                document.getElementById('blog-preview-container').style.display = 'block';
-            } else if (index === 'logo') {
-                logoURL = data.url;
-                document.getElementById('logo-preview').src = logoURL;
-                document.getElementById('logo-preview-container').style.display = 'block';
-            } else {
-                galleryURLs[index] = data.url;
-                document.getElementById(`p-preview-${index}`).src = galleryURLs[index];
+            try {
+                const res = await fetch('/api/upload', { method: 'POST', body: formData });
+                const data = await res.json();
+                
+                if (index === 'blog') {
+                    blogImageURL = data.url;
+                    document.getElementById('blog-preview').src = blogImageURL;
+                    document.getElementById('blog-preview-container').style.display = 'block';
+                } else if (index === 'logo') {
+                    logoURL = data.url;
+                    document.getElementById('logo-preview').src = logoURL;
+                    document.getElementById('logo-preview-container').style.display = 'block';
+                } else {
+                    galleryURLs[index] = data.url;
+                    document.getElementById(`p-preview-${index}`).src = galleryURLs[index];
+                }
+            } catch (err) {
+                alert("Upload failed. Ensure the server is active.");
             }
         }
 
@@ -530,13 +538,37 @@ if(sessionStorage.getItem("auth") !== "true") {
                 i.image = blogImageURL;
             }
 
-            await fetch(`/api/${currentTab}`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(i)
-            });
-            fetchItems();
-            alert("Sovereign Node Saved.");
+            try {
+                const res = await fetch(`/api/${currentTab}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(i)
+                });
+                if (res.ok) {
+                    fetchItems();
+                    alert("Sovereign Node Saved.");
+                } else {
+                    alert("Save failed. Check server logs.");
+                }
+            } catch (err) {
+                alert("Save error. Is the server running?");
+            }
+        }
+
+        async function deleteItem() {
+            const id = document.getElementById('edit-id').value;
+            if (!confirm(`Permanently decommission node ${id}?`)) return;
+
+            try {
+                const res = await fetch(`/api/${currentTab}/${id}`, { method: 'DELETE' });
+                if (res.ok) {
+                    fetchItems();
+                    newItem();
+                    alert("Node Decommissioned.");
+                }
+            } catch (err) {
+                alert("Decommission error.");
+            }
         }
 
         async function previewItem() {

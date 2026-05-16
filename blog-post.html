@@ -3,13 +3,7 @@
 <head>
 <script>
 if(sessionStorage.getItem("auth") !== "true") {
-  let p = prompt("Development Phase. Password:");
-  if(p !== "onepiece") {
-    document.documentElement.innerHTML = "<body style=\"background:#000;color:#fff;text-align:center;font-family:sans-serif;padding-top:20vh;margin:0;\"><h1>Access Denied</h1></body>";
-    throw new Error("Access Denied");
-  } else {
-    sessionStorage.setItem("auth", "true");
-  }
+    window.location.href = "password-gate.html";
 }
 </script>
     <meta charset="UTF-8">
@@ -165,9 +159,9 @@ if(sessionStorage.getItem("auth") !== "true") {
     <div class="theme-ripple"></div>
 
     <!-- Header Mirror -->
-    <nav class="glass-nav squircle">
-        <div class="nav-left">
-            <div class="nav-links micro-links">
+    <nav class="phix-header-nav">
+        <div class="phix-nav-left">
+            <div class="phix-nav-links">
                 <a href="about.html">About</a>
                 <a href="index.html#story">Story</a>
                 <a href="index.html#services">Services</a>
@@ -177,12 +171,12 @@ if(sessionStorage.getItem("auth") !== "true") {
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
             </div>
         </div>
-        <div class="nav-center brand-stack" onclick="window.location.href='index.html'" style="cursor:pointer;">
-            <span class="phi-x-logo">Φ<span class="x-serif">X</span></span>
-            <span class="site-name">PHIX DIGI TECHH</span>
+        <div class="phix-nav-center" onclick="window.location.href='index.html'">
+            <span class="phix-brand-logo">Φ<span class="x-serif">X</span></span>
+            <span class="phix-brand-text">PHIX DIGI TECHH</span>
         </div>
-        <div class="nav-right">
-            <div class="nav-links micro-links">
+        <div class="phix-nav-right">
+            <div class="phix-nav-links">
                 <a href="portfolio.html">Portfolio</a>
                 <a href="blogs.html" style="opacity:1; color: var(--accent-color);">Blogs</a>
                 <a href="index.html#contact">Contact</a>
@@ -229,7 +223,9 @@ if(sessionStorage.getItem("auth") !== "true") {
             }
 
             try {
-                const res = await fetch('/api/blogs');
+                let res = await fetch('/api/blogs');
+                if (!res.ok) res = await fetch('blogs.json');
+                
                 const posts = await res.json();
                 const post = posts.find(p => p.id === id);
 
@@ -239,15 +235,15 @@ if(sessionStorage.getItem("auth") !== "true") {
                         window.location.href = 'blogs.html';
                         return;
                     }
-                    document.title = `PHIX | ${post.seoTitle || post.title}`;
+                    document.title = `PHIX | ${post.seoTitle || post.title.replace(/<[^>]*>/g, '')}`;
                     document.getElementById('post-title').innerHTML = post.title || 'Masterclass Node';
                     document.getElementById('post-date').textContent = post.date || 'The Infinite';
                     document.getElementById('post-image').src = post.image || 'https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&q=80&w=1600';
                     document.getElementById('post-content').innerHTML = post.content || '<p>Content pending architectural review.</p>';
                     
-                    // Meta tags would ideally be handled server-side for real SEO, 
-                    // but we can update them here for the user's browser context.
                     document.querySelector('meta[name="description"]')?.setAttribute('content', post.seoDesc);
+                } else {
+                    console.error("Node not found in manifest.");
                 }
             } catch (e) {
                 console.error("Sovereign Engine Link Broken.");
@@ -273,48 +269,81 @@ if(sessionStorage.getItem("auth") !== "true") {
     </div>
 
     <!-- VII. Site Footer -->
-    <footer class="full-footer glass-card">
-        <div class="footer-grid">
-            <div class="footer-col brand-info">
+    <footer class="premium-footer glass-card">
+        <div class="footer-glow-line"></div>
+        <div class="premium-footer-inner">
+            <!-- Left Section: Brand -->
+            <div class="footer-brand">
                 <div class="brand-stack" style="display: flex; flex-direction: column; align-items: flex-start; text-align: left; gap: 0.8rem;">
                     <span class="phi-x-logo">Φ<span class="x-serif">X</span></span>
                     <span class="site-name">PHIX DIGI TECHH</span>
                 </div>
-                <div class="contact-header">
-                    <p class="section-desc">Contact Phix Digi Techh to establish your global dominance through high-performance tech and creative mastery.</p>
-                    
-                    <a href="mailto:hello@phixdigitechh.com" class="btn-premium-cta" style="margin-top: 2rem;">
-                        <span class="btn-text">Let's Collaborate</span>
-                        <div class="btn-icon-circle">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                        </div>
-                    </a>
+                <p class="footer-copyright">
+                    © 2026 Phix Digi Techh. All rights reserved.
+                </p>
+            </div>
+
+            <!-- Right Section: Links -->
+            <div class="footer-links-grid">
+                <div class="footer-link-group">
+                    <h3>Product</h3>
+                    <ul>
+                        <li><a href="index.html#services">Features</a></li>
+                        <li><a href="index.html#pricing">Pricing</a></li>
+                        <li><a href="index.html#testimonials">Testimonials</a></li>
+                        <li><a href="index.html">Integration</a></li>
+                    </ul>
                 </div>
-            </div>
-
-            <div class="footer-col links-col">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="index.html#story">Origin Story</a></li>
-                    <li><a href="index.html#services">Growth Pillars</a></li>
-                    <li><a href="blogs.html">Blogs</a></li>
-                    <li><a href="index.html#contact">Contact Us</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col marketplace-col">
-                <h4>Global Presence</h4>
-                <div class="marketplace-badges">
-                    <span class="badge squircle-small glass-card">Amazon Global</span>
-                    <span class="badge squircle-small glass-card">Nykaa Partner</span>
-                    <span class="badge squircle-small glass-card">Shopify Plus</span>
+                <div class="footer-link-group">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="/faqs">FAQs</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="/privacy">Privacy Policy</a></li>
+                        <li><a href="/terms">Terms of Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-link-group">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="blogs.html">Blog</a></li>
+                        <li><a href="/changelog">Changelog</a></li>
+                        <li><a href="/brand">Brand</a></li>
+                        <li><a href="/help">Help</a></li>
+                    </ul>
+                </div>
+                <div class="footer-link-group">
+                    <h3>Social Links</h3>
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <svg class="footer-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                                Facebook
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <svg class="footer-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                                Instagram
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <svg class="footer-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>
+                                Youtube
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <svg class="footer-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                                LinkedIn
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </footer>
-    <div class="footer-bottom">
-        <p>&copy; 2026 PHIX DIGI TECHH. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Architecture</a></p>
-    </div>
 
     <script src="animations.js"></script>
     <script>
