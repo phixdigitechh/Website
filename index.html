@@ -284,34 +284,66 @@ if(sessionStorage.getItem("auth") !== "true") {
     <!-- III. Industries We Accelerate -->
     <section id="industries" class="industries-section gap-bottom">
         <h2 class="staggered-heading section-title" style="margin-bottom: 3rem;"><span>Industries</span> <span>We</span> <span class="text-gold">Accelerate</span></h2>
-        <div class="industries-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; width: 100%;">
-            <!-- Card 1 -->
-            <div class="glass-card squircle industry-card" style="padding: 2.5rem 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; text-align: center; transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); cursor: default; height: 180px;">
-                <div class="industry-icon" style="color: var(--accent-color);">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        
+        <div class="industries-split">
+            <!-- Left Side: Interactive 3D Ecosystem -->
+            <div class="ecosystem-3d-container" style="flex: 1; display: flex; align-items: center; justify-content: center; min-height: 400px; position: relative;">
+                <!-- Glowing Aura -->
+                <div class="aura-glow" style="position: absolute; width: 350px; height: 350px; background: radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 70%); filter: blur(40px); animation: pulse-slow 4s infinite alternate;"></div>
+                
+                <div class="ecosystem-3d-scene" style="width: 300px; height: 300px; perspective: 1000px; display: flex; align-items: center; justify-content: center;">
+                    <div class="ecosystem-3d-globe" style="width: 220px; height: 220px; position: relative; transform-style: preserve-3d; animation: rotate-globe 20s linear infinite;">
+                        <!-- Core Sphere -->
+                        <div class="globe-core" style="position: absolute; top: 60px; left: 60px; width: 100px; height: 100px; background: radial-gradient(circle at 30% 30%, var(--accent-color), rgba(212,175,55,0.2) 60%, rgba(212,175,55,0) 100%); border-radius: 50%; box-shadow: 0 0 50px rgba(212,175,55,0.5); transform: translateZ(0);"></div>
+                        
+                        <!-- Ring 1 (X Axis) -->
+                        <div class="globe-ring" style="position: absolute; top: 0; left: 0; width: 220px; height: 220px; border: 2px dashed rgba(212,175,55,0.4); border-radius: 50%; transform: rotateX(70deg) rotateY(0deg); display: flex; align-items: center; justify-content: center; transform-style: preserve-3d;">
+                            <div class="orbital-node" style="position: absolute; width: 12px; height: 12px; background: var(--accent-color); border-radius: 50%; box-shadow: 0 0 15px var(--accent-color); left: 0; top: 50%; transform: translateY(-50%);"></div>
+                        </div>
+                        
+                        <!-- Ring 2 (Y Axis) -->
+                        <div class="globe-ring" style="position: absolute; top: 0; left: 0; width: 220px; height: 220px; border: 2px dashed rgba(255,255,255,0.25); border-radius: 50%; transform: rotateX(-30deg) rotateY(60deg); display: flex; align-items: center; justify-content: center; transform-style: preserve-3d;">
+                            <div class="orbital-node" style="position: absolute; width: 14px; height: 14px; background: #ffffff; border-radius: 50%; box-shadow: 0 0 20px #ffffff; right: 0; top: 50%; transform: translateY(-50%);"></div>
+                        </div>
+
+                        <!-- Ring 3 (Z Axis) -->
+                        <div class="globe-ring" style="position: absolute; top: 0; left: 0; width: 220px; height: 220px; border: 1.5px solid rgba(212,175,55,0.15); border-radius: 50%; transform: rotateX(15deg) rotateY(-45deg); display: flex; align-items: center; justify-content: center; transform-style: preserve-3d;">
+                            <div class="orbital-node" style="position: absolute; width: 10px; height: 10px; background: var(--accent-color); border-radius: 50%; box-shadow: 0 0 12px var(--accent-color); top: 0; left: 50%; transform: translateX(-50%);"></div>
+                        </div>
+                    </div>
                 </div>
-                <h3 style="font-size: 1.2rem; font-weight: 700; margin: 0; color: var(--text-color);">Corporate & B2B Brands</h3>
             </div>
-            <!-- Card 2 -->
-            <div class="glass-card squircle industry-card" style="padding: 2.5rem 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; text-align: center; transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); cursor: default; height: 180px;">
-                <div class="industry-icon" style="color: var(--accent-color);">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+
+            <!-- Right Side: Grid of 4 Cards -->
+            <div class="industries-right" style="flex: 1.2; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; width: 100%;">
+                <!-- Card 1 -->
+                <div class="glass-card squircle industry-card" style="padding: 2.5rem 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; text-align: center; transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); cursor: default; height: 180px;">
+                    <div class="industry-icon" style="color: var(--accent-color);">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                    </div>
+                    <h3 style="font-size: 1.2rem; font-weight: 700; margin: 0; color: var(--text-color);">Corporate & B2B Brands</h3>
                 </div>
-                <h3 style="font-size: 1.2rem; font-weight: 700; margin: 0; color: var(--text-color);">Consumer Brands (D2C & FMCG)</h3>
-            </div>
-            <!-- Card 3 -->
-            <div class="glass-card squircle industry-card" style="padding: 2.5rem 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; text-align: center; transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); cursor: default; height: 180px;">
-                <div class="industry-icon" style="color: var(--accent-color);">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+                <!-- Card 2 -->
+                <div class="glass-card squircle industry-card" style="padding: 2.5rem 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; text-align: center; transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); cursor: default; height: 180px;">
+                    <div class="industry-icon" style="color: var(--accent-color);">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                    </div>
+                    <h3 style="font-size: 1.2rem; font-weight: 700; margin: 0; color: var(--text-color);">Consumer Brands (D2C & FMCG)</h3>
                 </div>
-                <h3 style="font-size: 1.2rem; font-weight: 700; margin: 0; color: var(--text-color);">Modern Tech & SaaS Companies</h3>
-            </div>
-            <!-- Card 4 -->
-            <div class="glass-card squircle industry-card" style="padding: 2.5rem 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; text-align: center; transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); cursor: default; height: 180px;">
-                <div class="industry-icon" style="color: var(--accent-color);">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <!-- Card 3 -->
+                <div class="glass-card squircle industry-card" style="padding: 2.5rem 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; text-align: center; transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); cursor: default; height: 180px;">
+                    <div class="industry-icon" style="color: var(--accent-color);">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+                    </div>
+                    <h3 style="font-size: 1.2rem; font-weight: 700; margin: 0; color: var(--text-color);">Modern Tech & SaaS Companies</h3>
                 </div>
-                <h3 style="font-size: 1.2rem; font-weight: 700; margin: 0; color: var(--text-color);">Hyper-Local & Enterprise Services</h3>
+                <!-- Card 4 -->
+                <div class="glass-card squircle industry-card" style="padding: 2.5rem 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; text-align: center; transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); cursor: default; height: 180px;">
+                    <div class="industry-icon" style="color: var(--accent-color);">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <h3 style="font-size: 1.2rem; font-weight: 700; margin: 0; color: var(--text-color);">Hyper-Local & Enterprise Services</h3>
+                </div>
             </div>
         </div>
     </section>

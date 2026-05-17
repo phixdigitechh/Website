@@ -1461,3 +1461,34 @@ h2 {
         text-shadow: 0 0 12px rgba(212, 175, 55, 0.9), 0 0 25px rgba(212, 175, 55, 0.6);
     }
 }
+
+/* ==========================================================================
+   3D Ecosystem Split Layout Styles
+   ========================================================================== */
+.industries-split {
+    display: flex;
+    gap: 4rem;
+    width: 100%;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+@media (max-width: 1024px) {
+    .industries-split {
+        flex-direction: column;
+        gap: 3rem;
+    }
+    .ecosystem-3d-container {
+        min-height: 300px !important;
+    }
+}
+
+@keyframes rotate-globe {
+    0% { transform: rotateX(20deg) rotateY(0deg) rotateZ(0deg); }
+    100% { transform: rotateX(20deg) rotateY(360deg) rotateZ(360deg); }
+}
+
+@keyframes pulse-slow {
+    0% { transform: scale(0.95); opacity: 0.6; }
+    100% { transform: scale(1.05); opacity: 1; }
+}
