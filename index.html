@@ -531,12 +531,42 @@ if(sessionStorage.getItem("auth") !== "true") {
                     
                     <!-- Form Step -->
                     <div id="booking-step-form" style="display: flex; flex-direction: column; gap: 1rem;">
-                        <span style="font-size: 0.8rem; font-weight: 800; letter-spacing: 0.1em; color: var(--accent-color); text-transform: uppercase;">1. Enter Your Details</span>
+                        <span style="font-size: 0.8rem; font-weight: 800; letter-spacing: 0.1em; color: var(--accent-color); text-transform: uppercase;">1. Enter Your Details & Requirements</span>
                         <div class="form-component glass-card squircle-small" style="margin-bottom: 0;">
                             <input type="text" id="booking-name" placeholder="Full Name *" class="form-input" required style="padding: 1rem 1.2rem;">
                         </div>
                         <div class="form-component glass-card squircle-small" style="margin-bottom: 0;">
                             <input type="email" id="booking-email" placeholder="Business Email *" class="form-input" required style="padding: 1rem 1.2rem;">
+                        </div>
+                        
+                        <div style="margin-top: 0.5rem; padding: 0 0.5rem;">
+                            <span style="font-size: 0.75rem; font-weight: 600; color: var(--text-color); opacity: 0.8; margin-bottom: 0.8rem; display: block; text-transform: uppercase; letter-spacing: 0.05em;">Services Required:</span>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem;">
+                                <label style="display: flex; align-items: center; gap: 0.6rem; font-size: 0.85rem; cursor: pointer; color: var(--text-color); opacity: 0.9; transition: opacity 0.3s;" class="hover:opacity-100">
+                                    <input type="checkbox" name="services" value="Web Design & Dev" style="accent-color: var(--accent-color); width: 16px; height: 16px; cursor: pointer;">
+                                    Web Design & Dev
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 0.6rem; font-size: 0.85rem; cursor: pointer; color: var(--text-color); opacity: 0.9; transition: opacity 0.3s;" class="hover:opacity-100">
+                                    <input type="checkbox" name="services" value="E-Commerce" style="accent-color: var(--accent-color); width: 16px; height: 16px; cursor: pointer;">
+                                    E-Commerce
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 0.6rem; font-size: 0.85rem; cursor: pointer; color: var(--text-color); opacity: 0.9; transition: opacity 0.3s;" class="hover:opacity-100">
+                                    <input type="checkbox" name="services" value="Performance Marketing" style="accent-color: var(--accent-color); width: 16px; height: 16px; cursor: pointer;">
+                                    Performance Marketing
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 0.6rem; font-size: 0.85rem; cursor: pointer; color: var(--text-color); opacity: 0.9; transition: opacity 0.3s;" class="hover:opacity-100">
+                                    <input type="checkbox" name="services" value="Technical SEO" style="accent-color: var(--accent-color); width: 16px; height: 16px; cursor: pointer;">
+                                    Technical SEO
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 0.6rem; font-size: 0.85rem; cursor: pointer; color: var(--text-color); opacity: 0.9; transition: opacity 0.3s;" class="hover:opacity-100">
+                                    <input type="checkbox" name="services" value="Social & Content" style="accent-color: var(--accent-color); width: 16px; height: 16px; cursor: pointer;">
+                                    Social & Content
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 0.6rem; font-size: 0.85rem; cursor: pointer; color: var(--text-color); opacity: 0.9; transition: opacity 0.3s;" class="hover:opacity-100">
+                                    <input type="checkbox" name="services" value="Marketplace Growth" style="accent-color: var(--accent-color); width: 16px; height: 16px; cursor: pointer;">
+                                    Marketplace Growth
+                                </label>
+                            </div>
                         </div>
                     </div>
 
