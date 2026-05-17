@@ -2,64 +2,64 @@
   {
     "id": "1",
     "btnText": "Web Design & Dev",
-    "title": "System 1: Tech that Defies <span class=\"text-gold\">Constraints</span>",
-    "description": "<strong>Headline:</strong> Custom Websites & Full-Stack Development<br><br><strong>The Transformation:</strong> We replace generic, slow templates with high-performance, responsive architectures featuring custom layouts and interactive UI.",
+    "title": "System 1: Tech That Defies <span class=\"text-gold\">Constraints</span>",
+    "description": "<strong>What We Do:</strong> We architect high-performance, responsive custom websites with next-level UI/UX and bespoke section layouts tailored to your exact operational needs.",
     "points": [
-      "<strong>Action Plan:</strong> Deploying bespoke frontends, engineering scalable full-stack applications, writing pristine source code, and executing seamless CRM/API data streams."
+      "<strong>Our Execution:</strong> Building bespoke frontends, engineering scalable corporate web applications, writing clean source code, and deploying seamless third-party CRM and API data streams."
     ]
   },
   {
     "id": "2",
-    "btnText": "Premium E-Commerce",
+    "btnText": "E-Commerce Eng",
     "title": "System 2: Your Digital <span class=\"text-gold\">Flagship Store</span>",
-    "description": "<strong>Headline:</strong> Premium E-Commerce Solutions<br><br><strong>The Transformation:</strong> We transition basic product pages into high-converting storefronts that pair luxury visual storytelling with flawless transaction checkouts.",
+    "description": "<strong>What We Do:</strong> We engineer conversion-focused storefronts that combine beautiful luxury visual storytelling with flawless transaction checkouts.",
     "points": [
-      "<strong>Action Plan:</strong> End-to-end multi-platform store builds, custom conversion-friendly architecture, advanced SKU management, and localized shipping/payment gateway integrations."
+      "<strong>Our Execution:</strong> Deploying end-to-end storefront setups, configuring custom schemas, managing deep SKU structures, and implementing secure, localized payment and logistics flows."
     ]
   },
   {
     "id": "3",
-    "btnText": "Technical SEO",
-    "title": "System 3: Discoverability <span class=\"text-gold\">Engineering</span>",
-    "description": "<strong>Headline:</strong> Technical SEO & Organic Optimization<br><br><strong>The Transformation:</strong> We take your products out of hiding and position your brand at the absolute source of high-intent search traffic.",
+    "btnText": "Performance Marketing",
+    "title": "System 3: Precision Scaling. <span class=\"text-gold\">Transparent Attribution</span>",
+    "description": "<strong>What We Do:</strong> We deploy aggressive, ROI-centric ad engines across major global networks designed to capture market demand and scale your revenue.",
     "points": [
-      "<strong>Action Plan:</strong> In-depth keyword mapping, metadata refinement, deep structural optimization, and aggressive Core Web Vitals speed engineering."
+      "<strong>Our Execution:</strong> Managing cross-channel Meta & Google ad operations, building rigid pixel tracking architecture, implementing server-side attribution, and executing continuous asset A/B testing."
     ]
   },
   {
     "id": "4",
-    "btnText": "Social & Content",
-    "title": "System 4: Trend-Driven <span class=\"text-gold\">Digital Ecosystems</span>",
-    "description": "<strong>Headline:</strong> Social Media & Content Marketing<br><br><strong>The Transformation:</strong> Turn passive scrolling into active brand community through high-velocity, native visual narratives that command attention.",
+    "btnText": "Technical SEO",
+    "title": "System 4: Discoverability Engineering. <span class=\"text-gold\">Infinite Traffic</span>",
+    "description": "<strong>What We Do:</strong> We position your brand at the absolute source of consumer search intent to build long-term, compounding organic traffic and authority.",
     "points": [
-      "<strong>Action Plan:</strong> High-end short-form video scripting/editing, highly aesthetic carousels, magnetic copywriting, and 24/7 interactive community management."
+      "<strong>Our Execution:</strong> Mapping high-intent keywords, refining page metadata, building advanced internal linking structures, and optimizing backend technical architecture for top speed."
     ]
   },
   {
     "id": "5",
-    "btnText": "Performance Ads",
-    "title": "System 5: High-Velocity <span class=\"text-gold\">Acquisition Funnels</span>",
-    "description": "<strong>Headline:</strong> Performance Marketing & Traffic Triggers<br><br><strong>The Transformation:</strong> Stop burning budgets on vanity metrics. We deploy aggressive, ROI-centric ad engines designed to capture high-lifetime-value buyers.",
+    "btnText": "Social & Content",
+    "title": "System 5: Native Content. <span class=\"text-gold\">Highly Engaged Communities</span>",
+    "description": "<strong>What We Do:</strong> We turn passive scrolling into active brand advocacy through high-velocity, native visual narratives that command attention.",
     "points": [
-      "<strong>Action Plan:</strong> Cross-channel Meta & Google ad operations, rigid pixel tracking architecture, server-side attribution, and continuous optimization."
+      "<strong>Our Execution:</strong> Scripting and editing high-end short-form videos (Reels), designing aesthetic carousels, writing compelling copy, and actively managing daily community interactions."
     ]
   },
   {
     "id": "6",
     "btnText": "Marketplace Growth",
-    "title": "System 6: Omnichannel <span class=\"text-gold\">Dominance</span>",
-    "description": "<strong>Headline:</strong> Global Marketplace Account Growth<br><br><strong>The Transformation:</strong> Scale your volume effortlessly across major merchant networks by fully optimizing every single layer of your multi-channel sales loop.",
+    "title": "System 6: Multi-Channel Network <span class=\"text-gold\">Dominance</span>",
+    "description": "<strong>What We Do:</strong> We scale your brand's presence across major consumer merchant networks, optimizing every single layer of your external sales loop.",
     "points": [
-      "<strong>Action Plan:</strong> Complete merchant account onboarding, high-conversion A+ layout production, internal search marketing, and hyper-targeted marketplace ad strategies."
+      "<strong>Our Execution:</strong> Handling complete merchant account setup, running high-ROI marketplace search ads, building rich media storefront layout designs, and structuring inventory strategies."
     ]
   },
   {
     "id": "7",
     "btnText": "Q-Commerce Strategy",
-    "title": "System 7: Lightning-Fast <span class=\"text-gold\">Local Volume</span>",
-    "description": "<strong>Headline:</strong> Quick Commerce (Q-Commerce) Strategy<br><br><strong>The Transformation:</strong> Capture instant impulse buying power by positioning your physical goods at the absolute top of the virtual 10-minute delivery shelf.",
+    "title": "System 7: Hyper-Local Volume. <span class=\"text-gold\">10-Minute Visibility</span>",
+    "description": "<strong>What We Do:</strong> We position your products at the absolute top of virtual instant-delivery shelves to instantly capture mobile impulse buying power.",
     "points": [
-      "<strong>Action Plan:</strong> Onboarding product lines to instant-delivery systems, designing high-contrast mobile-optimized listing graphics, and running localized in-app promotional ads."
+      "<strong>Our Execution:</strong> Onboarding product lines to rapid-delivery supply networks, crafting high-contrast mobile-optimized listing visuals, and launching targeted, hyper-local in-app search ads."
     ]
   }
 ]

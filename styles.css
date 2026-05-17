@@ -1436,3 +1436,28 @@ h2 {
                 0 0 40px rgba(212, 175, 55, 0.08) !important;
     border-color: var(--accent-color) !important;
 }
+
+/* ==========================================================================
+   Morphing Brand Logo Theme Interaction
+   ========================================================================== */
+[data-theme="light"] .phix-brand-logo .x-serif {
+    opacity: 0.15;
+    transition: opacity 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+[data-theme="dark"] .phix-brand-logo .x-serif {
+    opacity: 1;
+    color: var(--accent-color);
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.8), 0 0 20px rgba(212, 175, 55, 0.5);
+    animation: neon-pulse 2s infinite alternate;
+    transition: opacity 0.5s cubic-bezier(0.23, 1, 0.32, 1), text-shadow 0.5s;
+}
+
+@keyframes neon-pulse {
+    from {
+        text-shadow: 0 0 4px rgba(212, 175, 55, 0.6), 0 0 10px rgba(212, 175, 55, 0.4);
+    }
+    to {
+        text-shadow: 0 0 12px rgba(212, 175, 55, 0.9), 0 0 25px rgba(212, 175, 55, 0.6);
+    }
+}
