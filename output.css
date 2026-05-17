@@ -2628,10 +2628,9 @@ h2 {
   top: 0;
   /* Align directly to the top of the 450px container */
   border-radius: 2.5rem;
-  overflow: hidden;
-  background: rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(40px);
+  background: transparent;
+  border: none;
+  backdrop-filter: none;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -2799,8 +2798,8 @@ h2 {
     padding: 3rem;
     transform: none;
     box-shadow: none;
-    border: 1px solid rgba(255,255,255,0.1);
-    background: rgba(0,0,0,0.3);
+    border: none;
+    background: transparent;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
