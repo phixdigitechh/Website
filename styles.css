@@ -1619,4 +1619,9 @@ h2 {
     .f2 { font-size: 18rem; }
     .f3 { font-size: 7rem; }
     .f4 { font-size: 9rem; }
+
+    /* Padding for hero grid on 4K display */
+    .hero-grid-wrapper {
+        padding-top: 60px;
+    }
 }
