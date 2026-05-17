@@ -1,72 +1,65 @@
 [
   {
     "id": "1",
-    "btnText": "Digital Design",
-    "title": "Digital Design & <span class=\"text-gold\">Experience</span>",
-    "description": "The Business Impact: Design that commands premium value.",
+    "btnText": "Web Design & Dev",
+    "title": "Tech that defies <span class=\"text-gold\">constraints.</span>",
+    "description": "<strong>What We Do:</strong> We architect high-performance, responsive custom websites with next-level UI/UX and custom section layouts.",
     "points": [
-      "The Strategy: Crafting high-end, smooth digital experiences that align with your brand identity and keep customers hooked.",
-      "The Outcome: Increased time spent on site, reduced drop-offs, and an unforgettable visual impression that drives customer trust."
+      "<strong>Our Execution:</strong> Building bespoke frontends, engineering scalable full-stack web applications, writing clean source code, and deploying seamless API and CRM integrations."
     ]
   },
   {
     "id": "2",
-    "btnText": "Brand Storefronts",
-    "title": "Strategic Brand <span class=\"text-gold\">Storefronts</span>",
-    "description": "The Business Impact: Your digital flagship asset.",
+    "btnText": "Premium E-commerce",
+    "title": "Your digital <span class=\"text-gold\">flagship store.</span>",
+    "description": "<strong>What We Do:</strong> We engineer conversion-focused storefronts that combine beautiful visual storytelling with frictionless checkout experiences.",
     "points": [
-      "The Strategy: Building friction-free online stores that turn casual browsers into immediate, high-value purchasers.",
-      "The Outcome: Seamless checkouts, higher conversion rates, and automated features that get customers to buy product bundles effortlessly."
+      "<strong>Our Execution:</strong> Deploying end-to-end storefront setups, configuring custom JSON schemas, managing deep SKU structures, and implementing secure, localized payment flows."
     ]
   },
   {
     "id": "3",
-    "btnText": "Search Authority",
-    "title": "Organic Visibility & <span class=\"text-gold\">Search Authority</span>",
-    "description": "The Business Impact: Compounding, free customer acquisition.",
+    "btnText": "Technical SEO",
+    "title": "Discoverability engineering. <span class=\"text-gold\">Infinite visibility.</span>",
+    "description": "<strong>What We Do:</strong> We position your brand at the absolute source of search intent to build long-term, compounding organic traffic.",
     "points": [
-      "The Strategy: Aligning your entire catalog with the exact search habits of high-intent buyers looking for your products.",
-      "The Outcome: Consistent top-of-page rankings on search engines that bring steady traffic without increasing your ad spend."
+      "<strong>Our Execution:</strong> Mapping high-intent keywords, refining page metadata, building internal linking structures, and optimizing backend technical architecture for top speed."
     ]
   },
   {
     "id": "4",
-    "btnText": "Social & Community",
-    "title": "Social Media Narrative & <span class=\"text-gold\">Community</span>",
-    "description": "The Business Impact: Turning attention into brand equity.",
+    "btnText": "Digital & Social",
+    "title": "Native content. <span class=\"text-gold\">Highly engaged communities.</span>",
+    "description": "<strong>What We Do:</strong> We turn standard social feeds into vibrant digital ecosystems using trend-driven visual narratives that command attention.",
     "points": [
-      "The Strategy: Launching high-velocity, thumb-stopping short-form video and visual assets that embed your brand into culture.",
-      "The Outcome: An active, highly engaged community of loyal fans who organically share, comment, and market your products for you."
+      "<strong>Our Execution:</strong> Scripting and editing high-velocity short-form videos, designing aesthetic carousels, writing compelling captions, and actively managing daily community interactions."
     ]
   },
   {
     "id": "5",
     "btnText": "Performance Marketing",
-    "title": "Performance Marketing & <span class=\"text-gold\">Traffic Funnels</span>",
-    "description": "The Business Impact: Predictable, high-ROI scaling.",
+    "title": "Precision scaling. <span class=\"text-gold\">Transparent attribution.</span>",
+    "description": "<strong>What We Do:</strong> We build aggressive, ROI-focused digital ad funnels designed to acquire high-lifetime-value customers.",
     "points": [
-      "The Strategy: Engineering aggressive advertising campaigns that locate your ideal customer and bring them back until they buy.",
-      "The Outcome: Data-backed revenue growth, efficient customer acquisition costs, and maximized customer lifetime value."
+      "<strong>Our Execution:</strong> Designing and running ad campaigns, setting up tracking pixels, mapping server-side conversion data, and executing continuous asset A/B testing."
     ]
   },
   {
     "id": "6",
-    "btnText": "Marketplace Domination",
-    "title": "Multi-Channel Marketplace <span class=\"text-gold\">Domination</span>",
-    "description": "The Business Impact: Mass-market volume and scale.",
+    "btnText": "Marketplace Growth",
+    "title": "Dominate global <span class=\"text-gold\">marketplaces.</span>",
+    "description": "<strong>What We Do:</strong> We scale your brand's presence across multi-channel buyer networks, optimizing every single layer of the digital sales funnel.",
     "points": [
-      "The Strategy: Complete management of your brand across major retail networks, placing you directly in front of active buyers.",
-      "The Outcome: Top-tier visibility on destination platforms, optimized listings that win the buy-box, and massive multi-channel revenue."
+      "<strong>Our Execution:</strong> Handling complete merchant account setup, running high-ROI search advertising, building rich A+ content layout designs, and structuring inventory strategies."
     ]
   },
   {
     "id": "7",
-    "btnText": "Q-Commerce Strategy",
-    "title": "Immediate Delivery Strategy <span class=\"text-gold\">(Q-Commerce)</span>",
-    "description": "The Business Impact: Capturing the \"instant-gratification\" market.",
+    "btnText": "Quick Commerce",
+    "title": "Hyper-local volume. <span class=\"text-gold\">10-minute visibility.</span>",
+    "description": "<strong>What We Do:</strong> We position your products at the top of virtual instant-delivery shelves to instantly capture mobile impulse buying power.",
     "points": [
-      "The Strategy: Positioning your inventory on 10-minute delivery apps to win the modern customer’s impulse purchase.",
-      "The Outcome: Unlocking hyper-local volume, dominating sponsored high-speed search terms, and driving rapid, everyday sales."
+      "<strong>Our Execution:</strong> Onboarding product lines to rapid-delivery supply networks, crafting high-contrast mobile-optimized listing visuals, and launching targeted, hyper-local in-app search ads."
     ]
   }
 ]
