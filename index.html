@@ -285,49 +285,13 @@ if(sessionStorage.getItem("auth") !== "true") {
     <section id="industries" class="industries-section gap-bottom">
         <h2 class="staggered-heading section-title" style="margin-bottom: 3rem;"><span>Industries</span> <span>We</span> <span class="text-gold">Accelerate</span></h2>
         
-        <div class="industries-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; width: 100%;">
-            <!-- Card 1 -->
-            <div class="glass-card squircle industry-card" style="padding: 2.5rem 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; text-align: center; transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); cursor: default; height: 180px;">
-                <div class="industry-icon" style="color: var(--accent-color);">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-                </div>
-                <h3 style="font-size: 1.2rem; font-weight: 700; margin: 0; color: var(--text-color);">Corporate & B2B Brands</h3>
-            </div>
-            <!-- Card 2 -->
-            <div class="glass-card squircle industry-card" style="padding: 2.5rem 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; text-align: center; transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); cursor: default; height: 180px;">
-                <div class="industry-icon" style="color: var(--accent-color);">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-                </div>
-                <h3 style="font-size: 1.2rem; font-weight: 700; margin: 0; color: var(--text-color);">Consumer Brands (D2C & FMCG)</h3>
-            </div>
-            <!-- Card 3 -->
-            <div class="glass-card squircle industry-card" style="padding: 2.5rem 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; text-align: center; transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); cursor: default; height: 180px;">
-                <div class="industry-icon" style="color: var(--accent-color);">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
-                </div>
-                <h3 style="font-size: 1.2rem; font-weight: 700; margin: 0; color: var(--text-color);">Modern Tech & SaaS Companies</h3>
-            </div>
-            <!-- Card 4 -->
-            <div class="glass-card squircle industry-card" style="padding: 2.5rem 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; text-align: center; transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); cursor: default; height: 180px;">
-                <div class="industry-icon" style="color: var(--accent-color);">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                </div>
-                <h3 style="font-size: 1.2rem; font-weight: 700; margin: 0; color: var(--text-color);">Hyper-Local & Enterprise Services</h3>
-            </div>
-        </div>
-    </section>
-
-    <!-- IV. The Ecosystem (Technological Horizon) -->
-    <section id="ecosystem" class="ecosystem-section gap-bottom">
-        <h2 class="staggered-heading section-title"><span>Our</span> <span>Digital</span> <span class="text-gold">Ecosystem</span></h2>
-        
-        <div class="ecosystem-split">
-            <!-- 3D Cloud (Left) -->
-            <div class="ecosystem-visual-col">
+        <div class="ecosystem-split" style="align-items: center;">
+            <!-- Left Side: Interactive 3D Ecosystem with Brand Logos -->
+            <div class="ecosystem-visual-col" style="flex: 1; display: flex; align-items: center; justify-content: center; min-height: 450px; position: relative;">
+                <!-- Glowing Aura -->
+                <div class="aura-glow" style="position: absolute; width: 100%; height: 100%; background: radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 70%); filter: blur(30px); animation: pulse-slow 4s infinite alternate; pointer-events: none;"></div>
+                
                 <div class="ecosystem-cloud-square glass-card squircle" style="position: relative;">
-                    <!-- Glowing Aura behind ecosystem -->
-                    <div class="aura-glow" style="position: absolute; width: 100%; height: 100%; background: radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 70%); filter: blur(30px); animation: pulse-slow 4s infinite alternate; pointer-events: none;"></div>
-                    
                     <canvas id="ecosystem-canvas" width="550" height="550">
                         <ul id="ecosystem-list" style="display: none;">
                             <!-- Design & Creative -->
@@ -422,26 +386,35 @@ if(sessionStorage.getItem("auth") !== "true") {
                 </div>
             </div>
 
-            <!-- Text Content (Right) -->
-            <div class="ecosystem-content-col">
-                <div class="ecosystem-text-box glass-card squircle staggered-text" style="padding: 2.5rem; text-align: left;">
-                    <h3 class="accent sub-heading" style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--accent-color);">Global Integration Mastery.</h3>
-                    <p style="font-size: 1.05rem; opacity: 0.85; line-height: 1.6; margin-bottom: 2rem;">We unite the world’s most powerful marketing, design, and analytical tools to create a seamless growth engine for your brand. From high-end design suites to massive marketplace distribution, we engineer the gravity that pulls customers in.</p>
-                    
-                    <ul class="styled-list" style="display: flex; flex-direction: column; gap: 1rem; padding-left: 0; list-style: none;">
-                        <li style="display: flex; align-items: flex-start; gap: 0.8rem; font-size: 1rem;">
-                            <span style="color: var(--accent-color); font-weight: bold;">✔</span>
-                            <span><strong>Ad-Tech Dominance:</strong> Google, Meta, and X platform scaling.</span>
-                        </li>
-                        <li style="display: flex; align-items: flex-start; gap: 0.8rem; font-size: 1rem;">
-                            <span style="color: var(--accent-color); font-weight: bold;">✔</span>
-                            <span><strong>Analytical Precision:</strong> Deep insights via Clarity and Analytics.</span>
-                        </li>
-                        <li style="display: flex; align-items: flex-start; gap: 0.8rem; font-size: 1rem;">
-                            <span style="color: var(--accent-color); font-weight: bold;">✔</span>
-                            <span><strong>Engineering Excellence:</strong> Clean code via Python, React, and native Shopify development.</span>
-                        </li>
-                    </ul>
+            <!-- Right Side: The 4 Industries We Accelerate -->
+            <div class="ecosystem-content-col" style="flex: 1.2; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; width: 100%;">
+                <!-- Card 1 -->
+                <div class="glass-card squircle industry-card" style="padding: 2.5rem 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; text-align: center; transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); cursor: default; height: 180px;">
+                    <div class="industry-icon" style="color: var(--accent-color);">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                    </div>
+                    <h3 style="font-size: 1.2rem; font-weight: 700; margin: 0; color: var(--text-color);">Corporate & B2B Brands</h3>
+                </div>
+                <!-- Card 2 -->
+                <div class="glass-card squircle industry-card" style="padding: 2.5rem 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; text-align: center; transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); cursor: default; height: 180px;">
+                    <div class="industry-icon" style="color: var(--accent-color);">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                    </div>
+                    <h3 style="font-size: 1.2rem; font-weight: 700; margin: 0; color: var(--text-color);">Consumer Brands (D2C & FMCG)</h3>
+                </div>
+                <!-- Card 3 -->
+                <div class="glass-card squircle industry-card" style="padding: 2.5rem 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; text-align: center; transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); cursor: default; height: 180px;">
+                    <div class="industry-icon" style="color: var(--accent-color);">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+                    </div>
+                    <h3 style="font-size: 1.2rem; font-weight: 700; margin: 0; color: var(--text-color);">Modern Tech & SaaS Companies</h3>
+                </div>
+                <!-- Card 4 -->
+                <div class="glass-card squircle industry-card" style="padding: 2.5rem 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; text-align: center; transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); cursor: default; height: 180px;">
+                    <div class="industry-icon" style="color: var(--accent-color);">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <h3 style="font-size: 1.2rem; font-weight: 700; margin: 0; color: var(--text-color);">Hyper-Local & Enterprise Services</h3>
                 </div>
             </div>
         </div>
