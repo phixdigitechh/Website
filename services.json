@@ -1,65 +1,72 @@
 [
   {
     "id": "1",
-    "btnText": "Web Design & Full-Stack",
-    "title": "Tech that defies <span class=\"text-gold\">constraints.</span>",
-    "description": "<strong>The Blueprint:</strong> Engineering high-performance custom websites with next-level UI/UX and seamless responsiveness.",
+    "btnText": "Digital Design",
+    "title": "Digital Design & <span class=\"text-gold\">Experience</span>",
+    "description": "The Business Impact: Design that commands premium value.",
     "points": [
-      "<strong>The Tech:</strong> Bespoke frontends, full-stack web applications, clean source code, and bulletproof API/CRM integrations."
+      "The Strategy: Crafting high-end, smooth digital experiences that align with your brand identity and keep customers hooked.",
+      "The Outcome: Increased time spent on site, reduced drop-offs, and an unforgettable visual impression that drives customer trust."
     ]
   },
   {
     "id": "2",
-    "btnText": "Premium E-commerce",
-    "title": "Your digital <span class=\"text-gold\">flagship store.</span>",
-    "description": "<strong>The Blueprint:</strong> Architecting conversion-focused storefronts that combine beautiful visual storytelling with frictionless checkouts.",
+    "btnText": "Brand Storefronts",
+    "title": "Strategic Brand <span class=\"text-gold\">Storefronts</span>",
+    "description": "The Business Impact: Your digital flagship asset.",
     "points": [
-      "<strong>The Tech:</strong> End-to-end setup on Shopify, WooCommerce, or Magento, custom JSON schemas, SKU management, and secure payment integrations."
+      "The Strategy: Building friction-free online stores that turn casual browsers into immediate, high-value purchasers.",
+      "The Outcome: Seamless checkouts, higher conversion rates, and automated features that get customers to buy product bundles effortlessly."
     ]
   },
   {
     "id": "3",
-    "btnText": "Technical SEO",
-    "title": "Discoverability engineering. <span class=\"text-gold\">Infinite visibility.</span>",
-    "description": "<strong>The Blueprint:</strong> Positioning your brand at the absolute source of search intent for compounding organic revenue.",
+    "btnText": "Search Authority",
+    "title": "Organic Visibility & <span class=\"text-gold\">Search Authority</span>",
+    "description": "The Business Impact: Compounding, free customer acquisition.",
     "points": [
-      "<strong>The Tech:</strong> High-intent keyword mapping, on-page optimization, metadata refinement, and Core Web Vitals speed tuning."
+      "The Strategy: Aligning your entire catalog with the exact search habits of high-intent buyers looking for your products.",
+      "The Outcome: Consistent top-of-page rankings on search engines that bring steady traffic without increasing your ad spend."
     ]
   },
   {
     "id": "4",
-    "btnText": "Social Media Marketing",
-    "title": "Native content. <span class=\"text-gold\">Highly engaged communities.</span>",
-    "description": "<strong>The Blueprint:</strong> Turning standard social feeds into vibrant digital ecosystems using trend-driven visual narratives.",
+    "btnText": "Social & Community",
+    "title": "Social Media Narrative & <span class=\"text-gold\">Community</span>",
+    "description": "The Business Impact: Turning attention into brand equity.",
     "points": [
-      "<strong>The Tech:</strong> High-velocity short-form video (Reels/TikToks) editing, aesthetic carousels, caption copywriting, and community management."
+      "The Strategy: Launching high-velocity, thumb-stopping short-form video and visual assets that embed your brand into culture.",
+      "The Outcome: An active, highly engaged community of loyal fans who organically share, comment, and market your products for you."
     ]
   },
   {
     "id": "5",
     "btnText": "Performance Marketing",
-    "title": "Precision scaling. <span class=\"text-gold\">Transparent attribution.</span>",
-    "description": "<strong>The Blueprint:</strong> Building aggressive, ROI-focused digital ad funnels designed to acquire high-lifetime-value customers.",
+    "title": "Performance Marketing & <span class=\"text-gold\">Traffic Funnels</span>",
+    "description": "The Business Impact: Predictable, high-ROI scaling.",
     "points": [
-      "<strong>The Tech:</strong> Advanced Meta and Google Ads management, pixel setup, server-side conversion tracking, and continuous A/B testing."
+      "The Strategy: Engineering aggressive advertising campaigns that locate your ideal customer and bring them back until they buy.",
+      "The Outcome: Data-backed revenue growth, efficient customer acquisition costs, and maximized customer lifetime value."
     ]
   },
   {
     "id": "6",
-    "btnText": "Marketplace Growth",
-    "title": "Dominate the global <span class=\"text-gold\">marketplaces.</span>",
-    "description": "<strong>The Blueprint:</strong> Scaling your brand where millions are already shopping by optimizing every layer of the multi-channel funnel.",
+    "btnText": "Marketplace Domination",
+    "title": "Multi-Channel Marketplace <span class=\"text-gold\">Domination</span>",
+    "description": "The Business Impact: Mass-market volume and scale.",
     "points": [
-      "<strong>The Tech:</strong> Full account management for Amazon, Flipkart, Nykaa, and Meesho, marketplace search ads, and premium A+ content storefronts."
+      "The Strategy: Complete management of your brand across major retail networks, placing you directly in front of active buyers.",
+      "The Outcome: Top-tier visibility on destination platforms, optimized listings that win the buy-box, and massive multi-channel revenue."
     ]
   },
   {
     "id": "7",
-    "btnText": "Quick Commerce",
-    "title": "Hyper-local volume. <span class=\"text-gold\">10-minute visibility.</span>",
-    "description": "<strong>The Blueprint:</strong> Positioning your products at the top of the virtual shelf to capture rapid instant-delivery buying power.",
+    "btnText": "Q-Commerce Strategy",
+    "title": "Immediate Delivery Strategy <span class=\"text-gold\">(Q-Commerce)</span>",
+    "description": "The Business Impact: Capturing the \"instant-gratification\" market.",
     "points": [
-      "<strong>The Tech:</strong> Seamless onboarding on Zepto, Blinkit, Swiggy Instamart, and BB Now, mobile-optimized SKU visuals, and hyper-local in-app search ads."
+      "The Strategy: Positioning your inventory on 10-minute delivery apps to win the modern customer’s impulse purchase.",
+      "The Outcome: Unlocking hyper-local volume, dominating sponsored high-speed search terms, and driving rapid, everyday sales."
     ]
   }
 ]
