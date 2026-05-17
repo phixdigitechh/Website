@@ -1127,9 +1127,9 @@ h2 {
     left: calc(50% - 400px); /* Geometric Horizontal Center */
     top: 0; /* Align directly to the top of the 450px container */
     border-radius: 2.5rem;
-    background: transparent;
-    border: none;
-    backdrop-filter: none;
+    background: rgba(15, 15, 15, 1);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(20px);
     display: flex;
     flex-direction: column;
     justify-content: center; /* Center align text vertically */
@@ -1256,7 +1256,7 @@ h2 {
     .carousel-selector-pillar { width: 100%; height: auto; padding: 2rem; flex-direction: row; flex-wrap: wrap; justify-content: center; border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
     .carousel-content-horizon { width: 100%; padding: 2rem; min-height: auto; }
     .content-card-stack { position: relative; width: 100%; height: 450px; display: flex; align-items: center; justify-content: center; }
-    .content-card { position: absolute; left: 0; top: 0; width: 100%; height: 450px; padding: 3rem; transform: none; box-shadow: none; border: none; background: transparent; border-radius: 20px; display: flex; flex-direction: column; justify-content: center; }
+    .content-card { position: absolute; left: 0; top: 0; width: 100%; height: 450px; padding: 3rem; transform: none; box-shadow: none; border: 1px solid rgba(255,255,255,0.12); background: rgba(15, 15, 15, 1); border-radius: 20px; display: flex; flex-direction: column; justify-content: center; }
     .content-card.hidden { pointer-events: none; opacity: 0; }
     .card-title { font-size: 2.5rem; }
     .feature-chip { width: auto; padding-right: 2rem; }
