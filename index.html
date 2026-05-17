@@ -286,32 +286,102 @@ if(sessionStorage.getItem("auth") !== "true") {
         <h2 class="staggered-heading section-title" style="margin-bottom: 3rem;"><span>Industries</span> <span>We</span> <span class="text-gold">Accelerate</span></h2>
         
         <div class="industries-split">
-            <!-- Left Side: Interactive 3D Ecosystem -->
-            <div class="ecosystem-3d-container" style="flex: 1; display: flex; align-items: center; justify-content: center; min-height: 400px; position: relative;">
+            <!-- Left Side: Interactive 3D Ecosystem with Brand Logos -->
+            <div class="ecosystem-3d-container" style="flex: 1; display: flex; align-items: center; justify-content: center; min-height: 450px; position: relative;">
                 <!-- Glowing Aura -->
-                <div class="aura-glow" style="position: absolute; width: 350px; height: 350px; background: radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 70%); filter: blur(40px); animation: pulse-slow 4s infinite alternate;"></div>
+                <div class="aura-glow" style="position: absolute; width: 400px; height: 400px; background: radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 70%); filter: blur(40px); animation: pulse-slow 4s infinite alternate;"></div>
                 
-                <div class="ecosystem-3d-scene" style="width: 300px; height: 300px; perspective: 1000px; display: flex; align-items: center; justify-content: center;">
-                    <div class="ecosystem-3d-globe" style="width: 220px; height: 220px; position: relative; transform-style: preserve-3d; animation: rotate-globe 20s linear infinite;">
-                        <!-- Core Sphere -->
-                        <div class="globe-core" style="position: absolute; top: 60px; left: 60px; width: 100px; height: 100px; background: radial-gradient(circle at 30% 30%, var(--accent-color), rgba(212,175,55,0.2) 60%, rgba(212,175,55,0) 100%); border-radius: 50%; box-shadow: 0 0 50px rgba(212,175,55,0.5); transform: translateZ(0);"></div>
-                        
-                        <!-- Ring 1 (X Axis) -->
-                        <div class="globe-ring" style="position: absolute; top: 0; left: 0; width: 220px; height: 220px; border: 2px dashed rgba(212,175,55,0.4); border-radius: 50%; transform: rotateX(70deg) rotateY(0deg); display: flex; align-items: center; justify-content: center; transform-style: preserve-3d;">
-                            <div class="orbital-node" style="position: absolute; width: 12px; height: 12px; background: var(--accent-color); border-radius: 50%; box-shadow: 0 0 15px var(--accent-color); left: 0; top: 50%; transform: translateY(-50%);"></div>
-                        </div>
-                        
-                        <!-- Ring 2 (Y Axis) -->
-                        <div class="globe-ring" style="position: absolute; top: 0; left: 0; width: 220px; height: 220px; border: 2px dashed rgba(255,255,255,0.25); border-radius: 50%; transform: rotateX(-30deg) rotateY(60deg); display: flex; align-items: center; justify-content: center; transform-style: preserve-3d;">
-                            <div class="orbital-node" style="position: absolute; width: 14px; height: 14px; background: #ffffff; border-radius: 50%; box-shadow: 0 0 20px #ffffff; right: 0; top: 50%; transform: translateY(-50%);"></div>
-                        </div>
+                <canvas id="ecosystem-canvas" width="450" height="450" style="max-width: 100%; height: auto; outline: none; border: none; cursor: grab;">
+                    <ul id="ecosystem-list" style="display: none;">
+                        <!-- Design & Creative -->
+                        <li><a href="#photoshop"><img src="ps.svg" width="30" height="30"></a></li>
+                        <li><a href="#illustrator"><img src="ai.svg" width="30" height="30"></a></li>
+                        <li><a href="#premiere"><img src="pr.svg" width="30" height="30"></a></li>
+                        <li><a href="#aftereffects"><img src="https://cdn.simpleicons.org/adobeaftereffects" width="30" height="30"></a></li>
+                        <li><a href="#lightroom"><img src="https://cdn.simpleicons.org/adobelightroom" width="30" height="30"></a></li>
+                        <li><a href="#figma"><img src="https://cdn.simpleicons.org/figma" width="30" height="30"></a></li>
+                        <li><a href="#canva"><img src="https://cdn.simpleicons.org/canva" width="30" height="30"></a></li>
+                        <li><a href="#framer"><img src="https://cdn.simpleicons.org/framer" width="30" height="30"></a></li>
+                        <li><a href="#sketch"><img src="https://cdn.simpleicons.org/sketch" width="30" height="30"></a></li>
 
-                        <!-- Ring 3 (Z Axis) -->
-                        <div class="globe-ring" style="position: absolute; top: 0; left: 0; width: 220px; height: 220px; border: 1.5px solid rgba(212,175,55,0.15); border-radius: 50%; transform: rotateX(15deg) rotateY(-45deg); display: flex; align-items: center; justify-content: center; transform-style: preserve-3d;">
-                            <div class="orbital-node" style="position: absolute; width: 10px; height: 10px; background: var(--accent-color); border-radius: 50%; box-shadow: 0 0 12px var(--accent-color); top: 0; left: 50%; transform: translateX(-50%);"></div>
-                        </div>
-                    </div>
-                </div>
+                        <!-- E-commerce Mastery -->
+                        <li><a href="#shopify"><img src="https://cdn.simpleicons.org/shopify" width="30" height="30"></a></li>
+                        <li><a href="#amazon"><img src="https://cdn.simpleicons.org/amazon" width="30" height="30"></a></li>
+                        <li><a href="#wordpress"><img src="https://cdn.simpleicons.org/wordpress" width="30" height="30"></a></li>
+                        <li><a href="#magento"><img src="https://cdn.simpleicons.org/magento" width="30" height="30"></a></li>
+                        <li><a href="#stripe"><img src="https://cdn.simpleicons.org/stripe" width="30" height="30"></a></li>
+                        <li><a href="#paypal"><img src="https://cdn.simpleicons.org/paypal" width="30" height="30"></a></li>
+
+                        <!-- Growth & Social Authority -->
+                        <li><a href="#meta"><img src="https://cdn.simpleicons.org/meta" width="30" height="30"></a></li>
+                        <li><a href="#linkedin"><img src="https://cdn.simpleicons.org/linkedin" width="30" height="30"></a></li>
+                        <li><a href="#whatsapp"><img src="https://cdn.simpleicons.org/whatsapp" width="30" height="30"></a></li>
+                        <li><a href="#reddit"><img src="https://cdn.simpleicons.org/reddit" width="30" height="30"></a></li>
+                        <li><a href="#snapchat"><img src="https://cdn.simpleicons.org/snapchat" width="30" height="30"></a></li>
+
+                        <!-- Tech Titans -->
+                        <li><a href="#apple"><img src="https://cdn.simpleicons.org/apple/white" width="30" height="30"></a></li>
+                        <li><a href="#microsoft"><img src="https://cdn.simpleicons.org/microsoft" width="30" height="30"></a></li>
+                        <li><a href="#google"><img src="https://cdn.simpleicons.org/google" width="30" height="30"></a></li>
+                        <li><a href="#nvidia"><img src="https://cdn.simpleicons.org/nvidia" width="30" height="30"></a></li>
+
+                        <!-- AI & Automation -->
+                        <li><a href="#chatgpt"><img src="https://www.google.com/s2/favicons?domain=chatgpt.com&sz=128" width="30" height="30"></a></li>
+                        <li><a href="#gemini"><img src="https://www.google.com/s2/favicons?domain=gemini.google.com&sz=128" width="30" height="30"></a></li>
+                        <li><a href="#claude"><img src="https://www.google.com/s2/favicons?domain=claude.ai&sz=128" width="30" height="30"></a></li>
+                        <li><a href="#grok"><img src="https://www.google.com/s2/favicons?domain=x.ai&sz=128" width="30" height="30"></a></li>
+                        <li><a href="#perplexity"><img src="https://www.google.com/s2/favicons?domain=perplexity.ai&sz=128" width="30" height="30"></a></li>
+                        <li><a href="#zapier"><img src="https://cdn.simpleicons.org/zapier" width="30" height="30"></a></li>
+                        <li><a href="#make"><img src="https://cdn.simpleicons.org/make" width="30" height="30"></a></li>
+                        <li><a href="#huggingface"><img src="https://www.google.com/s2/favicons?domain=huggingface.co&sz=128" width="30" height="30"></a></li>
+                        <li><a href="#midjourney"><img src="https://www.google.com/s2/favicons?domain=midjourney.com&sz=128" width="30" height="30"></a></li>
+                        <li><a href="#jasper"><img src="https://www.google.com/s2/favicons?domain=jasper.ai&sz=128" width="30" height="30"></a></li>
+
+                        <!-- App Stores -->
+                        <li><a href="#playstore"><img src="https://www.google.com/s2/favicons?domain=play.google.com&sz=128" width="30" height="30"></a></li>
+                        <li><a href="#appstore"><img src="https://www.google.com/s2/favicons?domain=apps.apple.com&sz=128" width="30" height="30"></a></li>
+
+                        <!-- Analytical Precision -->
+                        <li><a href="#googleanalytics"><img src="https://www.google.com/s2/favicons?domain=analytics.google.com&sz=128" width="30" height="30"></a></li>
+                        <li><a href="#google-gsc"><img src="https://www.google.com/s2/favicons?domain=search.google.com&sz=128" width="30" height="30"></a></li>
+                        <li><a href="#google-ads"><img src="https://www.google.com/s2/favicons?domain=ads.google.com&sz=128" width="30" height="30"></a></li>
+                        <li><a href="#google-tag-manager"><img src="https://www.google.com/s2/favicons?domain=tagmanager.google.com&sz=128" width="30" height="30"></a></li>
+                        <li><a href="#youtube"><img src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" width="30" height="30"></a></li>
+                        <li><a href="#clarity"><img src="https://www.google.com/s2/favicons?domain=clarity.microsoft.com&sz=128" width="30" height="30"></a></li>
+
+                        <!-- Payments & FinTech -->
+                        <li><a href="#razorpay"><img src="https://cdn.simpleicons.org/razorpay" width="30" height="30"></a></li>
+                        <li><a href="#cashfree"><img src="https://www.google.com/s2/favicons?domain=cashfree.com&sz=128" width="30" height="30"></a></li>
+
+                        <!-- Infrastructure & Edge -->
+                        <li><a href="#aws"><img src="https://cdn.simpleicons.org/amazonaws" width="30" height="30"></a></li>
+                        <li><a href="#vercel-pro"><img src="https://cdn.simpleicons.org/vercel/white" width="30" height="30"></a></li>
+                        <li><a href="#cloudflare"><img src="https://cdn.simpleicons.org/cloudflare" width="30" height="30"></a></li>
+
+                        <!-- Dev Languages -->
+                        <li><a href="#react"><img src="https://cdn.simpleicons.org/react" width="30" height="30"></a></li>
+                        <li><a href="#typescript"><img src="https://cdn.simpleicons.org/typescript" width="30" height="30"></a></li>
+                        <li><a href="#javascript"><img src="https://cdn.simpleicons.org/javascript" width="30" height="30"></a></li>
+                        <li><a href="#github-pro"><img src="https://cdn.simpleicons.org/github/white" width="30" height="30"></a></li>
+
+                        <!-- Enterprise & CRM -->
+                        <li><a href="#salesforce"><img src="https://cdn.simpleicons.org/salesforce" width="30" height="30"></a></li>
+                        <li><a href="#hubspot"><img src="https://cdn.simpleicons.org/hubspot" width="30" height="30"></a></li>
+                        <li><a href="#notion"><img src="https://cdn.simpleicons.org/notion/white" width="30" height="30"></a></li>
+                        <li><a href="#slack"><img src="https://cdn.simpleicons.org/slack" width="30" height="30"></a></li>
+                        <li><a href="#zoho"><img src="https://www.google.com/s2/favicons?domain=zoho.com&sz=128" width="30" height="30"></a></li>
+
+                        <!-- Lead Gen -->
+                        <li><a href="#mailchimp"><img src="https://www.google.com/s2/favicons?domain=mailchimp.com&sz=128" width="30" height="30"></a></li>
+                        <li><a href="#typeform"><img src="https://www.google.com/s2/favicons?domain=typeform.com&sz=128" width="30" height="30"></a></li>
+
+                        <!-- Quick Commerce & Delivery -->
+                        <li><a href="#swiggy"><img src="https://www.google.com/s2/favicons?domain=swiggy.com&sz=128" width="30" height="30"></a></li>
+                        <li><a href="#zomato"><img src="https://www.google.com/s2/favicons?domain=zomato.com&sz=128" width="30" height="30"></a></li>
+                        <li><a href="#blinkit"><img src="https://www.google.com/s2/favicons?domain=blinkit.com&sz=128" width="30" height="30"></a></li>
+                        <li><a href="#zepto"><img src="https://www.google.com/s2/favicons?domain=zeptonow.com&sz=128" width="30" height="30"></a></li>
+                    </ul>
+                </canvas>
             </div>
 
             <!-- Right Side: Grid of 4 Cards -->
