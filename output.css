@@ -3318,6 +3318,234 @@ h2 {
   }
 }
 
+/* ==========================================================================
+   Large Screens & 4K Responsive — Anti-Stretch Protocol
+   ========================================================================== */
+
+/* Large Desktops (1600px – 2559px) */
+
+@media (min-width: 1600px) {
+  /* Cap section content width & boost padding */
+
+  section {
+    --section-pad-x: 160px;
+    --section-gap: 120px;
+  }
+
+  /* Nav — widen comfortably, limit max stretch */
+
+  .phix-header-nav {
+    max-width: 1800px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 90% !important;
+  }
+
+  /* Hero — constrain and scale up type */
+
+  .hero-content h1 {
+    font-size: 5.5rem;
+  }
+
+  .hero-content p  {
+    font-size: 1.4rem;
+    max-width: 70%;
+  }
+
+  /* Section titles */
+
+  .section-title {
+    font-size: 4rem;
+  }
+
+  /* Cards grid — show 3 columns max */
+
+  .cards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  }
+
+  /* Ecosystem globe */
+
+  .ecosystem-cloud-square {
+    width: 65vh;
+    height: 65vh;
+    max-width: 700px;
+    max-height: 700px;
+  }
+
+  /* Blueprint steps — keep 4 columns */
+
+  .framework-steps {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* Footer — prevent ultra-wide bleed */
+
+  .premium-footer {
+    max-width: 1700px;
+  }
+}
+
+/* 4K Ultra-Wide (2560px+) */
+
+@media (min-width: 2560px) {
+  /* Generous padding, still controlled */
+
+  section {
+    --section-pad-x: 200px;
+    --section-gap: 150px;
+    max-width: 2400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Nav — fixed max width so it never spans 4K screen edge to edge */
+
+  .phix-header-nav {
+    max-width: 2200px !important;
+    height: 90px !important;
+    padding: 0 60px !important;
+  }
+
+  /* Scale up brand identity */
+
+  .phix-brand-logo {
+    font-size: 2.8rem;
+  }
+
+  .phix-brand-text {
+    font-size: 0.9rem;
+    letter-spacing: 0.5em;
+  }
+
+  .phix-nav-links a {
+    font-size: 18px;
+  }
+
+  /* Hero — large type for 4K impact */
+
+  .hero-content h1 {
+    font-size: 7rem;
+    line-height: 1.05;
+  }
+
+  .hero-content p  {
+    font-size: 1.6rem;
+    max-width: 65%;
+  }
+
+  /* Section headings */
+
+  .section-title {
+    font-size: 5rem;
+  }
+
+  h2 {
+    font-size: 4rem;
+  }
+
+  /* Hero visual area */
+
+  .hero-visual {
+    height: 700px;
+    min-height: 700px;
+  }
+
+  /* Ecosystem globe — bigger sphere for 4K */
+
+  .ecosystem-cloud-square {
+    width: 70vh;
+    height: 70vh;
+    max-width: 850px;
+    max-height: 850px;
+  }
+
+  /* Industry / story cards — larger tiles */
+
+  .industry-card {
+    height: 220px !important;
+    padding: 3rem !important;
+  }
+
+  .industry-card h3 {
+    font-size: 1.5rem !important;
+  }
+
+  /* Service & step cards */
+
+  .service-card h3 {
+    font-size: 2rem;
+  }
+
+  .service-card p  {
+    font-size: 1.25rem;
+  }
+
+  .step-num {
+    font-size: 6rem;
+  }
+
+  .step-card {
+    padding: 3.5rem;
+  }
+
+  /* Carousel content cards */
+
+  .content-card {
+    width: 1000px;
+    left: calc(50% - 500px);
+    padding: 6rem;
+  }
+
+  .card-title {
+    font-size: 3rem;
+  }
+
+  .card-description {
+    font-size: 1.3rem;
+  }
+
+  /* Blueprint framework 4 cols */
+
+  .framework-steps {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem;
+  }
+
+  /* Contact layout — wider columns */
+
+  .contact-container {
+    padding: 6rem;
+    gap: 6rem;
+  }
+
+  /* Footer — cap absolute max width */
+
+  .premium-footer {
+    max-width: 2200px;
+    padding-left: 200px !important;
+    padding-right: 200px !important;
+  }
+
+  /* Parallax logo fragments — scale up for 4K depth */
+
+  .fragment {
+    font-size: 12rem;
+  }
+
+  .f2 {
+    font-size: 18rem;
+  }
+
+  .f3 {
+    font-size: 7rem;
+  }
+
+  .f4 {
+    font-size: 9rem;
+  }
+}
+
 .hover\:-translate-y-1:hover{
   --tw-translate-y: -0.25rem;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
