@@ -1,0 +1,12 @@
+# www.robotstxt.org/
+# www.google.com/support/webmasters/bin/answer.py?answer=156449
+
+User-agent: *
+Allow: /
+
+# Disallow access to administrative pages & gates
+Disallow: /cms.html
+Disallow: /password-gate.html
+
+# Sitemap location
+Sitemap: https://www.phixdigitechh.com/sitemap.xml
