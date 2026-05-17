@@ -35,6 +35,20 @@ if(sessionStorage.getItem("auth") !== "true") {
 <body>
     <!-- Background Atmos: Fully Purified Void -->
 
+    <!-- Premium Theme Toggle -->
+    <div id="theme-toggle" class="theme-toggle-pill" role="button" tabindex="0" aria-label="Toggle theme">
+        <div class="toggle-track">
+            <div class="toggle-circle">
+                <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+            </div>
+            <div class="toggle-static">
+                <svg class="sun-icon-static" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                <svg class="moon-icon-static" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+            </div>
+        </div>
+    </div>
+
     <!-- Ripple Effect Overlay for Transition -->
     <div class="theme-ripple"></div>
 
@@ -135,22 +149,29 @@ if(sessionStorage.getItem("auth") !== "true") {
                 class="hero-animate delay-200 text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-medium tracking-tighter leading-[0.9] heading-mask"
                 style="margin: 0 0 40px 0; text-align: left; display: block; color: var(--text-color);"
               >
-                Where Creativity<br />
+                We Build High-Performance<br />
+                Digital Systems That<br />
                 <span class="bg-gradient-to-br from-white via-white to-[#ffcd75] bg-clip-text text-transparent text-gold">
-                  Meets Intelligence
+                  Drive Intent into Sales.
                 </span>
               </h1>
 
               <!-- Description -->
               <p class="hero-animate delay-300 max-w-xl text-lg leading-relaxed" style="text-align: left; margin: 0; color: var(--text-color); opacity: 0.8;">
-                We don’t just build digital presence; we engineer brand gravity. Fusing the balance of Phi (Φ) with the X-Factor of innovation to scale your e-commerce ecosystem.
+                Stop losing customers to fragmented tech and broken user journeys. We engineer seamless growth architectures that combine mathematical balance with disruptive innovation to convert your traffic on autopilot.
               </p>
 
               <!-- CTA Buttons (PHIX PROTOCOL UI) -->
               <div class="hero-animate delay-400 flex flex-col sm:flex-row gap-6">
                 <a href="#contact" class="btn-premium-cta no-underline">
-                    <span class="btn-text">Let's Collaborate</span>
+                    <span class="btn-text">Book a Strategy Consultation</span>
                     <div class="btn-icon-circle">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
+                </a>
+                <a href="#services" class="btn-premium-cta secondary-btn no-underline">
+                    <span class="btn-text">See Our Capabilities</span>
+                    <div class="btn-icon-circle" style="background: var(--text-color); color: var(--bg-color);">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                     </div>
                 </a>
@@ -200,7 +221,7 @@ if(sessionStorage.getItem("auth") !== "true") {
 
               <!-- Marquee Card -->
               <div class="hero-animate delay-500 relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 py-8 backdrop-blur-xl">
-                <h3 class="mb-6 px-8 text-sm font-medium text-zinc-400" style="text-align: left;">Trusted by Industry Leaders</h3>
+                <h3 class="mb-6 px-8 text-sm font-medium text-zinc-400" style="text-align: left;">Trusted by modern brands globally.</h3>
                 
                 <div class="relative flex overflow-hidden marquee-mask">
                   <div class="animate-marquee flex gap-12 whitespace-nowrap px-4">
@@ -223,213 +244,141 @@ if(sessionStorage.getItem("auth") !== "true") {
         </div>
     </section>
 
-    <!-- II. The Origin (Phix Story) -->
+    <!-- II. The Problem Solver (How Our Ecosystem Helps Your Business) -->
     <section id="story" class="story-section gap-bottom">
-        <h2 class="staggered-heading section-title" style="width: 100%;"><span>The</span> <span>Science</span> <span>of</span> <span>the</span> <span class="text-gold">PHIX</span></h2>
-        
         <div class="story-split">
-            <div class="story-content-col">
-                <div class="glass-card squircle story-card staggered-text">
-                    <h3 class="accent">The Phi (Φ)</h3>
-                    <p>The Golden Ratio. It represents the perfect mathematical balance found in nature and timeless design. We bring this harmony to your brand’s UI, UX, and strategy.</p>
-                </div>
-                <div class="glass-card squircle story-card staggered-text">
-                    <h3 class="accent">The X</h3>
-                    <p>The Variable. The Creative Spark. The X-Factor that disrupts markets and defies the status quo.</p>
-                </div>
-                <div class="glass-card squircle story-card staggered-text">
-                    <p class="section-desc">We don't just use tools; we orchestrate an entire digital universe. From Meta and Google Ads to Shopify, Adobe, and beyond, your brand lives at the center of a high-performance integration engine designed for global scale.</p>
-                    
-                    <a href="#contact" class="btn-premium-cta" style="margin-top: 1rem;">
-                        <span class="btn-text">Build Your Ecosystem</span>
-                        <div class="btn-icon-circle">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                        </div>
-                    </a>
-                </div>
+            <!-- Left Side: Headline, Sub-text, CTA -->
+            <div class="story-content-col" style="justify-content: center; gap: 2.5rem;">
+                <h2 class="staggered-heading section-title" style="text-align: left; margin: 0; line-height: 1.1; display: flex; flex-direction: column;">
+                    <span>How Our Ecosystem</span> <span class="text-gold">Scaled Your Business</span>
+                </h2>
+                <p class="section-desc" style="font-size: 1.2rem; line-height: 1.7; opacity: 0.9; margin: 0; text-align: left;">
+                    We eliminate technical friction and marketing guesswork by installing unified growth frameworks built to perform 24/7.
+                </p>
+                <a href="#services" class="btn-premium-cta" style="align-self: flex-start; margin-top: 1rem; no-underline">
+                    <span class="btn-text">Explore Our Systems</span>
+                    <div class="btn-icon-circle">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
+                </a>
             </div>
 
-            <div class="story-visual-col">
-                <div class="spiral-container squircle glass-card" style="width: 100%; height: 100%;">
-                    <svg class="golden-spiral tech-spiral" viewBox="0 -100 1000 600" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: 100%;">
-                        <!-- Background Grid -->
-                        <defs>
-                            <pattern id="tech-grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.1"/>
-                                <circle cx="40" cy="40" r="1.5" fill="var(--accent-color)" opacity="0.4"/>
-                            </pattern>
-                        </defs>
-                        <rect x="-200" y="-200" width="1400" height="1000" fill="url(#tech-grid)"/>
-
-
-                        <!-- The Core Phi Spiral -->
-                        <path d="M 400 250 A 5 5 0 0 1 405 245 A 10 10 0 0 1 415 255 A 15 15 0 0 1 400 270 A 25 25 0 0 1 375 245 A 40 40 0 0 1 415 205 A 65 65 0 0 1 480 270 A 105 105 0 0 1 375 375 A 170 170 0 0 1 205 205 A 275 275 0 0 1 480 -70 A 445 445 0 0 1 925 375" fill="none" class="spiral-path" stroke-width="4" stroke-linecap="round"/>
-                        
-                    </svg>
+            <!-- Right Side: Scannable Cards -->
+            <div class="story-content-col" style="flex: 1.2; gap: 1.5rem;">
+                <div class="glass-card squircle story-card staggered-text" style="padding: 2rem 2.5rem; margin-bottom: 0;">
+                    <h3 class="accent" style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--accent-color);">Unparalleled User Experience</h3>
+                    <p style="margin: 0; font-size: 1rem; line-height: 1.5; opacity: 0.85; text-align: left;">No more clunky transitions or high bounce rates. We design intuitive, lightning-fast paths to checkout.</p>
+                </div>
+                <div class="glass-card squircle story-card staggered-text" style="padding: 2rem 2.5rem; margin-bottom: 0;">
+                    <h3 class="accent" style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--accent-color);">Turn Cold Traffic into 3X Sales</h3>
+                    <p style="margin: 0; font-size: 1rem; line-height: 1.5; opacity: 0.85; text-align: left;">Maximize your ad spend with precision-targeted landing pages and automated conversion funnels.</p>
+                </div>
+                <div class="glass-card squircle story-card staggered-text" style="padding: 2rem 2.5rem; margin-bottom: 0;">
+                    <h3 class="accent" style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--accent-color);">Build Scalable Infrastructure</h3>
+                    <p style="margin: 0; font-size: 1rem; line-height: 1.5; opacity: 0.85; text-align: left;">Stop patching broken tools. Get a unified system where your store, ads, and workflows communicate perfectly.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- III. The Ecosystem (Technological Horizon) -->
-    <section id="ecosystem" class="ecosystem-section gap-bottom">
-        <h2 class="staggered-heading section-title"><span>Our</span> <span>Digital</span> <span class="accent">Ecosystem</span></h2>
+    <!-- III. Industries We Support -->
+    <section id="industries" class="industries-section gap-bottom">
+        <h2 class="staggered-heading section-title" style="margin-bottom: 3rem;"><span>Industries</span> <span>We</span> <span class="text-gold">Support</span></h2>
+        <div class="industries-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; width: 100%;">
+            <!-- Card 1 -->
+            <div class="glass-card squircle industry-card" style="padding: 2.5rem 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; text-align: center; transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); cursor: default; height: 180px;">
+                <div class="industry-icon" style="color: var(--accent-color);">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                </div>
+                <h3 style="font-size: 1.2rem; font-weight: 700; margin: 0; color: var(--text-color);">E-Commerce Flagships</h3>
+            </div>
+            <!-- Card 2 -->
+            <div class="glass-card squircle industry-card" style="padding: 2.5rem 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; text-align: center; transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); cursor: default; height: 180px;">
+                <div class="industry-icon" style="color: var(--accent-color);">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                </div>
+                <h3 style="font-size: 1.2rem; font-weight: 700; margin: 0; color: var(--text-color);">Quick Commerce Brands</h3>
+            </div>
+            <!-- Card 3 -->
+            <div class="glass-card squircle industry-card" style="padding: 2.5rem 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; text-align: center; transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); cursor: default; height: 180px;">
+                <div class="industry-icon" style="color: var(--accent-color);">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </div>
+                <h3 style="font-size: 1.2rem; font-weight: 700; margin: 0; color: var(--text-color);">Global Digital Marketplaces</h3>
+            </div>
+            <!-- Card 4 -->
+            <div class="glass-card squircle industry-card" style="padding: 2.5rem 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; text-align: center; transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); cursor: default; height: 180px;">
+                <div class="industry-icon" style="color: var(--accent-color);">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                <h3 style="font-size: 1.2rem; font-weight: 700; margin: 0; color: var(--text-color);">Modern Consumer Goods (FMCG)</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- IV. Audience Intent (What Businesses Like Yours Are Looking For) -->
+    <section id="intent" class="intent-section gap-bottom">
+        <h2 class="staggered-heading section-title" style="margin-bottom: 3rem;"><span>What</span> <span>Are</span> <span>You</span> <span class="text-gold">Looking For?</span></h2>
         
-        <div class="ecosystem-split">
-            <!-- 3D Cloud (Left) -->
-            <div class="ecosystem-visual-col">
-                <div class="ecosystem-cloud-square glass-card squircle">
-                    <canvas id="ecosystem-canvas" width="550" height="550">
-                        <ul id="ecosystem-list">
-                            <!-- Design & Creative (The Core) -->
-                            <li><a href="#photoshop"><img src="ps.svg" width="30" height="30"></a></li>
-                            <li><a href="#illustrator"><img src="ai.svg" width="30" height="30"></a></li>
-                            <li><a href="#premiere"><img src="pr.svg" width="30" height="30"></a></li>
-                            <li><a href="#aftereffects"><img src="https://cdn.simpleicons.org/adobeaftereffects" width="30" height="30"></a></li>
-                            <li><a href="#lightroom"><img src="https://cdn.simpleicons.org/adobelightroom" width="30" height="30"></a></li>
-                            <li><a href="#figma"><img src="https://cdn.simpleicons.org/figma" width="30" height="30"></a></li>
-                            <li><a href="#canva"><img src="https://cdn.simpleicons.org/canva" width="30" height="30"></a></li>
-                            <li><a href="#framer"><img src="https://cdn.simpleicons.org/framer/white" width="30" height="30"></a></li>
-                            <li><a href="#sketch"><img src="https://cdn.simpleicons.org/sketch" width="30" height="30"></a></li>
-                            <li><a href="#invision"><img src="https://cdn.simpleicons.org/invision" width="30" height="30"></a></li>
-                            <li><a href="#behance"><img src="https://cdn.simpleicons.org/behance" width="30" height="30"></a></li>
-                            <li><a href="#dribbble"><img src="https://cdn.simpleicons.org/dribbble" width="30" height="30"></a></li>
-
-                            <!-- E-commerce Mastery -->
-                            <li><a href="#shopify"><img src="https://cdn.simpleicons.org/shopify" width="30" height="30"></a></li>
-                            <li><a href="#amazon"><img src="https://cdn.simpleicons.org/amazon" width="30" height="30"></a></li>
-                            <li><a href="#wordpress"><img src="https://cdn.simpleicons.org/wordpress" width="30" height="30"></a></li>
-                            <li><a href="#magento"><img src="https://cdn.simpleicons.org/magento" width="30" height="30"></a></li>
-                            <li><a href="#stripe"><img src="https://cdn.simpleicons.org/stripe" width="30" height="30"></a></li>
-                            <li><a href="#paypal"><img src="https://cdn.simpleicons.org/paypal" width="30" height="30"></a></li>
-                            <!-- Growth & Social Authority -->
-                            <li><a href="#meta"><img src="https://cdn.simpleicons.org/meta" width="30" height="30"></a></li>
-                            <li><a href="#linkedin"><img src="https://cdn.simpleicons.org/linkedin" width="30" height="30"></a></li>
-                            <li><a href="#whatsapp"><img src="https://cdn.simpleicons.org/whatsapp" width="30" height="30"></a></li>
-                            <li><a href="#reddit"><img src="https://cdn.simpleicons.org/reddit" width="30" height="30"></a></li>
-                            <li><a href="#snapchat"><img src="https://cdn.simpleicons.org/snapchat" width="30" height="30"></a></li>
-
-                            <!-- Tech Titans & Hardware Architecture -->
-                            <li><a href="#apple"><img src="https://cdn.simpleicons.org/apple/white" width="30" height="30"></a></li>
-                            <li><a href="#microsoft"><img src="https://cdn.simpleicons.org/microsoft" width="30" height="30"></a></li>
-                            <li><a href="#google"><img src="https://cdn.simpleicons.org/google" width="30" height="30"></a></li>
-                            <li><a href="#nvidia"><img src="https://cdn.simpleicons.org/nvidia" width="30" height="30"></a></li>
-                            <li><a href="#intel"><img src="https://cdn.simpleicons.org/intel" width="30" height="30"></a></li>
-                            <li><a href="#amd"><img src="https://cdn.simpleicons.org/amd" width="30" height="30"></a></li>
-                            <li><a href="#tesla"><img src="https://cdn.simpleicons.org/tesla" width="30" height="30"></a></li>
-
-                            <!-- AI & Automation Sovereignty -->
-                            <li><a href="#chatgpt"><img src="https://www.google.com/s2/favicons?domain=chatgpt.com&sz=128" width="30" height="30"></a></li>
-                            <li><a href="#gemini"><img src="https://www.google.com/s2/favicons?domain=gemini.google.com&sz=128" width="30" height="30"></a></li>
-                            <li><a href="#claude"><img src="https://www.google.com/s2/favicons?domain=claude.ai&sz=128" width="30" height="30"></a></li>
-                            <li><a href="#grok"><img src="https://www.google.com/s2/favicons?domain=x.ai&sz=128" width="30" height="30"></a></li>
-                            <li><a href="#perplexity"><img src="https://www.google.com/s2/favicons?domain=perplexity.ai&sz=128" width="30" height="30"></a></li>
-                            <li><a href="#zapier"><img src="https://cdn.simpleicons.org/zapier" width="30" height="30"></a></li>
-                            <li><a href="#make"><img src="https://cdn.simpleicons.org/make" width="30" height="30"></a></li>
-                            <li><a href="#huggingface"><img src="https://www.google.com/s2/favicons?domain=huggingface.co&sz=128" width="30" height="30"></a></li>
-                            <li><a href="#midjourney"><img src="https://www.google.com/s2/favicons?domain=midjourney.com&sz=128" width="30" height="30"></a></li>
-                            <li><a href="#jasper"><img src="https://www.google.com/s2/favicons?domain=jasper.ai&sz=128" width="30" height="30"></a></li>
-                            <li><a href="#copyai"><img src="https://www.google.com/s2/favicons?domain=copy.ai&sz=128" width="30" height="30"></a></li>
-                            <li><a href="#runway"><img src="https://www.google.com/s2/favicons?domain=runwayml.com&sz=128" width="30" height="30"></a></li>
-
-                            <!-- App Stores & Mobile Distribution -->
-                            <li><a href="#playstore"><img src="https://www.google.com/s2/favicons?domain=play.google.com&sz=128" width="30" height="30"></a></li>
-                            <li><a href="#appstore"><img src="https://www.google.com/s2/favicons?domain=apps.apple.com&sz=128" width="30" height="30"></a></li>
-
-                            <!-- Analytical Precision & Google Suite -->
-                            <li><a href="#googleanalytics"><img src="https://www.google.com/s2/favicons?domain=analytics.google.com&sz=128" width="30" height="30"></a></li>
-                            <li><a href="#google-gsc"><img src="https://www.google.com/s2/favicons?domain=search.google.com&sz=128" width="30" height="30"></a></li>
-                            <li><a href="#google-ads"><img src="https://www.google.com/s2/favicons?domain=ads.google.com&sz=128" width="30" height="30"></a></li>
-                            <li><a href="#google-tag-manager"><img src="https://www.google.com/s2/favicons?domain=tagmanager.google.com&sz=128" width="30" height="30"></a></li>
-                            <li><a href="#google-workspace"><img src="https://www.google.com/s2/favicons?domain=workspace.google.com&sz=128" width="30" height="30"></a></li>
-                            <li><a href="#google-drive"><img src="https://www.google.com/s2/favicons?domain=drive.google.com&sz=128" width="30" height="30"></a></li>
-                            <li><a href="#youtube"><img src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" width="30" height="30"></a></li>
-                            <li><a href="#google-trends"><img src="https://www.google.com/s2/favicons?domain=trends.google.com&sz=128" width="30" height="30"></a></li>
-                            <li><a href="#clarity"><img src="https://www.google.com/s2/favicons?domain=clarity.microsoft.com&sz=128" width="30" height="30"></a></li>
-                            <li><a href="#firebase"><img src="https://www.google.com/s2/favicons?domain=firebase.google.com&sz=128" width="30" height="30"></a></li>
-
-                            <!-- Payments & Indian FinTech -->
-                            <li><a href="#stripe"><img src="https://cdn.simpleicons.org/stripe" width="30" height="30"></a></li>
-                            <li><a href="#razorpay"><img src="https://cdn.simpleicons.org/razorpay" width="30" height="30"></a></li>
-                            <li><a href="#cashfree"><img src="https://www.google.com/s2/favicons?domain=cashfree.com&sz=128" width="30" height="30"></a></li>
-                            <li><a href="#paypal"><img src="https://cdn.simpleicons.org/paypal" width="30" height="30"></a></li>
-
-                            <!-- Infrastructure & Edge Computing -->
-                            <li><a href="#aws"><img src="https://cdn.simpleicons.org/amazonaws" width="30" height="30"></a></li>
-                            <li><a href="#azure"><img src="https://cdn.simpleicons.org/microsoftazure" width="30" height="30"></a></li>
-                            <li><a href="#gcp"><img src="https://cdn.simpleicons.org/googlecloud" width="30" height="30"></a></li>
-                            <li><a href="#vercel-pro"><img src="https://cdn.simpleicons.org/vercel/white" width="30" height="30"></a></li>
-                            <li><a href="#netlify"><img src="https://cdn.simpleicons.org/netlify" width="30" height="30"></a></li>
-                            <li><a href="#cloudflare"><img src="https://cdn.simpleicons.org/cloudflare" width="30" height="30"></a></li>
-                            <li><a href="#docker"><img src="https://cdn.simpleicons.org/docker" width="30" height="30"></a></li>
-                            <li><a href="#kubernetes"><img src="https://cdn.simpleicons.org/kubernetes" width="30" height="30"></a></li>
-
-                            <!-- Engineering & Stack -->
-                            <li><a href="#python"><img src="https://cdn.simpleicons.org/python" width="30" height="30"></a></li>
-                            <li><a href="#react"><img src="https://cdn.simpleicons.org/react" width="30" height="30"></a></li>
-                            <li><a href="#typescript"><img src="https://cdn.simpleicons.org/typescript" width="30" height="30"></a></li>
-                            <li><a href="#sass"><img src="https://cdn.simpleicons.org/sass" width="30" height="30"></a></li>
-                            <li><a href="#javascript"><img src="https://cdn.simpleicons.org/javascript" width="30" height="30"></a></li>
-                            <li><a href="#github-pro"><img src="https://cdn.simpleicons.org/github/white" width="30" height="30"></a></li>
-
-                            <!-- Enterprise Presence & CRM -->
-                            <li><a href="#salesforce"><img src="https://cdn.simpleicons.org/salesforce" width="30" height="30"></a></li>
-                            <li><a href="#hubspot"><img src="https://cdn.simpleicons.org/hubspot" width="30" height="30"></a></li>
-                            <li><a href="#notion"><img src="https://cdn.simpleicons.org/notion/white" width="30" height="30"></a></li>
-                            <li><a href="#slack"><img src="https://cdn.simpleicons.org/slack" width="30" height="30"></a></li>
-                            <li><a href="#jira"><img src="https://cdn.simpleicons.org/jira" width="30" height="30"></a></li>
-                            <li><a href="#confluence"><img src="https://cdn.simpleicons.org/confluence" width="30" height="30"></a></li>
-                            <li><a href="#zoho"><img src="https://www.google.com/s2/favicons?domain=zoho.com&sz=128" width="30" height="30"></a></li>
-                            <li><a href="#pipedrive"><img src="https://www.google.com/s2/favicons?domain=pipedrive.com&sz=128" width="30" height="30"></a></li>
-                            <li><a href="#zendesk"><img src="https://www.google.com/s2/favicons?domain=zendesk.com&sz=128" width="30" height="30"></a></li>
-                            <li><a href="#monday"><img src="https://www.google.com/s2/favicons?domain=monday.com&sz=128" width="30" height="30"></a></li>
-                            <li><a href="#asana"><img src="https://www.google.com/s2/favicons?domain=asana.com&sz=128" width="30" height="30"></a></li>
-                            <li><a href="#intercom"><img src="https://www.google.com/s2/favicons?domain=intercom.com&sz=128" width="30" height="30"></a></li>
-
-                            <!-- Lead Generation & Magnets -->
-                            <li><a href="#mailchimp"><img src="https://www.google.com/s2/favicons?domain=mailchimp.com&sz=128" width="30" height="30"></a></li>
-                            <li><a href="#convertkit"><img src="https://www.google.com/s2/favicons?domain=convertkit.com&sz=128" width="30" height="30"></a></li>
-                            <li><a href="#activecampaign"><img src="https://www.google.com/s2/favicons?domain=activecampaign.com&sz=128" width="30" height="30"></a></li>
-                            <li><a href="#typeform"><img src="https://www.google.com/s2/favicons?domain=typeform.com&sz=128" width="30" height="30"></a></li>
-                            <li><a href="#optinmonster"><img src="https://www.google.com/s2/favicons?domain=optinmonster.com&sz=128" width="30" height="30"></a></li>
-
-                            <!-- Quick Commerce & Delivery -->
-                            <li><a href="#swiggy"><img src="https://www.google.com/s2/favicons?domain=swiggy.com&sz=128" width="30" height="30"></a></li>
-                            <li><a href="#zomato"><img src="https://www.google.com/s2/favicons?domain=zomato.com&sz=128" width="30" height="30"></a></li>
-                            <li><a href="#blinkit"><img src="https://www.google.com/s2/favicons?domain=blinkit.com&sz=128" width="30" height="30"></a></li>
-                            <li><a href="#zepto"><img src="https://www.google.com/s2/favicons?domain=zeptonow.com&sz=128" width="30" height="30"></a></li>
-                            <li><a href="#ubereats"><img src="https://www.google.com/s2/favicons?domain=ubereats.com&sz=128" width="30" height="30"></a></li>
-                            <li><a href="#doordash"><img src="https://www.google.com/s2/favicons?domain=doordash.com&sz=128" width="30" height="30"></a></li>
-                            <li><a href="#instacart"><img src="https://www.google.com/s2/favicons?domain=instacart.com&sz=128" width="30" height="30"></a></li>
-                            <li><a href="#deliveroo"><img src="https://www.google.com/s2/favicons?domain=deliveroo.co.uk&sz=128" width="30" height="30"></a></li>
-                        </ul>
-                    </canvas>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; width: 100%; margin-bottom: 3rem;">
+            <!-- Card 1 -->
+            <div class="glass-card squircle intent-card active" onclick="selectIntentCard(this)" style="padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between; gap: 2rem; text-align: left; transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); cursor: pointer; border: 1px solid var(--accent-color); box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);">
+                <div>
+                    <span style="font-size: 0.8rem; font-weight: 800; letter-spacing: 0.15em; color: var(--accent-color); text-transform: uppercase;">The Brand Builder</span>
+                    <p style="font-size: 1.25rem; font-style: italic; line-height: 1.6; margin-top: 1.5rem; color: var(--text-color);">"I need a breathtaking visual identity and premium custom website that commands authority."</p>
                 </div>
             </div>
-
-            <!-- Text Content (Right) -->
-            <div class="ecosystem-content-col">
-                <div class="ecosystem-text-box glass-card squircle staggered-text">
-                    <h3 class="accent sub-heading">Global Integration Mastery.</h3>
-                    <p>We unite the world’s most powerful marketing, design, and analytical tools to create a seamless growth engine for your brand. From high-end design suites to massive marketplace distribution, we engineer the gravity that pulls customers in.</p>
-                    
-                    <a href="#contact" class="btn-premium-cta" style="margin-top: 2rem;">
-                        <span class="btn-text">Experience the Vault</span>
-                        <div class="btn-icon-circle">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                        </div>
-                    </a>
+            <!-- Card 2 -->
+            <div class="glass-card squircle intent-card" onclick="selectIntentCard(this)" style="padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between; gap: 2rem; text-align: left; transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); cursor: pointer; border: 1px solid rgba(255,255,255,0.08);">
+                <div>
+                    <span style="font-size: 0.8rem; font-weight: 800; letter-spacing: 0.15em; color: var(--text-color); opacity: 0.6; text-transform: uppercase;">The Operator</span>
+                    <p style="font-size: 1.25rem; font-style: italic; line-height: 1.6; margin-top: 1.5rem; color: var(--text-color); opacity: 0.8;">"I want to seamlessly expand into marketplaces and 10-minute delivery apps without losing control of inventory."</p>
                 </div>
-                <div class="glass-card squircle staggered-text compact" style="margin-top:2rem;">
-                    <ul class="styled-list">
-                        <li><strong>Ad-Tech Dominance:</strong> Google, Meta, and X platform scaling.</li>
-                        <li><strong>Analytical Precision:</strong> Deep insights via Clarity and Analytics.</li>
-                        <li><strong>Engineering Excellence:</strong> Clean code via Python, React, and native Shopify development.</li>
-                    </ul>
+            </div>
+            <!-- Card 3 -->
+            <div class="glass-card squircle intent-card" onclick="selectIntentCard(this)" style="padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between; gap: 2rem; text-align: left; transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); cursor: pointer; border: 1px solid rgba(255,255,255,0.08);">
+                <div>
+                    <span style="font-size: 0.8rem; font-weight: 800; letter-spacing: 0.15em; color: var(--text-color); opacity: 0.6; text-transform: uppercase;">The Strategist</span>
+                    <p style="font-size: 1.25rem; font-style: italic; line-height: 1.6; margin-top: 1.5rem; color: var(--text-color); opacity: 0.8;">"I need high-ROI performance marketing and organic SEO that continuously feeds our sales funnel."</p>
                 </div>
             </div>
         </div>
+
+        <div style="display: flex; justify-content: center; width: 100%;">
+            <a href="#services" class="btn-premium-cta" id="intent-cta" style="no-underline">
+                <span class="btn-text">Show Me The Solution</span>
+                <div class="btn-icon-circle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </div>
+            </a>
+        </div>
     </section>
+
+    <script>
+        function selectIntentCard(element) {
+            document.querySelectorAll('.intent-card').forEach(card => {
+                card.style.borderColor = 'rgba(255,255,255,0.08)';
+                card.style.boxShadow = 'none';
+                const label = card.querySelector('span');
+                if (label) {
+                    label.style.color = 'var(--text-color)';
+                    label.style.opacity = '0.6';
+                }
+                const quote = card.querySelector('p');
+                if (quote) quote.style.opacity = '0.8';
+            });
+            
+            element.style.borderColor = 'var(--accent-color)';
+            element.style.boxShadow = '0 10px 30px rgba(212, 175, 55, 0.15)';
+            const label = element.querySelector('span');
+            if (label) {
+                label.style.color = 'var(--accent-color)';
+                label.style.opacity = '1';
+            }
+            const quote = element.querySelector('p');
+            if (quote) quote.style.opacity = '1';
+        }
+    </script>
 
     <!-- IV. Core Services (Sovereign Service Horizon) -->
     <!-- IV. Core Services (Sovereign Service Horizon) -->
@@ -478,30 +427,33 @@ if(sessionStorage.getItem("auth") !== "true") {
         </div>
     </section>
 
-    <!-- V. The E-commerce Growth Framework -->
+    <!-- V. Our Blueprint -->
     <section id="framework" class="framework-section gap-bottom">
-        <h2 class="staggered-heading section-title"><span>The</span> <span>Growth</span> <span class="accent">Framework</span></h2>
+        <h2 class="staggered-heading section-title"><span>Our</span> <span class="text-gold">Blueprint</span></h2>
+        <p class="staggered-text section-subtitle" style="font-size: 1.25rem; opacity: 0.8; margin-bottom: 3rem; text-align: left;">
+            A System That Works for You and Grows With You
+        </p>
         
         <div class="framework-steps">
             <div class="glass-card squircle step-card staggered-text">
                 <div class="step-num accent">01</div>
-                <h3>Audit & Align</h3>
-                <p>We analyze your current data to find the "friction points."</p>
+                <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.8rem; color: var(--accent-color);">Research & Strategy</h3>
+                <p style="margin: 0; font-size: 1rem; line-height: 1.5; opacity: 0.85;">Competitive profiling, behavioral tracking analysis, and conversion path mapping.</p>
             </div>
             <div class="glass-card squircle step-card staggered-text">
                 <div class="step-num accent">02</div>
-                <h3>Optimize & Automate</h3>
-                <p>Setting up Shopify flows, abandoned cart recovery, and retention loops.</p>
+                <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.8rem; color: var(--accent-color);">Creative & UI/UX</h3>
+                <p style="margin: 0; font-size: 1rem; line-height: 1.5; opacity: 0.85;">High-impact asset design, layout structure finalization, and uniform brand styling.</p>
             </div>
             <div class="glass-card squircle step-card staggered-text">
                 <div class="step-num accent">03</div>
-                <h3>Scale & Disrupt</h3>
-                <p>Launching aggressive performance marketing and influencer collaborations.</p>
+                <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.8rem; color: var(--accent-color);">System Integration</h3>
+                <p style="margin: 0; font-size: 1rem; line-height: 1.5; opacity: 0.85;">Core engine build, full tracking pipeline deployment, and data stream linking.</p>
             </div>
             <div class="glass-card squircle step-card staggered-text">
                 <div class="step-num accent">04</div>
-                <h3>Analyze & Evolve</h3>
-                <p>Constant A/B testing to squeeze every drop of value from your traffic.</p>
+                <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.8rem; color: var(--accent-color);">Launch & Acceleration</h3>
+                <p style="margin: 0; font-size: 1rem; line-height: 1.5; opacity: 0.85;">Paid funnel activation, continuous velocity testing, and micro-conversions optimization.</p>
             </div>
         </div>
     </section>
@@ -510,44 +462,164 @@ if(sessionStorage.getItem("auth") !== "true") {
 
     <!-- VI. Footer / Contact (The Launchpad) -->
     <section id="contact" class="contact-section gap-bottom">
-        <div class="glass-card squircle contact-container">
-            <div class="contact-info">
-                <h2 class="staggered-heading" style="margin-bottom: 0.5rem;"><span>Ready</span> <span>to</span> <span>Defy</span> <span class="accent">Gravity?</span></h2>
-                <p class="staggered-text" style="font-size: 1.2rem; opacity: 0.8; margin-bottom: 2rem;">Let’s discuss your project and find your brand’s X-Factor.</p>
+        <div class="glass-card squircle contact-container" style="gap: 3rem;">
+            <!-- Left Info Column -->
+            <div class="contact-info" style="display: flex; flex-direction: column; justify-content: space-between; gap: 2rem;">
+                <div>
+                    <h2 class="staggered-heading" style="margin-bottom: 1.5rem; text-align: left; line-height: 1.1; display: flex; flex-direction: column;">
+                        <span>Book Your</span> <span class="text-gold">Strategy Consultation</span>
+                    </h2>
+                    <p class="staggered-text" style="font-size: 1.15rem; opacity: 0.85; margin-bottom: 2rem; text-align: left; line-height: 1.6;">
+                        Pick a time to sit down with our growth engineers. We will analyze your current technical infrastructure and design a roadmap to locate your brand's true X-Factor.
+                    </p>
+                </div>
                 
-                <div class="direct-contact flex-col">
-                    <p class="staggered-text"><strong>Email:</strong> <span class="accent">phixdigi@gmail.com</span></p>
-                    <p class="staggered-text"><strong>Phone:</strong> <span class="accent">+91 946 874 9499</span></p>
-                    <p class="staggered-text"><strong>Location:</strong> <span class="accent">Global</span></p>
+                <div class="direct-contact flex-col" style="gap: 1.2rem; display: flex; flex-direction: column; align-items: flex-start; text-align: left;">
+                    <a href="mailto:phix.digi@gmail.com" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 1rem; font-size: 1.1rem; transition: opacity 0.3s;" class="hover:opacity-80">
+                        <span style="color: var(--accent-color); font-size: 1.3rem;">📧</span> <span>phix.digi@gmail.com</span>
+                    </a>
+                    <a href="tel:+919468749499" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 1rem; font-size: 1.1rem; transition: opacity 0.3s;" class="hover:opacity-80">
+                        <span style="color: var(--accent-color); font-size: 1.3rem;">📞</span> <span>+91 9468749499</span>
+                    </a>
+                    <a href="https://phixdigitechh.com" target="_blank" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 1rem; font-size: 1.1rem; transition: opacity 0.3s;" class="hover:opacity-80">
+                        <span style="color: var(--accent-color); font-size: 1.3rem;">🌐</span> <span>phixdigitechh.com</span>
+                    </a>
                 </div>
             </div>
             
-            <div class="contact-form-container staggered-text">
-                <form id="contact-form" class="contact-form" style="background: transparent; box-shadow: none; border: none; padding: 0;">
-                    <div class="form-component glass-card squircle-small">
-                        <input type="text" placeholder="Full Name *" class="form-input" required>
+            <!-- Right Custom Interactive Booking Widget -->
+            <div class="contact-form-container staggered-text" style="position: relative;">
+                <div id="booking-widget" class="glass-card squircle-small" style="padding: 2rem; border: 1px solid rgba(255,255,255,0.08); display: flex; flex-direction: column; gap: 1.5rem; background: rgba(255,255,255,0.02);">
+                    
+                    <!-- Form Step -->
+                    <div id="booking-step-form" style="display: flex; flex-direction: column; gap: 1rem;">
+                        <span style="font-size: 0.8rem; font-weight: 800; letter-spacing: 0.1em; color: var(--accent-color); text-transform: uppercase;">1. Enter Your Details</span>
+                        <div class="form-component glass-card squircle-small" style="margin-bottom: 0;">
+                            <input type="text" id="booking-name" placeholder="Full Name *" class="form-input" required style="padding: 1rem 1.2rem;">
+                        </div>
+                        <div class="form-component glass-card squircle-small" style="margin-bottom: 0;">
+                            <input type="email" id="booking-email" placeholder="Business Email *" class="form-input" required style="padding: 1rem 1.2rem;">
+                        </div>
                     </div>
-                    <div class="form-component glass-card squircle-small">
-                        <input type="email" placeholder="Business Email *" class="form-input" required>
+
+                    <!-- Calendar Step -->
+                    <div id="booking-step-calendar" style="display: flex; flex-direction: column; gap: 1rem;">
+                        <span style="font-size: 0.8rem; font-weight: 800; letter-spacing: 0.1em; color: var(--accent-color); text-transform: uppercase;">2. Pick a Date</span>
+                        <div class="calendar-panel" style="display: flex; flex-direction: column; gap: 0.5rem; background: rgba(255,255,255,0.01); padding: 1rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: bold; color: var(--text-color);">
+                                <span>May 2026</span>
+                            </div>
+                            <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; text-align: center; font-size: 0.75rem; color: var(--text-color); opacity: 0.6; margin-bottom: 4px;">
+                                <span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span>
+                            </div>
+                            <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; text-align: center;">
+                                <!-- Simple calendar days starting Mon May 4 -->
+                                <span style="opacity: 0.3; font-size: 0.8rem; padding: 6px 0;"></span>
+                                <span style="opacity: 0.3; font-size: 0.8rem; padding: 6px 0;"></span>
+                                <span style="opacity: 0.3; font-size: 0.8rem; padding: 6px 0;"></span>
+                                <span style="opacity: 0.3; font-size: 0.8rem; padding: 6px 0;"></span>
+                                <span class="cal-day" onclick="selectBookingDate(this, 1)" style="font-size: 0.8rem; padding: 6px 0; cursor: pointer; border-radius: 8px; transition: 0.3s; color: var(--text-color);">1</span>
+                                <span class="cal-day" onclick="selectBookingDate(this, 2)" style="font-size: 0.8rem; padding: 6px 0; cursor: pointer; border-radius: 8px; transition: 0.3s; color: var(--text-color);">2</span>
+                                <span class="cal-day" onclick="selectBookingDate(this, 3)" style="font-size: 0.8rem; padding: 6px 0; cursor: pointer; border-radius: 8px; transition: 0.3s; color: var(--text-color);">3</span>
+                                
+                                <span class="cal-day" onclick="selectBookingDate(this, 4)" style="font-size: 0.8rem; padding: 6px 0; cursor: pointer; border-radius: 8px; transition: 0.3s; color: var(--text-color);">4</span>
+                                <span class="cal-day" onclick="selectBookingDate(this, 5)" style="font-size: 0.8rem; padding: 6px 0; cursor: pointer; border-radius: 8px; transition: 0.3s; color: var(--text-color);">5</span>
+                                <span class="cal-day" onclick="selectBookingDate(this, 6)" style="font-size: 0.8rem; padding: 6px 0; cursor: pointer; border-radius: 8px; transition: 0.3s; color: var(--text-color);">6</span>
+                                <span class="cal-day" onclick="selectBookingDate(this, 7)" style="font-size: 0.8rem; padding: 6px 0; cursor: pointer; border-radius: 8px; transition: 0.3s; color: var(--text-color);">7</span>
+                                <span class="cal-day" onclick="selectBookingDate(this, 8)" style="font-size: 0.8rem; padding: 6px 0; cursor: pointer; border-radius: 8px; transition: 0.3s; color: var(--text-color);">8</span>
+                                <span class="cal-day" onclick="selectBookingDate(this, 9)" style="font-size: 0.8rem; padding: 6px 0; cursor: pointer; border-radius: 8px; transition: 0.3s; color: var(--text-color);">9</span>
+                                <span class="cal-day" onclick="selectBookingDate(this, 10)" style="font-size: 0.8rem; padding: 6px 0; cursor: pointer; border-radius: 8px; transition: 0.3s; color: var(--text-color);">10</span>
+
+                                <span class="cal-day active-day" onclick="selectBookingDate(this, 11)" style="font-size: 0.8rem; padding: 6px 0; cursor: pointer; border-radius: 8px; transition: 0.3s; color: var(--text-color); border: 1px solid var(--accent-color); background: rgba(212,175,55,0.1);">11</span>
+                                <span class="cal-day" onclick="selectBookingDate(this, 12)" style="font-size: 0.8rem; padding: 6px 0; cursor: pointer; border-radius: 8px; transition: 0.3s; color: var(--text-color);">12</span>
+                                <span class="cal-day" onclick="selectBookingDate(this, 13)" style="font-size: 0.8rem; padding: 6px 0; cursor: pointer; border-radius: 8px; transition: 0.3s; color: var(--text-color);">13</span>
+                                <span class="cal-day" onclick="selectBookingDate(this, 14)" style="font-size: 0.8rem; padding: 6px 0; cursor: pointer; border-radius: 8px; transition: 0.3s; color: var(--text-color);">14</span>
+                                <span class="cal-day" onclick="selectBookingDate(this, 15)" style="font-size: 0.8rem; padding: 6px 0; cursor: pointer; border-radius: 8px; transition: 0.3s; color: var(--text-color);">15</span>
+                                <span class="cal-day" onclick="selectBookingDate(this, 16)" style="font-size: 0.8rem; padding: 6px 0; cursor: pointer; border-radius: 8px; transition: 0.3s; color: var(--text-color);">16</span>
+                                <span class="cal-day" onclick="selectBookingDate(this, 17)" style="font-size: 0.8rem; padding: 6px 0; cursor: pointer; border-radius: 8px; transition: 0.3s; color: var(--text-color);">17</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-component glass-card squircle-small">
-                        <input type="url" placeholder="Your Current Website/Store" class="form-input">
+
+                    <!-- Time Slots Step -->
+                    <div id="booking-step-slots" style="display: flex; flex-direction: column; gap: 1rem;">
+                        <span style="font-size: 0.8rem; font-weight: 800; letter-spacing: 0.1em; color: var(--accent-color); text-transform: uppercase;">3. Choose a Time</span>
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; width: 100%;">
+                            <span class="booking-slot active-slot" onclick="selectBookingSlot(this)" style="font-size: 0.8rem; padding: 10px 0; text-align: center; cursor: pointer; border-radius: 8px; transition: 0.3s; color: var(--text-color); border: 1px solid var(--accent-color); background: rgba(212,175,55,0.1);">10:00 AM</span>
+                            <span class="booking-slot" onclick="selectBookingSlot(this)" style="font-size: 0.8rem; padding: 10px 0; text-align: center; cursor: pointer; border-radius: 8px; transition: 0.3s; color: var(--text-color); border: 1px solid rgba(255,255,255,0.08);">02:00 PM</span>
+                            <span class="booking-slot" onclick="selectBookingSlot(this)" style="font-size: 0.8rem; padding: 10px 0; text-align: center; cursor: pointer; border-radius: 8px; transition: 0.3s; color: var(--text-color); border: 1px solid rgba(255,255,255,0.08);">04:30 PM</span>
+                        </div>
                     </div>
-                    <div class="form-component glass-card squircle-small">
-                        <textarea placeholder="Your Growth Goal *" class="form-input" rows="5" required></textarea>
-                    </div>
-                </form>
-                <div class="form-actions" style="margin-top: 2rem;">
-                    <button type="submit" form="contact-form" class="btn-premium-cta" style="width: 100%; justify-content: space-between; padding-right: 56px;">
-                        <span class="btn-text">Launch Proposal</span>
+
+                    <!-- Action Button -->
+                    <button onclick="submitBooking()" class="btn-premium-cta" style="width: 100%; justify-content: space-between; border: none; outline: none; margin-top: 1rem;">
+                        <span class="btn-text" id="booking-btn-text">Confirm Consultation</span>
                         <div class="btn-icon-circle">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                         </div>
                     </button>
                 </div>
+
+                <!-- Success Overlay -->
+                <div id="booking-success-overlay" style="display: none; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10,10,10,0.95); z-index: 10; justify-content: center; align-items: center; flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem; border-radius: 24px;">
+                    <div style="width: 60px; height: 60px; border-radius: 50%; background: rgba(212,175,55,0.1); border: 2px solid var(--accent-color); display: flex; justify-content: center; align-items: center; color: var(--accent-color); font-size: 1.8rem; margin-bottom: 0.5rem;">✓</div>
+                    <h3 style="font-size: 1.5rem; font-weight: bold; color: var(--text-color); margin: 0;">Consultation Requested!</h3>
+                    <p style="font-size: 1rem; opacity: 0.8; margin: 0; line-height: 1.5;">Our growth engineers are analyzing your site. A confirmation link has been sent to your email.</p>
+                    <button onclick="resetBookingWidget()" class="btn-premium-cta secondary-btn" style="margin-top: 1rem; padding: 0.8rem 1.5rem;">
+                        <span class="btn-text">Book Another</span>
+                    </button>
+                </div>
             </div>
         </div>
     </section>
+
+    <script>
+        let selectedDate = 'May 11';
+        let selectedTime = '10:00 AM';
+
+        function selectBookingDate(element, dayNum) {
+            document.querySelectorAll('.cal-day').forEach(day => {
+                day.style.borderColor = 'transparent';
+                day.style.background = 'transparent';
+            });
+            element.style.borderColor = 'var(--accent-color)';
+            element.style.background = 'rgba(212,175,55,0.1)';
+            selectedDate = 'May ' + dayNum;
+        }
+
+        function selectBookingSlot(element) {
+            document.querySelectorAll('.booking-slot').forEach(slot => {
+                slot.style.borderColor = 'rgba(255,255,255,0.08)';
+                slot.style.background = 'transparent';
+            });
+            element.style.borderColor = 'var(--accent-color)';
+            element.style.background = 'rgba(212,175,55,0.1)';
+            selectedTime = element.innerText;
+        }
+
+        function submitBooking() {
+            const name = document.getElementById('booking-name').value.trim();
+            const email = document.getElementById('booking-email').value.trim();
+            
+            if (!name || !email) {
+                alert('Please fill out your Name and Email to secure your time slot.');
+                return;
+            }
+
+            const successOverlay = document.getElementById('booking-success-overlay');
+            successOverlay.style.display = 'flex';
+            
+            if (typeof gsap !== 'undefined') {
+                gsap.fromTo(successOverlay, { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 0.4, ease: "power2.out" });
+            }
+        }
+
+        function resetBookingWidget() {
+            document.getElementById('booking-name').value = '';
+            document.getElementById('booking-email').value = '';
+            document.getElementById('booking-success-overlay').style.display = 'none';
+        }
+    </script>
 
     <!-- VII. Site Footer -->
     <footer class="premium-footer glass-card">
@@ -628,5 +700,32 @@ if(sessionStorage.getItem("auth") !== "true") {
 
     <!-- Main Logic -->
     <script src="animations.js"></script>
+    <script>
+        // Custom Theme Engine for Homepage
+        const toggleEl = document.getElementById('theme-toggle');
+        const rippleEl = document.querySelector('.theme-ripple');
+
+        toggleEl.addEventListener('click', (e) => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            const rect = toggleEl.getBoundingClientRect();
+            const x = rect.left + rect.width / 2;
+            const y = rect.top + rect.height / 2;
+            
+            rippleEl.style.left = `${x}px`;
+            rippleEl.style.top = `${y}px`;
+            rippleEl.style.transform = 'translate(-50%, -50%) scale(0)';
+            
+            requestAnimationFrame(() => {
+                rippleEl.classList.add('active');
+                setTimeout(() => {
+                    document.documentElement.setAttribute('data-theme', newTheme);
+                    localStorage.setItem('phix-theme', newTheme);
+                    rippleEl.classList.remove('active');
+                }, 600);
+            });
+        });
+    </script>
 </body>
 </html>

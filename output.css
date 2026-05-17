@@ -3163,6 +3163,89 @@ h2 {
 
 /* Superseded by Parallax */
 
+/* ==========================================================================
+   Anti-Gravity Float Physics System
+   ========================================================================== */
+
+/* Unique drift keyframe loops */
+
+@keyframes drift-slow-1 {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-8px) rotate(0.5deg);
+  }
+
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+@keyframes drift-slow-2 {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-12px) rotate(-0.5deg);
+  }
+
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+@keyframes drift-slow-3 {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-6px) rotate(0.8deg);
+  }
+
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+/* Apply slow drift loops independently to simulate multi-layered depth */
+
+.story-card:nth-child(1), .industry-card:nth-child(1), .intent-card:nth-child(1), .step-card:nth-child(1) {
+  animation: drift-slow-1 8s ease-in-out infinite;
+}
+
+.story-card:nth-child(2), .industry-card:nth-child(2), .intent-card:nth-child(2), .step-card:nth-child(2) {
+  animation: drift-slow-2 9s ease-in-out infinite;
+}
+
+.story-card:nth-child(3), .industry-card:nth-child(3), .intent-card:nth-child(3), .step-card:nth-child(3) {
+  animation: drift-slow-3 10s ease-in-out infinite;
+}
+
+.industry-card:nth-child(4), .step-card:nth-child(4) {
+  animation: drift-slow-1 11s ease-in-out infinite;
+}
+
+/* High-end hover mechanics: Magnetic snap, scale up, cast deep blurred shadow glow */
+
+.story-card, .industry-card, .intent-card, .step-card {
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), 
+                box-shadow 0.5s cubic-bezier(0.23, 1, 0.32, 1), 
+                border-color 0.5s cubic-bezier(0.23, 1, 0.32, 1) !important;
+}
+
+.story-card:hover, .industry-card:hover, .intent-card:hover, .step-card:hover {
+  animation-play-state: paused;
+  /* Snap control to mouse */
+  transform: scale(1.05) translateY(-10px) !important;
+  box-shadow: 0 30px 60px rgba(212, 175, 55, 0.12), 
+                0 0 40px rgba(212, 175, 55, 0.08) !important;
+  border-color: var(--accent-color) !important;
+}
+
 .hover\:-translate-y-1:hover{
   --tw-translate-y: -0.25rem;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -3176,6 +3259,10 @@ h2 {
 
 .hover\:opacity-100:hover{
   opacity: 1;
+}
+
+.hover\:opacity-80:hover{
+  opacity: 0.8;
 }
 
 .hover\:grayscale-0:hover{
