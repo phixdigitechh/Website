@@ -233,9 +233,10 @@ if(sessionStorage.getItem("auth") !== "true") {
                 
                 // Trigger animations
                 if (window.gsap) {
-                    gsap.from(".blog-card", {
-                        y: 50, opacity: 0, duration: 1, stagger: 0.2, ease: "power4.out"
-                    });
+                    gsap.fromTo(".blog-card", 
+                        { y: 50, opacity: 0 },
+                        { y: 0, opacity: 1, duration: 1.2, stagger: 0.15, ease: "power4.out" }
+                    );
                 }
             } catch (e) {
                 grid.innerHTML = '<p style="text-align:center; color: var(--accent-color);">Manifestation Failed: Sovereign Engine Offline.</p>';

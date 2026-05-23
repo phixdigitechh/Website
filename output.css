@@ -600,6 +600,10 @@ video {
   position: relative;
 }
 
+.sticky{
+  position: sticky;
+}
+
 .right-0{
   right: 0px;
 }
@@ -647,6 +651,10 @@ video {
 
 .block{
   display: block;
+}
+
+.inline{
+  display: inline;
 }
 
 .flex{
@@ -703,6 +711,10 @@ video {
 
 .w-px{
   width: 1px;
+}
+
+.flex-shrink{
+  flex-shrink: 1;
 }
 
 .transform{
@@ -1928,6 +1940,11 @@ section {
   transform: translateY(20px);
 }
 
+.Reveal-SlideUp, .Reveal-SlideUp-Delayed {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
 /* --- NEW COMPONENT STYLES --- */
 
 .gap-bottom {
@@ -2899,21 +2916,21 @@ h2 {
     letter-spacing: -2px;
   }
 
-  .nav-links {
+  .phix-nav-links {
     display: none !important;
   }
 
-  .nav-left {
+  .phix-nav-left {
     padding-left: 0;
     flex: none;
     justify-content: flex-start;
   }
 
-  .nav-right {
-    display: none;
+  .phix-nav-right {
+    display: none !important;
   }
 
-  .nav-center {
+  .phix-nav-center {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -3148,9 +3165,7 @@ h2 {
   }
 }
 
-.detail-hero {
-  display: none !important;
-}
+/* .detail-hero { display: none !important; } */
 
 /* Superseded by Parallax */
 

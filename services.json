@@ -1,11 +1,20 @@
 [
   {
     "id": "1",
+    "slug": "undefined",
+    "status": "live",
+    "content": "<p><br></p>",
+    "seoTitle": "",
+    "seoDesc": "",
+    "date": "May 17, 2026",
     "btnText": "Web Design & Dev",
-    "title": "System 1: Tech That Defies <span class=\"text-gold\">Constraints</span>",
+    "title": "Tech That Defies <span class=\"text-gold\">Constraints</span>",
     "description": "<strong>What We Do:</strong> We architect high-performance, responsive custom websites with next-level UI/UX and bespoke section layouts tailored to your exact operational needs.",
     "points": [
-      "<strong>Our Execution:</strong> Building bespoke frontends, engineering scalable corporate web applications, writing clean source code, and deploying seamless third-party CRM and API data streams."
+      "<strong>Our Execution:</strong> Building bespoke frontends",
+      "engineering scalable corporate web applications",
+      "writing clean source code",
+      "and deploying seamless third-party CRM and API data streams."
     ]
   },
   {

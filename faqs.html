@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<script>
+if(sessionStorage.getItem("auth") !== "true") {
+    window.location.href = "password-gate.html";
+}
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHIX | Frequently Asked Questions</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        .faq-hero {
+            padding: 12rem 5% 4rem 5%;
+            text-align: center;
+        }
+
+        .faq-layout {
+            display: flex;
+            gap: 5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5% 10rem 5%;
+            position: relative;
+        }
+
+        /* Sticky Sidebar */
+        .faq-sidebar {
+            width: 320px;
+            position: sticky;
+            top: 8rem;
+            height: fit-content;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .faq-sidebar h3 {
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        .category-link {
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 1.1rem;
+            text-align: left;
+            padding: 0.8rem 1.5rem;
+            border-left: 2px solid rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            font-family: inherit;
+        }
+
+        .category-link:hover {
+            color: #fff;
+            padding-left: 1.8rem;
+        }
+
+        .category-link.active {
+            color: var(--accent-color);
+            border-left-color: var(--accent-color);
+            font-weight: 700;
+            padding-left: 1.8rem;
+        }
+
+        /* Accordion Stack */
+        .faq-main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+        }
+
+        .faq-group {
+            scroll-margin-top: 8rem;
+        }
+
+        .group-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            letter-spacing: -1px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 1rem;
+        }
+
+        .faq-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 2rem;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .faq-item:hover {
+            border-color: rgba(214, 175, 55, 0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .faq-trigger {
+            width: 100%;
+            padding: 2.2rem;
+            background: transparent;
+            border: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            cursor: pointer;
+            text-align: left;
+            font-family: inherit;
+            color: #fff;
+        }
+
+        .faq-question {
+            font-size: 1.3rem;
+            font-weight: 600;
+            line-height: 1.4;
+            transition: color 0.3s;
+        }
+
+        .faq-item:hover .faq-question {
+            color: var(--accent-color);
+        }
+
+        .faq-icon-circle {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-color);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            flex-shrink: 0;
+            background: rgba(255,255,255,0.02);
+        }
+
+        .faq-item.active .faq-icon-circle {
+            transform: rotate(45deg);
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            color: #000;
+        }
+
+        .faq-content {
+            height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+
+        .faq-answer-inner {
+            padding: 0 2.2rem 2.2rem 2.2rem;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .faq-answer-inner a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .faq-answer-inner a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        /* Responsive Layouts */
+        @media (max-width: 992px) {
+            .faq-layout {
+                flex-direction: column;
+                gap: 4rem;
+            }
+
+            .faq-sidebar {
+                width: 100%;
+                position: relative;
+                top: 0;
+                flex-direction: row;
+                flex-wrap: wrap;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                padding-bottom: 2rem;
+            }
+
+            .category-link {
+                border-left: none;
+                border-bottom: 2px solid rgba(255, 255, 255, 0.05);
+                padding: 0.6rem 1rem;
+            }
+
+            .category-link.active {
+                border-left-color: transparent;
+                border-bottom-color: var(--accent-color);
+                padding-left: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .faq-trigger {
+                padding: 1.8rem;
+            }
+            .faq-question {
+                font-size: 1.1rem;
+            }
+            .faq-answer-inner {
+                padding: 0 1.8rem 1.8rem 1.8rem;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="theme-toggle" class="theme-toggle-pill" role="button" tabindex="0" aria-label="Toggle theme">
+        <div class="toggle-track">
+            <div class="toggle-circle"></div>
+        </div>
+    </div>
+    <div class="theme-ripple"></div>
+
+    <!-- Header Navigation Mirror -->
+    <nav class="phix-header-nav">
+        <div class="phix-nav-left">
+            <div class="phix-nav-links">
+                <a href="about.html">About</a>
+                <a href="index.html#story">Story</a>
+                <a href="index.html#services">Services</a>
+            </div>
+            <!-- Mobile Menu Trigger -->
+            <div class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </div>
+        </div>
+        <div class="phix-nav-center" onclick="window.location.href='index.html'">
+            <span class="phix-brand-logo">Φ<span class="x-serif">X</span></span>
+            <span class="phix-brand-text">PHIX DIGI TECHH</span>
+        </div>
+        <div class="phix-nav-right">
+            <div class="phix-nav-links">
+                <a href="portfolio.html">Portfolio</a>
+                <a href="blogs.html">Blogs</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay">
+        <div style="position:absolute; top:2rem; right:2rem; cursor:pointer;" onclick="toggleMobileMenu()">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </div>
+        <a href="index.html" class="mobile-link" onclick="toggleMobileMenu()">Home</a>
+        <a href="about.html" class="mobile-link" onclick="toggleMobileMenu()">About</a>
+        <a href="portfolio.html" class="mobile-link" onclick="toggleMobileMenu()">Portfolio</a>
+        <a href="blogs.html" class="mobile-link" onclick="toggleMobileMenu()">Blogs</a>
+        <a href="index.html#contact" class="mobile-link" onclick="toggleMobileMenu()">Contact</a>
+    </div>
+
+    <!-- FAQ Title Hero -->
+    <header class="faq-hero">
+        <h1 class="staggered-heading" style="font-size: clamp(3rem, 6vw, 72px); letter-spacing: -2px;">
+            Frequently Asked <span class="text-gold">Questions.</span>
+        </h1>
+        <p class="staggered-text" style="max-width: 600px; margin: 2rem auto 0 auto; font-size: 1.1rem; opacity: 0.7;">
+            Deciphering the balance of creative X-Factor and technical perfection.
+        </p>
+    </header>
+
+    <!-- Main FAQ Layout -->
+    <div class="faq-layout">
+        <!-- Sidebar categories -->
+        <aside class="faq-sidebar Reveal-SlideUp">
+            <h3>Faqs Directory</h3>
+            <button class="category-link active" onclick="scrollToGroup('philosophy')">01. Agency Philosophy</button>
+            <button class="category-link" onclick="scrollToGroup('tech')">02. Web Design & Tech</button>
+            <button class="category-link" onclick="scrollToGroup('acquisition')">03. Traffic & Funnels</button>
+            <button class="category-link" onclick="scrollToGroup('commerce')">04. Commerce Dominance</button>
+            <button class="category-link" onclick="scrollToGroup('onboarding')">05. Support & Partnership</button>
+        </aside>
+
+        <!-- Main accordion display -->
+        <main class="faq-main">
+            <!-- Group 1: Philosophy -->
+            <section id="philosophy" class="faq-group Reveal-SlideUp">
+                <h2 class="group-title text-gold">General & Agency Philosophy</h2>
+                <div class="faq-stack">
+                    <div class="faq-item">
+                        <button class="faq-trigger" onclick="toggleFaq(this.parentElement)">
+                            <span class="faq-question">What makes Phix DigiTech different from a traditional digital marketing agency?</span>
+                            <div class="faq-icon-circle">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                            </div>
+                        </button>
+                        <div class="faq-content">
+                            <div class="faq-answer-inner">
+                                Most agencies operate in silos—separating your creative assets from your technical backend. At Phix DigiTech, we operate on the principle of Phi (&Phi;) and X: balancing flawless mathematical design and high-speed engineering with a disruptive creative X-Factor. We provide a completely unified, 360° ecosystem where your web design, system integrations, organic visibility, and performance funnels talk to each other seamlessly to maximize market capture.
+                                <br><br>
+                                <a href="index.html#story">
+                                    Learn more about our methodology in The Science of Phix.
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-trigger" onclick="toggleFaq(this.parentElement)">
+                            <span class="faq-question">Why do you call yourselves a "360° digital marketing and tech solutions" company?</span>
+                            <div class="faq-icon-circle">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                            </div>
+                        </button>
+                        <div class="faq-content">
+                            <div class="faq-answer-inner">
+                                Because scaling a business modernly requires a dual approach: high-velocity customer acquisition and bulletproof technical infrastructure. We don't just run ads; we write clean source code, optimize technical server-side tracking, architect custom full-stack software, and build hyper-local supply network setups. We own the entire digital pipeline from structural engineering to rapid revenue scaling.
+                                <br><br>
+                                <a href="index.html#services">
+                                    Explore our comprehensive capabilities under Our Growth Capabilities.
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-trigger" onclick="toggleFaq(this.parentElement)">
+                            <span class="faq-question">What is your typical workflow and strategy timeline when onboarding a new partner?</span>
+                            <div class="faq-icon-circle">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                            </div>
+                        </button>
+                        <div class="faq-content">
+                            <div class="faq-answer-inner">
+                                We execute across a strict 60-day structured roadmap divided into clear operational milestones. We begin with comprehensive competitive profiling and conversion path mapping, move directly into creative direction and custom UI layouts, step into core technical engineering and pipeline data stream deployment, and conclude with full 360° ad funnel activation and ongoing optimization loops.
+                                <br><br>
+                                <a href="index.html#framework">
+                                    Review our full operational flow in Our Strategy Blueprint.
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Group 2: Tech -->
+            <section id="tech" class="faq-group Reveal-SlideUp">
+                <h2 class="group-title text-gold">Web Design & Tech Solutions</h2>
+                <div class="faq-stack">
+                    <div class="faq-item">
+                        <button class="faq-trigger" onclick="toggleFaq(this.parentElement)">
+                            <span class="faq-question">Are your websites custom-built or based on generic templates?</span>
+                            <div class="faq-icon-circle">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                            </div>
+                        </button>
+                        <div class="faq-content">
+                            <div class="faq-answer-inner">
+                                We completely reject generic, heavy, slow templates. Every platform we deliver is a custom-engineered architecture featuring bespoke front-end layouts, continuous container designs, and high-performance user interfaces built to ensure maximum responsiveness and top-tier loading speeds.
+                                <br><br>
+                                <a href="index.html#services">
+                                    See exactly how we build digital engines under Web Design & Full-Stack Development.
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-trigger" onclick="toggleFaq(this.parentElement)">
+                            <span class="faq-question">Can you integrate our website frontend with our offline operational backend, ERPs, and CRMs?</span>
+                            <div class="faq-icon-circle">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                            </div>
+                        </button>
+                        <div class="faq-content">
+                            <div class="faq-answer-inner">
+                                Yes, this is a core development capability. We write high-quality custom Liquid architecture and engineer scalable full-stack web applications that deploy flawless data streams between your user interface and third-party logistics (3PL), inventory management software, custom APIs, and backend customer relationship managers.
+                                <br><br>
+                                <a href="index.html#services">
+                                    Read more on how we bridge tech constraints in our Development Solutions breakdown.
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-trigger" onclick="toggleFaq(this.parentElement)">
+                            <span class="faq-question">How do you optimize your storefronts and web apps for maximum conversions?</span>
+                            <div class="faq-icon-circle">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                            </div>
+                        </button>
+                        <div class="faq-content">
+                            <div class="faq-answer-inner">
+                                We blend luxury visual storytelling with friction-free transaction design. By implementing micro-interactions, magnetic call-to-actions, highly refined custom layout schemas, and localized checkout flows, we systematically eliminate cart abandonment and lower your customer bounce rates.
+                                <br><br>
+                                <a href="index.html#services">
+                                    Explore how we design your digital flagship experience under Premium E-Commerce Solutions.
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Group 3: Acquisition -->
+            <section id="acquisition" class="faq-group Reveal-SlideUp">
+                <h2 class="group-title text-gold">Traffic, SEO & Acquisition Funnels</h2>
+                <div class="faq-stack">
+                    <div class="faq-item">
+                        <button class="faq-trigger" onclick="toggleFaq(this.parentElement)">
+                            <span class="faq-question">How do you ensure our marketing budget isn't being wasted on vanity metrics?</span>
+                            <div class="faq-icon-circle">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                            </div>
+                        </button>
+                        <div class="faq-content">
+                            <div class="faq-answer-inner">
+                                We build performance ad engines focused entirely on clear data attribution and true return on investment (ROI). By structuring deep server-side conversion mapping, hard-coded tracking pixels, and continuous asset A/B testing across Meta and Google networks, we ensure every single ad dollar is directly optimized to acquire high-lifetime-value customers.
+                                <br><br>
+                                <a href="index.html#services">
+                                    See how we scale cross-channel ad funnels under Performance Marketing & Traffic Funnels.
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-trigger" onclick="toggleFaq(this.parentElement)">
+                            <span class="faq-question">How long does it take to see tangible organic traffic from your SEO services?</span>
+                            <div class="faq-icon-circle">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                            </div>
+                        </button>
+                        <div class="faq-content">
+                            <div class="faq-answer-inner">
+                                SEO is a compounding asset. We accelerate this process through deep discoverability engineering—mapping out high-intent keywords, completely restructuring metadata pipelines, building internal linking matrices, and fine-tuning backend Core Web Vitals to position your brand at the absolute source of search traffic for long-term organic growth.
+                                <br><br>
+                                <a href="index.html#services">
+                                    Review our full search engine optimization strategy under Technical SEO & Organic Optimization.
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-trigger" onclick="toggleFaq(this.parentElement)">
+                            <span class="faq-question">What is your approach to producing short-form video and social media content?</span>
+                            <div class="faq-icon-circle">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                            </div>
+                        </button>
+                        <div class="faq-content">
+                            <div class="faq-answer-inner">
+                                We focus heavily on native, high-velocity visual narratives that actively turn passive scrolling into brand advocacy. Our team handles the entire lifecycle of content creation: scripting, high-end short-form editing, aesthetic carousel layouts, compelling copy execution, and daily interactive community management.
+                                <br><br>
+                                <a href="index.html#services">
+                                    Learn how we scale digital networks in Digital & Social Media Marketing.
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Group 4: Commerce -->
+            <section id="commerce" class="faq-group Reveal-SlideUp">
+                <h2 class="group-title text-gold">Multi-Channel & Quick Commerce Dominance</h2>
+                <div class="faq-stack">
+                    <div class="faq-item">
+                        <button class="faq-trigger" onclick="toggleFaq(this.parentElement)">
+                            <span class="faq-question">Can you help our brand expand seamlessly onto third-party online marketplaces?</span>
+                            <div class="faq-icon-circle">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                            </div>
+                        </button>
+                        <div class="faq-content">
+                            <div class="faq-answer-inner">
+                                Absolutely. We actively scale your presence across dominant multi-channel merchant networks to capture buyers where millions are already shopping. We handle everything from complete merchant account setups and high-ROI internal search advertising to rich media A+ content layouts and inventory strategy structuring.
+                                <br><br>
+                                <a href="index.html#services">
+                                    Discover how we rule multi-channel loops under Marketplace Growth Services.
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-trigger" onclick="toggleFaq(this.parentElement)">
+                            <span class="faq-question">What exactly do you do to scale a brand within the Quick Commerce (Q-Commerce) space?</span>
+                            <div class="faq-icon-circle">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                            </div>
+                        </button>
+                        <div class="faq-content">
+                            <div class="faq-answer-inner">
+                                Q-Commerce demands split-second optimization. We onboard your product lines straight into hyper-local rapid-delivery supply networks, engineer high-contrast mobile-optimized listing graphics built for instant impulse checkout, and launch targeted, real-time in-app search ads to capture peak local shopping hours.
+                                <br><br>
+                                <a href="index.html#services">
+                                    Learn how we capture instant mobile buying power under Quick Commerce Strategy.
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-trigger" onclick="toggleFaq(this.parentElement)">
+                            <span class="faq-question">How do your digital marketing funnels sync up with hyper-local delivery apps and dark stores?</span>
+                            <div class="faq-icon-circle">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                            </div>
+                        </button>
+                        <div class="faq-content">
+                            <div class="faq-answer-inner">
+                                We don't look at channels in isolation. We analyze hyper-local real-time dark store metrics and regional demand data to make sure our performance marketing campaigns are only scaling in locations where your product availability is highly optimized—minimizing out-of-stock bounce rates.
+                                <br><br>
+                                <a href="index.html#services">
+                                    See our hyper-local execution mapping inside Quick Commerce Strategy.
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Group 5: Onboarding -->
+            <section id="onboarding" class="faq-group Reveal-SlideUp">
+                <h2 class="group-title text-gold">Partnership, Onboarding & Support</h2>
+                <div class="faq-stack">
+                    <div class="faq-item">
+                        <button class="faq-trigger" onclick="toggleFaq(this.parentElement)">
+                            <span class="faq-question">What industries do you specialize in accelerating?</span>
+                            <div class="faq-icon-circle">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                            </div>
+                        </button>
+                        <div class="faq-content">
+                            <div class="faq-answer-inner">
+                                Our 360° digital ecosystem is engineered to support a highly diverse client portfolio. We primarily design growth roadmaps for complex Corporate & B2B brands, fast-moving Consumer Brands (D2C & FMCG), modern Tech & SaaS enterprises, and hyper-local service ecosystems.
+                                <br><br>
+                                <a href="index.html#story">
+                                    See if your industry aligns with our frameworks under Industries We Accelerate.
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-trigger" onclick="toggleFaq(this.parentElement)">
+                            <span class="faq-question">Do you provide ongoing technical support and performance tracking post-launch?</span>
+                            <div class="faq-icon-circle">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                            </div>
+                        </button>
+                        <div class="faq-content">
+                            <div class="faq-answer-inner">
+                                Yes. A growth engine is never truly finished. Every system launch transitions directly into continuous micro-optimization phases, regular data analytics reviews, asset velocity testing, and proactive maintenance routines to keep your entire digital ecosystem firing perfectly.
+                                <br><br>
+                                <a href="index.html#framework">
+                                    Review our scaling and acceleration milestones in Our Strategy Blueprint.
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-trigger" onclick="toggleFaq(this.parentElement)">
+                            <span class="faq-question">How do we get started and review our current technical or marketing gaps with Phix?</span>
+                            <div class="faq-icon-circle">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                            </div>
+                        </button>
+                        <div class="faq-content">
+                            <div class="faq-answer-inner">
+                                You can instantly schedule a live session with our digital growth engineers via our interactive booking widget. We will run a comprehensive, real-time audit of your current tech architecture, dissect your active marketing channels, and lay down a transparent roadmap to locate your brand’s true X-Factor.
+                                <br><br>
+                                <a href="index.html#contact">
+                                    Secure your session right now at our Contact & Action Center.
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- VII. Site Footer Mirror -->
+    <footer class="premium-footer glass-card">
+        <div class="footer-glow-line"></div>
+        <div class="premium-footer-inner">
+            <div class="footer-brand">
+                <div class="brand-stack" style="display: flex; flex-direction: column; align-items: flex-start; text-align: left; gap: 2px;">
+                    <span class="phix-brand-logo">Φ<span class="x-serif">X</span></span>
+                    <span class="phix-brand-text">PHIX DIGI TECHH</span>
+                </div>
+                <p class="footer-copyright">
+                    © 2026 Phix Digi Techh. All rights reserved.
+                </p>
+            </div>
+
+            <div class="footer-links-grid">
+                <div class="footer-link-group">
+                    <h3>Product</h3>
+                    <ul>
+                        <li><a href="index.html#services">Features</a></li>
+                        <li><a href="index.html#pricing">Pricing</a></li>
+                        <li><a href="index.html#testimonials">Testimonials</a></li>
+                        <li><a href="index.html">Integration</a></li>
+                    </ul>
+                </div>
+                <div class="footer-link-group">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="/faqs">FAQs</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="/privacy">Privacy Policy</a></li>
+                        <li><a href="/terms">Terms of Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-link-group">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="blogs.html">Blog</a></li>
+                        <li><a href="/changelog">Changelog</a></li>
+                        <li><a href="/brand">Brand</a></li>
+                        <li><a href="/help">Help</a></li>
+                    </ul>
+                </div>
+                <div class="footer-link-group">
+                    <h3>Social Links</h3>
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <svg class="footer-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                                Facebook
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <svg class="footer-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                                Instagram
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <svg class="footer-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>
+                                Youtube
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <svg class="footer-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                                LinkedIn
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="animations.js"></script>
+    <script>
+        // Smooth height accordion toggler
+        function toggleFaq(faqItem) {
+            const content = faqItem.querySelector('.faq-content');
+            const isActive = faqItem.classList.contains('active');
+            
+            // Close all other active items
+            const activeItems = document.querySelectorAll('.faq-item.active');
+            activeItems.forEach(item => {
+                if (item !== faqItem) {
+                    item.classList.remove('active');
+                    const c = item.querySelector('.faq-content');
+                    gsap.to(c, { height: 0, opacity: 0, duration: 0.4, ease: "power2.out" });
+                }
+            });
+
+            if (isActive) {
+                faqItem.classList.remove('active');
+                gsap.to(content, { height: 0, opacity: 0, duration: 0.4, ease: "power2.out" });
+            } else {
+                faqItem.classList.add('active');
+                gsap.fromTo(content, 
+                    { height: 0, opacity: 0 },
+                    { height: "auto", opacity: 1, duration: 0.5, ease: "power3.out" }
+                );
+            }
+        }
+
+        // Scroll to specific FAQ Category Group
+        function scrollToGroup(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Active State Synchronizer for Sidebar on Scroll
+        document.addEventListener('DOMContentLoaded', () => {
+            const groups = document.querySelectorAll('.faq-group');
+            const links = document.querySelectorAll('.category-link');
+
+            function syncActiveCategory() {
+                let currentActiveId = '';
+                groups.forEach(group => {
+                    const rect = group.getBoundingClientRect();
+                    // If group is close to top or currently in view
+                    if (rect.top <= 160 && rect.bottom >= 160) {
+                        currentActiveId = group.id;
+                    }
+                });
+
+                if (currentActiveId) {
+                    links.forEach(link => {
+                        const targetId = link.getAttribute('onclick').match(/'([^']+)'/)[1];
+                        if (targetId === currentActiveId) {
+                            link.classList.add('active');
+                        } else {
+                            link.classList.remove('active');
+                        }
+                    });
+                }
+            }
+
+            window.addEventListener('scroll', syncActiveCategory);
+            syncActiveCategory(); // Initial sync check
+        });
+    </script>
+</body>
+</html>

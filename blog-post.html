@@ -243,7 +243,7 @@ if(sessionStorage.getItem("auth") !== "true") {
                     
                     document.querySelector('meta[name="description"]')?.setAttribute('content', post.seoDesc);
                 } else {
-                    console.error("Node not found in manifest.");
+                    window.location.href = 'blogs.html';
                 }
             } catch (e) {
                 console.error("Sovereign Engine Link Broken.");

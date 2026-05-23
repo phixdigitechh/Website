@@ -691,6 +691,10 @@ section {
     opacity: 0;
     transform: translateY(20px);
 }
+.Reveal-SlideUp, .Reveal-SlideUp-Delayed {
+    opacity: 0;
+    transform: translateY(30px);
+}
 
 /* --- NEW COMPONENT STYLES --- */
 .gap-bottom { margin-bottom: 0; } /* Section padding handles vertical rhythm */
@@ -1317,11 +1321,11 @@ h2 {
     p, .staggered-text, .section-desc, .blog-excerpt, .hero-description { font-size: 16px !important; line-height: 1.6; }
     h1 { font-size: 48px !important; line-height: 1.1; letter-spacing: -2px; }
     
-    .nav-links { display: none !important; }
+    .phix-nav-links { display: none !important; }
     
-    .nav-left { padding-left: 0; flex: none; justify-content: flex-start; }
-    .nav-right { display: none; }
-    .nav-center { position: absolute; left: 50%; transform: translateX(-50%); width: auto; gap: 0; flex: none; align-items: center; justify-content: center; }
+    .phix-nav-left { padding-left: 0; flex: none; justify-content: flex-start; }
+    .phix-nav-right { display: none !important; }
+    .phix-nav-center { position: absolute; left: 50%; transform: translateX(-50%); width: auto; gap: 0; flex: none; align-items: center; justify-content: center; }
     
     .site-name { font-size: 0.65rem; }
     .phi-x-logo { font-size: 1.8rem; }
@@ -1382,7 +1386,7 @@ h2 {
 }
 
 
-.detail-hero { display: none !important; } /* Superseded by Parallax */
+/* .detail-hero { display: none !important; } *//* Superseded by Parallax */
 
 /* ==========================================================================
    Anti-Gravity Float Physics System

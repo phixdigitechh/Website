@@ -49,6 +49,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // --- 4. Reveal SlideUp Animations ---
+    const revealItems = gsap.utils.toArray('.Reveal-SlideUp');
+    revealItems.forEach(item => {
+        ScrollTrigger.create({
+            trigger: item,
+            start: "top 92%",
+            onEnter: () => {
+                gsap.to(item, { y: 0, opacity: 1, duration: 1, ease: "power3.out", overwrite: "auto" });
+            }
+        });
+    });
+
+    const revealDelayedItems = gsap.utils.toArray('.Reveal-SlideUp-Delayed');
+    revealDelayedItems.forEach(item => {
+        ScrollTrigger.create({
+            trigger: item,
+            start: "top 92%",
+            onEnter: () => {
+                gsap.to(item, { y: 0, opacity: 1, duration: 1, ease: "power3.out", overwrite: "auto", delay: 0.25 });
+            }
+        });
+    });
+
     // --- 5. Cinematic Zoom Parallax (Sovereign Pin Architecture) ---
     const zoomSection = document.querySelector('.zoom-parallax-section');
     if (zoomSection) {

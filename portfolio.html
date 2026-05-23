@@ -236,6 +236,12 @@ if(sessionStorage.getItem("auth") !== "true") {
                     </a>
                 `).join('');
                 
+                if (window.gsap) {
+                    gsap.fromTo("#portfolio-grid .project-card", 
+                        { y: 50, opacity: 0 },
+                        { y: 0, opacity: 1, duration: 1.2, stagger: 0.12, ease: "power4.out" }
+                    );
+                }
             } catch (e) {
                 grid.innerHTML = '<p style="text-align:center; color: var(--accent-color);">Manifestation Failed: Sovereign Engine Offline.</p>';
             }
